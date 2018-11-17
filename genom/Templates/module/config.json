@@ -1,0 +1,22 @@
+{
+  "description": "Pure module.",
+  "path": "../${MODULE_TYPE|capitalize}/${MODULE_NAME|capitalize}",
+  "values": { },
+  "variables": [
+    {
+      "name": "MODULE_TYPE",
+      "type": "String",
+      "description": "Module type (domain, feature)",
+      "consoleKey": ["t", "type"]
+    },
+    {
+      "name": "MODULE_NAME",
+      "type": "String",
+      "description": "Module name",
+      "consoleKey": ["n", "name"]
+    }
+  ],
+  "scripts": {
+
+  }
+}

@@ -41,3 +41,11 @@ xcuserdata
 # Carthage/Checkouts
 
 Carthage/Build
+
+\.idea/
+
+Pods/
+
+Podfile\.lock
+
+\.DS_Store

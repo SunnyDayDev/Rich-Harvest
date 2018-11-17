@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Rich Harvest.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "Core">
+      <FileRef
+         location = "group:Core/Core/RichHarvest.Core.Core.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Domain"
+      name = "Domain">
+      <FileRef
+         location = "group:Networking/RichHarvest.Domain.Networking.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>
