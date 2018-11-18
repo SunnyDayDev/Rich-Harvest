@@ -9,8 +9,6 @@
 import SafariServices
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
-
-    private static var counter = 1
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         // This method will be called when a content script provided by your extension calls safari.extension.dispatchMessage("message").
@@ -34,8 +32,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         window.getActiveTab { $0?.getPagesWithCompletionHandler { $0?[0].getPropertiesWithCompletionHandler { properties in
             //SafariExtensionViewController.shared.testLabbel2.stringValue = " (\(String(describing: properties?.url))))"
         } } }
-        SafariExtensionHandler.counter = SafariExtensionHandler.counter + 1
-        validationHandler(true, "\(SafariExtensionHandler.counter)")
+        validationHandler(true, " ")
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {

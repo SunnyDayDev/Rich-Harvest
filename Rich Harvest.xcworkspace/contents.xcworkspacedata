@@ -17,8 +17,25 @@
    <Group
       location = "group:Domain"
       name = "Domain">
-      <FileRef
-         location = "group:Networking/RichHarvest.Domain.Networking.xcodeproj">
-      </FileRef>
+      <Group
+         location = "container:"
+         name = "Harvest">
+         <FileRef
+            location = "group:Domain/Harvest.Api/RichHarvest.Domain.Harvest.Api.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:Domain/Harvest.Implementation/RichHarvest.Domain.Harvest.Implementation.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Networking">
+         <FileRef
+            location = "group:Domain/Networking.Api/RichHarvest.Domain.Networking.Api.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:Domain/Networking.Implementation/RichHarvest.Domain.Networking.Implementation.xcodeproj">
+         </FileRef>
+      </Group>
    </Group>
 </Workspace>

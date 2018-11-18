@@ -9,7 +9,8 @@ target 'Rich Harvest' do
 
   pod 'RichHarvest.Core.Core', :path => 'Core/Core'
 
-  pod 'RichHarvest.Domain.Networking', :path => 'Domain/Networking'
+  pod 'RichHarvest.Domain.Networking.Api', :path => 'Domain/Networking.Api'
+  pod 'RichHarvest.Domain.Networking.Implementation', :path => 'Domain/Networking.Implementation'
 
 end
 
@@ -23,6 +24,10 @@ target 'Rich Harvest Extension' do
 
   pod 'RichHarvest.Core.Core', :path => 'Core/Core'
 
-  pod 'RichHarvest.Domain.Networking', :path => 'Domain/Networking'
+  pod 'RichHarvest.Domain.Networking.Api', :path => 'Domain/Networking.Api'
+  pod 'RichHarvest.Domain.Networking.Implementation', :path => 'Domain/Networking.Implementation'
+
+  pod 'RichHarvest.Domain.Harvest.Api', :path => 'Domain/Harvest.Api'
+  pod 'RichHarvest.Domain.Harvest.Implementation', :path => 'Domain/Harvest.Implementation'
 
 end

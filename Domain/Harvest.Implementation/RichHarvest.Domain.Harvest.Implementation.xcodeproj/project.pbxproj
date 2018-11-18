@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		A3760CF121A03C90002084D4 /* RichHarvest.Domain.Networking.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Domain.Networking.podspec; sourceTree = "<group>"; };
+		A3760CF121A03C90002084D4 /* RichHarvest.Domain.Harvest.Implementation.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RichHarvest.Domain.Harvest.Implementation.podspec"; sourceTree = "<group>"; };
+		A3C9CDC42188937100EF5FD7 /* Harvest.Implementation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Harvest.Implementation.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		68B696A2DE849D6A36EF3730 = {
 			isa = PBXGroup;
 			children = (
-				A3760CF121A03C90002084D4 /* RichHarvest.Domain.Networking.podspec */,
+				A3760CF121A03C90002084D4 /* RichHarvest.Domain.Harvest.Implementation.podspec */,
 				A3C9CDBC2188937100EF5FD7 /* Sources */,
 			);
 			sourceTree = "<group>";
@@ -38,6 +39,7 @@
 		A3C9CDC32188937100EF5FD7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A3C9CDC42188937100EF5FD7 /* Harvest.Implementation.storyboard */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -50,7 +52,7 @@
 			attributes = {
 				LastUpgradeCheck = 1000;
 			};
-			buildConfigurationList = 68B69E74F513D89BD93D3084 /* Build configuration list for PBXProject "RichHarvest.Domain.Networking" */;
+			buildConfigurationList = 68B69E74F513D89BD93D3084 /* Build configuration list for PBXProject "RichHarvest.Domain.Harvest.Implementation" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -134,7 +136,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		68B69E74F513D89BD93D3084 /* Build configuration list for PBXProject "RichHarvest.Domain.Networking" */ = {
+		68B69E74F513D89BD93D3084 /* Build configuration list for PBXProject "RichHarvest.Domain.Harvest.Implementation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68B69C4C8C3EA0F9C940D5A1 /* Debug */,

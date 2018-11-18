@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint RichHarvest.Domain.Networking.podspec' to ensure this is a
+# Be sure to run `pod lib lint RichHarvest.Domain.Networking.Api.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 
-  s.name             = 'RichHarvest.Domain.Networking'
+  s.name             = 'RichHarvest.Domain.Networking.Api'
   s.version          = '0.1.0'
   s.summary          = 'Rich harvest Module'
 
@@ -23,15 +23,12 @@ Pod::Spec.new do |s|
   s.source_files = 'Sources/Classes/**/*'
 
   s.resource_bundles = {
-    'RichHarvest.Domain.Networking' => ['Sources/Assets/**/*']
+    'RichHarvest.Domain.Networking.Api' => ['Sources/Assets/**/*']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = #'UIKit', 'MapKit'
 
   s.dependency 'RichHarvest.Core.Core'
-
-  s.dependency 'Alamofire', '4.7.3'
-  s.dependency 'RxAlamofire', '4.3.0'
 
 end
