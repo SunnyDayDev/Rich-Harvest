@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		A3760CF121A03C90002084D4 /* RichHarvest.Domain.Networking.Implementation.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RichHarvest.Domain.Networking.Implementation.podspec"; sourceTree = "<group>"; };
-		A3C9CDC42188937100EF5FD7 /* Networking.Implementation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Networking.Implementation.storyboard"; sourceTree = "<group>"; };
+		68B694AA58EC8DB5B5632333 /* HarvestApiSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarvestApiSessionManager.swift; sourceTree = "<group>"; };
+		68B695A92A48E3E8A45ACA91 /* HarvestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarvestApi.swift; sourceTree = "<group>"; };
+		68B696751801555244689387 /* Models+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Models+Codable.swift"; sourceTree = "<group>"; };
+		A3760CF121A03C90002084D4 /* RichHarvest.Domain.Networking.Implementation.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Domain.Networking.Implementation.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -32,6 +34,9 @@
 		A3C9CDBD2188937100EF5FD7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				68B695A92A48E3E8A45ACA91 /* HarvestApi.swift */,
+				68B694AA58EC8DB5B5632333 /* HarvestApiSessionManager.swift */,
+				68B696751801555244689387 /* Models+Codable.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -39,7 +44,6 @@
 		A3C9CDC32188937100EF5FD7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				A3C9CDC42188937100EF5FD7 /* Networking.Implementation.storyboard */,
 			);
 			path = Assets;
 			sourceTree = "<group>";

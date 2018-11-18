@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		A3760CF121A03C90002084D4 /* RichHarvest.Domain.Harvest.Api.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RichHarvest.Domain.Harvest.Api.podspec"; sourceTree = "<group>"; };
-		A3C9CDC42188937100EF5FD7 /* Harvest.Api.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Harvest.Api.storyboard"; sourceTree = "<group>"; };
+		A3760CF121A03C90002084D4 /* RichHarvest.Domain.Harvest.Api.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Domain.Harvest.Api.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -39,7 +38,6 @@
 		A3C9CDC32188937100EF5FD7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				A3C9CDC42188937100EF5FD7 /* Harvest.Api.storyboard */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
