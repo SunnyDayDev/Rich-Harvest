@@ -8,6 +8,21 @@
 
 /* Begin PBXFileReference section */
 		A3760CF121A03C90002084D4 /* RichHarvest.Core.Core.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Core.Core.podspec; sourceTree = "<group>"; };
+		A3760CF321A27491002084D4 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		A3760CF421A27491002084D4 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		A3760CF621A27491002084D4 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		A3760CF821A27491002084D4 /* CollectionsSumming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsSumming.swift; sourceTree = "<group>"; };
+		A3760CF921A27491002084D4 /* CollectionsMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsMapping.swift; sourceTree = "<group>"; };
+		A3760CFB21A27491002084D4 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		A3760CFE21A27491002084D4 /* Nullability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nullability.swift; sourceTree = "<group>"; };
+		A3760CFF21A27491002084D4 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		A3760D0121A27491002084D4 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
+		A3760D0221A27491002084D4 /* Numbers+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Extensions.swift"; sourceTree = "<group>"; };
+		A3760D0321A27491002084D4 /* CoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAssembly.swift; sourceTree = "<group>"; };
+		A3760D0721A27491002084D4 /* RxMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMappers.swift; sourceTree = "<group>"; };
+		A3760D0821A27491002084D4 /* Rx+RetryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+RetryExtensions.swift"; sourceTree = "<group>"; };
+		A3760D0921A27491002084D4 /* RxCreators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCreators.swift; sourceTree = "<group>"; };
+		A3760D0A21A27491002084D4 /* Schedulers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedulers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -17,6 +32,62 @@
 				A3760CF121A03C90002084D4 /* RichHarvest.Core.Core.podspec */,
 				A3C9CDBC2188937100EF5FD7 /* Sources */,
 			);
+			sourceTree = "<group>";
+		};
+		A3760CF221A27491002084D4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A3760CF321A27491002084D4 /* AppState.swift */,
+				A3760CF421A27491002084D4 /* AppConfig.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A3760CF521A27491002084D4 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				A3760CF621A27491002084D4 /* Errors.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		A3760CF721A27491002084D4 /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				A3760CF821A27491002084D4 /* CollectionsSumming.swift */,
+				A3760CF921A27491002084D4 /* CollectionsMapping.swift */,
+			);
+			path = Collections;
+			sourceTree = "<group>";
+		};
+		A3760CFA21A27491002084D4 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				A3760CFB21A27491002084D4 /* Log.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		A3760CFC21A27491002084D4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A3760CFE21A27491002084D4 /* Nullability.swift */,
+				A3760CFF21A27491002084D4 /* String+Extensions.swift */,
+				A3760D0121A27491002084D4 /* Bundle+Extensions.swift */,
+				A3760D0221A27491002084D4 /* Numbers+Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A3760D0621A27491002084D4 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				A3760D0721A27491002084D4 /* RxMappers.swift */,
+				A3760D0821A27491002084D4 /* Rx+RetryExtensions.swift */,
+				A3760D0921A27491002084D4 /* RxCreators.swift */,
+				A3760D0A21A27491002084D4 /* Schedulers.swift */,
+			);
+			path = Rx;
 			sourceTree = "<group>";
 		};
 		A3C9CDBC2188937100EF5FD7 /* Sources */ = {
@@ -31,6 +102,13 @@
 		A3C9CDBD2188937100EF5FD7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A3760CF221A27491002084D4 /* App */,
+				A3760CF721A27491002084D4 /* Collections */,
+				A3760D0321A27491002084D4 /* CoreAssembly.swift */,
+				A3760CF521A27491002084D4 /* Errors */,
+				A3760CFA21A27491002084D4 /* Logging */,
+				A3760D0621A27491002084D4 /* Rx */,
+				A3760CFC21A27491002084D4 /* Utils */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

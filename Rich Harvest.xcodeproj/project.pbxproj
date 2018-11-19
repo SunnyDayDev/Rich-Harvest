@@ -300,7 +300,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Core.Core/RichHarvest.Core.Core.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Domain.Harvest.Api/RichHarvest.Domain.Harvest.Api.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Domain.Harvest.Implementation/RichHarvest.Domain.Harvest.Implementation.bundle",
 			);
@@ -308,7 +307,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Core.Core.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Domain.Harvest.Api.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Domain.Harvest.Implementation.bundle",
 			);
@@ -349,6 +347,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RichHarvest.Core.Core/RichHarvest_Core_Core.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Domain.Networking.Api/RichHarvest_Domain_Networking_Api.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Domain.Networking.Implementation/RichHarvest_Domain_Networking_Implementation.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
@@ -362,6 +361,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Core_Core.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Domain_Networking_Api.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Domain_Networking_Implementation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
@@ -384,7 +384,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest Extension/Pods-Rich Harvest Extension-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Core.Core/RichHarvest.Core.Core.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Domain.Harvest.Api/RichHarvest.Domain.Harvest.Api.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Domain.Harvest.Implementation/RichHarvest.Domain.Harvest.Implementation.bundle",
 			);
@@ -392,7 +391,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Core.Core.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Domain.Harvest.Api.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Domain.Harvest.Implementation.bundle",
 			);
