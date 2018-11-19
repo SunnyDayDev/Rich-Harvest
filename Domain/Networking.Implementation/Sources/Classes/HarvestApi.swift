@@ -45,10 +45,16 @@ class HarvestApiImplementation: HarvestApi {
     }
 
     func authHeaders() -> Single<[String: String]> {
-        return Single.just([
-            "Autorization": "Bearer XXX",
-            "Harvest-Account-Id": "XXX"
-        ])
+        return sessionManager.session.firstOrError()
+            .map { (session: HarvestApiSession?) -> [String: String] in
+                guard let session = session else {
+                    throw NetworkError.sessionNotExists
+                }
+                return [
+                    "Autorization": "Bearer \(session.personalToken)",
+                    "Harvest-Account-Id": "\(session.accountId)"
+                ]
+            }
     }
 
     private func request<T: Decodable>(_ method: Alamofire.HTTPMethod,

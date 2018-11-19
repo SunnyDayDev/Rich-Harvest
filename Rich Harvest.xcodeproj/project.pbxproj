@@ -21,7 +21,6 @@
 		A3332942219F165E0068C9C5 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = A3332941219F165E0068C9C5 /* script.js */; };
 		A3332944219F165E0068C9C5 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A3332943219F165E0068C9C5 /* ToolbarItemIcon.pdf */; };
 		A3760CB421A02B2D002084D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3760CB321A02B2D002084D4 /* Main.storyboard */; };
-		A3760CB621A03377002084D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3760CB521A03377002084D4 /* GoogleService-Info.plist */; };
 		A3760CB721A037A5002084D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A333292A219F165E0068C9C5 /* Assets.xcassets */; };
 		D39CA5D9F446211292344446 /* Pods_Rich_Harvest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54EAE8DA91EEBB84CFCB8D53 /* Pods_Rich_Harvest.framework */; };
 /* End PBXBuildFile section */
@@ -74,7 +73,6 @@
 		A3332943219F165E0068C9C5 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		A3760CB221A01460002084D4 /* Rich Harvest Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Rich Harvest Extension.entitlements"; sourceTree = "<group>"; };
 		A3760CB321A02B2D002084D4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		A3760CB521A03377002084D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB3358D2520010D02991DB32 /* Pods-Rich Harvest Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rich Harvest Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rich Harvest Extension/Pods-Rich Harvest Extension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,7 +163,6 @@
 		A3332938219F165E0068C9C5 /* Rich Harvest Extension */ = {
 			isa = PBXGroup;
 			children = (
-				A3760CB521A03377002084D4 /* GoogleService-Info.plist */,
 				A3760CB221A01460002084D4 /* Rich Harvest Extension.entitlements */,
 				A3332939219F165E0068C9C5 /* SafariExtensionHandler.swift */,
 				A333293B219F165E0068C9C5 /* SafariExtensionViewController.swift */,
@@ -191,7 +188,6 @@
 				A333291C219F165D0068C9C5 /* Resources */,
 				A333294B219F165E0068C9C5 /* Embed App Extensions */,
 				9C31F43414DC71C3E45E0221 /* [CP] Embed Pods Frameworks */,
-				1F41A1BEC03D05EC10805BD9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -211,7 +207,6 @@
 				A333292D219F165E0068C9C5 /* Sources */,
 				A333292E219F165E0068C9C5 /* Frameworks */,
 				A333292F219F165E0068C9C5 /* Resources */,
-				9F28F7BF6E3C18DB1E8AA105 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,7 +276,6 @@
 			files = (
 				A3332944219F165E0068C9C5 /* ToolbarItemIcon.pdf in Resources */,
 				A333293F219F165E0068C9C5 /* SafariExtensionViewController.xib in Resources */,
-				A3760CB621A03377002084D4 /* GoogleService-Info.plist in Resources */,
 				A3332942219F165E0068C9C5 /* script.js in Resources */,
 				A3760CB721A037A5002084D4 /* Assets.xcassets in Resources */,
 				A3760CB421A02B2D002084D4 /* Main.storyboard in Resources */,
@@ -291,30 +285,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1F41A1BEC03D05EC10805BD9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Domain.Harvest.Api/RichHarvest.Domain.Harvest.Api.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Domain.Harvest.Implementation/RichHarvest.Domain.Harvest.Implementation.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Domain.Harvest.Api.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Domain.Harvest.Implementation.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9B874712A9DC1783CE5C673C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -355,6 +325,8 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/RichHarvest.Domain.Harvest.Api/RichHarvest_Domain_Harvest_Api.framework",
+				"${BUILT_PRODUCTS_DIR}/RichHarvest.Domain.Harvest.Implementation/RichHarvest_Domain_Harvest_Implementation.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -369,34 +341,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Domain_Harvest_Api.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Domain_Harvest_Implementation.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9F28F7BF6E3C18DB1E8AA105 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest Extension/Pods-Rich Harvest Extension-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Domain.Harvest.Api/RichHarvest.Domain.Harvest.Api.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Domain.Harvest.Implementation/RichHarvest.Domain.Harvest.Implementation.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Domain.Harvest.Api.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Domain.Harvest.Implementation.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest Extension/Pods-Rich Harvest Extension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F80DFA0F1B15559CE9F59AFA /* [CP] Check Pods Manifest.lock */ = {

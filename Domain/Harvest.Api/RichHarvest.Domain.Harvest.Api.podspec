@@ -30,6 +30,5 @@ Pod::Spec.new do |s|
   # s.frameworks = #'UIKit', 'MapKit'
 
   s.dependency 'RichHarvest.Core.Core'
-  s.dependency 'RichHarvest.Domain.Networking.Api'
 
 end

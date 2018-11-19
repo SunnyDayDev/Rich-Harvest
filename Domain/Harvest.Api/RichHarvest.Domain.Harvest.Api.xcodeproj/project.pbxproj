@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		68B694EAB3460945C1B7009E /* HarvestRepositoryModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarvestRepositoryModels.swift; sourceTree = "<group>"; };
+		68B69813DCDE7B80E2251277 /* HarvestRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarvestRepository.swift; sourceTree = "<group>"; };
 		A3760CF121A03C90002084D4 /* RichHarvest.Domain.Harvest.Api.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Domain.Harvest.Api.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -31,6 +33,8 @@
 		A3C9CDBD2188937100EF5FD7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				68B69813DCDE7B80E2251277 /* HarvestRepository.swift */,
+				68B694EAB3460945C1B7009E /* HarvestRepositoryModels.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

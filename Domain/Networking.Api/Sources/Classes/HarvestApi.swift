@@ -9,6 +9,7 @@ import RichHarvest_Core_Core
 
 public enum NetworkError: RichHarvestError {
     case http(code: Int)
+    case sessionNotExists
 }
 
 public protocol HarvestApi {
@@ -21,8 +22,14 @@ public protocol HarvestApi {
 
 public extension HarvestApi {
 
-    func projects(isActive: Bool = true, clientId: String? =  nil, updatedSince: Date? = nil, page: Int, perPage: Int = 100) -> Single<Projects> {
-        return projects(isActive: isActive, clientId: clientId, updatedSince: updatedSince, page: page, perPage: perPage)
+    func projects(
+        isActive: Bool = true,
+        clientId: String? =  nil,
+        updatedSince since: Date? = nil,
+        page: Int,
+        perPage: Int = 100
+    ) -> Single<Projects> {
+        return projects(isActive: isActive, clientId: clientId, updatedSince: since, page: page, perPage: perPage)
     }
 
 }
