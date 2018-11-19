@@ -25,7 +25,7 @@ class HarvestRepositoryImplementation: HarvestRepository {
 
     func projects(
         isActive: Bool, clientId: String?, updatedSince: Date?, page: Int, perPage: Int
-    ) -> Single<RichHarvest_Domain_Harvest_Api.Projects> {
+    ) -> Single<ProjectsPlain> {
 
         let mapper = mappers.fromApi.toPlain.projects
 
@@ -42,7 +42,7 @@ class HarvestRepositoryImplementation: HarvestRepository {
 
     }
 
-    func project(byId id: Int) -> Single<RichHarvest_Domain_Harvest_Api.ProjectDetail> {
+    func project(byId id: Int) -> Single<ProjectDetailPlain> {
 
         let mapper = mappers.fromApi.toPlain.project
 

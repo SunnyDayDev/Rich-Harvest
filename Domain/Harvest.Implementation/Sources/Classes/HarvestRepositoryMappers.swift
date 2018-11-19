@@ -17,13 +17,13 @@ class HarvestRepositoryMappers {
 
         class ToPlain {
 
-            var projects: (RichHarvest_Domain_Networking_Api.Projects) -> RichHarvest_Domain_Harvest_Api.Projects {
+            var projects: (ProjectsDto) -> ProjectsPlain {
 
                 let linksMapper = self.links
                 let projectMapper = self.project
 
                 return { dto in
-                    RichHarvest_Domain_Harvest_Api.Projects(
+                    ProjectsPlain(
                         projects: dto.projects.map(projectMapper),
                         perPage: dto.perPage,
                         totalPages: dto.totalPages,
@@ -36,12 +36,12 @@ class HarvestRepositoryMappers {
                 }
             }
 
-            var project: (RichHarvest_Domain_Networking_Api.ProjectDetail) -> RichHarvest_Domain_Harvest_Api.ProjectDetail {
+            var project: (ProjectDetailDto) -> ProjectDetailPlain {
 
                 let mapClient = self.client
 
                 return { dto in
-                    RichHarvest_Domain_Harvest_Api.ProjectDetail(
+                    ProjectDetailPlain(
                         id: dto.id,
                         name: dto.name,
                         code: dto.code,
@@ -70,9 +70,9 @@ class HarvestRepositoryMappers {
                 }
             }
 
-            var client: (RichHarvest_Domain_Networking_Api.Client) -> RichHarvest_Domain_Harvest_Api.Client {
+            var client: (ClientDto) -> ClientPlain {
                 return { dto in
-                    RichHarvest_Domain_Harvest_Api.Client(
+                    ClientPlain(
                         id: dto.id,
                         name: dto.name,
                         currency: dto.currency
@@ -80,9 +80,9 @@ class HarvestRepositoryMappers {
                 }
             }
 
-            var links: (RichHarvest_Domain_Networking_Api.Links) -> RichHarvest_Domain_Harvest_Api.Links {
+            var links: (LinksDto) -> LinksPlain {
                 return { dto in
-                    RichHarvest_Domain_Harvest_Api.Links(
+                    LinksPlain(
                         first: dto.first,
                         next: dto.next,
                         previous: dto.previous,
