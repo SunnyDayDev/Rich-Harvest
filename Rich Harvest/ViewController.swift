@@ -7,7 +7,9 @@
 //
 
 import Cocoa
+
 import SafariServices.SFSafariApplication
+import RichHarvest_Feature_Auth
 
 class ViewController: NSViewController {
 
@@ -26,5 +28,18 @@ class ViewController: NSViewController {
             }
         }
     }
+    
+    @IBAction func openAuth(_ sender: Any) {
 
+        let viewController = (NSApplication.shared.delegate as! AppDelegate).resolver.resolve(AuthViewController.self)!
+
+        let container = self.view.superview!
+
+        self.view.removeFromSuperview()
+
+        viewController.view.frame = container.bounds
+        container.addSubview(viewController.view)
+
+    }
+    
 }

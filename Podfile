@@ -8,9 +8,18 @@ target 'Rich Harvest' do
   # Pods for Rich Harvest
 
   pod 'RichHarvest.Core.Core', :path => 'Core/Core'
+  pod 'RichHarvest.Core.UI', :path => 'Core/UI'
 
   pod 'RichHarvest.Domain.Networking.Api', :path => 'Domain/Networking.Api'
   pod 'RichHarvest.Domain.Networking.Implementation', :path => 'Domain/Networking.Implementation'
+
+  pod 'RichHarvest.Domain.Auth.Api', :path => 'Domain/Auth.Api'
+  pod 'RichHarvest.Domain.Auth.Implementation', :path => 'Domain/Auth.Implementation'
+
+  pod 'RichHarvest.Domain.Harvest.Api', :path => 'Domain/Harvest.Api'
+  pod 'RichHarvest.Domain.Harvest.Implementation', :path => 'Domain/Harvest.Implementation'
+
+  pod 'RichHarvest.Feature.Auth', :path => 'Feature/Auth'
 
 end
 

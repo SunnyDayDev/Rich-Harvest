@@ -14,13 +14,10 @@ import RichHarvest_Domain_Auth_Implementation
 import RichHarvest_Domain_Harvest_Implementation
 
 import RichHarvest_Feature_Auth
-import RichHarvest_Feature_Timer
 
-import RichHarvest_App_SafariExtension
+class RichHarvestAssembly {
 
-class RichHarvestExtensionAssembly {
-
-    func assembly() -> SafariExtensionRootViewController {
+    func assembly() -> Resolver {
 
         Log.debug("Start assembly.")
 
@@ -34,18 +31,11 @@ class RichHarvestExtensionAssembly {
             AuthDomainAssembly(),
             HarvestDomainAssembly(),
 
-            AuthFeatureAssembly(),
-            TimerFeatureAssembly(),
-
-            SafariExtensionAssembly()
+            AuthFeatureAssembly()
 
         ], container: container)
 
-        let root = assembler.resolver.resolve(SafariExtensionRootViewController.self)!
-
-        Log.debug("Root view controller resolved.")
-
-        return root
+        return assembler.resolver
 
     }
 

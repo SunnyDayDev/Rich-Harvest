@@ -31,6 +31,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'RichHarvest.Core.Core'
 
-  #s.dependency 'RxCocoa', '4.4.0'
+  s.dependency 'RxCocoa', '4.4.0'
 
 end
