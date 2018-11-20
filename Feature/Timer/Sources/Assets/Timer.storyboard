@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="5dM-ip-GDe">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Timer View Controller-->
+        <scene sceneID="kHn-uS-Vlx">
+            <objects>
+                <viewController id="5dM-ip-GDe" customClass="TimerViewController" customModule="RichHarvest_Feature_Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Vg5-uE-g0w">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="nxd-fi-gmQ">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <view key="contentView" id="zMK-ga-S5F">
+                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="fillColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="nxd-fi-gmQ" firstAttribute="leading" secondItem="Vg5-uE-g0w" secondAttribute="leading" id="NoF-Pa-efX"/>
+                            <constraint firstAttribute="bottom" secondItem="nxd-fi-gmQ" secondAttribute="bottom" id="Te2-3h-AQL"/>
+                            <constraint firstItem="nxd-fi-gmQ" firstAttribute="top" secondItem="Vg5-uE-g0w" secondAttribute="top" id="YW3-OW-mee"/>
+                            <constraint firstAttribute="trailing" secondItem="nxd-fi-gmQ" secondAttribute="trailing" id="z85-DW-ziV"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="III-RQ-wfC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="179" y="-105"/>
+        </scene>
+    </scenes>
+</document>

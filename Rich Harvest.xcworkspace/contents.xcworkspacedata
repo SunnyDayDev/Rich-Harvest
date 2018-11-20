@@ -9,14 +9,34 @@
    </FileRef>
    <Group
       location = "container:"
+      name = "App">
+      <FileRef
+         location = "group:App/SafariExtension/RichHarvest.App.SafariExtension.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
       name = "Core">
       <FileRef
          location = "group:Core/Core/RichHarvest.Core.Core.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Core/UI/RichHarvest.Core.UI.xcodeproj">
       </FileRef>
    </Group>
    <Group
       location = "group:Domain"
       name = "Domain">
+      <Group
+         location = "container:"
+         name = "Auth">
+         <FileRef
+            location = "group:Domain/Auth.Api/RichHarvest.Domain.Auth.Api.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:Domain/Auth.Implementation/RichHarvest.Domain.Auth.Implementation.xcodeproj">
+         </FileRef>
+      </Group>
       <Group
          location = "container:"
          name = "Harvest">
@@ -37,5 +57,15 @@
             location = "group:Domain/Networking.Implementation/RichHarvest.Domain.Networking.Implementation.xcodeproj">
          </FileRef>
       </Group>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Feature">
+      <FileRef
+         location = "group:Feature/Auth/RichHarvest.Feature.Auth.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Feature/Timer/RichHarvest.Feature.Timer.xcodeproj">
+      </FileRef>
    </Group>
 </Workspace>

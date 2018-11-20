@@ -9,14 +9,18 @@
 import SafariServices
 import AppKit
 
+import RichHarvest_Core_Core
+
 class SafariExtensionViewController: SFSafariExtensionViewController {
 
     static let shared: SafariExtensionViewController = {
 
+        Log.debug("Create shared ViewController")
+
         let shared = SafariExtensionViewController()
 
         shared.preferredContentSize = NSSize(width:320, height:240)
-        let viewController = NSStoryboard(name: "Main", bundle: nil).instantiateInitialController() as! NSViewController
+        let viewController = RichHarvestExtensionAssembly().assembly()
 
         shared.view.addSubview(viewController.view)
         shared.addChild(viewController)
@@ -32,6 +36,9 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
                 constant: 0
             )
         })
+
+
+        Log.debug("Shared view controller is created.")
 
         return shared
 

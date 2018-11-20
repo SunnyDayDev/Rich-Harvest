@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="6yT-fi-kvI">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Safari Extension Root View Controller-->
+        <scene sceneID="iH1-kc-Les">
+            <objects>
+                <tabViewController storyboardIdentifier="Main" selectedTabViewItemIndex="0" id="6yT-fi-kvI" customClass="SafariExtensionRootViewController" customModule="RichHarvest_App_SafariExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem id="LH8-WH-FaG"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="yY4-cV-XvN">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="6yT-fi-kvI" id="8U7-ym-wRp"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="yY4-cV-XvN" id="cbq-SS-2v1"/>
+                        <segue destination="MXW-n8-U7s" kind="relationship" relationship="tabItems" id="rjw-nt-z5t"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="aM8-IW-u81" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44" y="164"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2pB-5o-taS">
+            <objects>
+                <viewController id="MXW-n8-U7s" sceneMemberID="viewController">
+                    <view key="view" id="jVw-ep-3gv">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="GEs-vX-Y8O" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="558" y="164"/>
+        </scene>
+    </scenes>
+</document>

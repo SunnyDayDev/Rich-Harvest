@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="CLw-hA-d1M">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Auth View Controller-->
+        <scene sceneID="HAf-S3-piX">
+            <objects>
+                <viewController id="CLw-hA-d1M" customClass="AuthViewController" customModule="RichHarvest_Feature_Auth" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Jwv-wM-5oI">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="aXd-TX-pVw">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <view key="contentView" id="tke-Ic-1b4">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F96-bU-aTj">
+                                            <rect key="frame" x="202" y="266" width="46" height="24"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Auth" id="jjd-xd-szp">
+                                                <font key="font" metaFont="system" size="20"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rC5-bA-obR">
+                                            <rect key="frame" x="125" y="224" width="200" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="200" id="73X-Mo-cgq"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Personal token" bezelStyle="round" id="S2h-jO-cUC">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nEg-ly-l6n">
+                                            <rect key="frame" x="125" y="192" width="200" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="200" id="vCc-2t-4iM"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="AccountId" bezelStyle="round" id="N8I-Jo-Edc">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UhW-FZ-qps">
+                                            <rect key="frame" x="188" y="144" width="75" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Apply" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="Xbi-kw-lLx">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="F96-bU-aTj" firstAttribute="centerX" secondItem="tke-Ic-1b4" secondAttribute="centerX" id="9CM-Li-deh"/>
+                                        <constraint firstItem="rC5-bA-obR" firstAttribute="centerX" secondItem="tke-Ic-1b4" secondAttribute="centerX" id="CsL-cq-pVm"/>
+                                        <constraint firstItem="F96-bU-aTj" firstAttribute="top" secondItem="tke-Ic-1b4" secondAttribute="top" constant="10" id="IRK-0k-crs"/>
+                                        <constraint firstItem="rC5-bA-obR" firstAttribute="top" secondItem="F96-bU-aTj" secondAttribute="bottom" constant="20" id="Iqk-JS-xut"/>
+                                        <constraint firstItem="UhW-FZ-qps" firstAttribute="centerX" secondItem="tke-Ic-1b4" secondAttribute="centerX" id="azV-Kt-0PV"/>
+                                        <constraint firstItem="UhW-FZ-qps" firstAttribute="top" secondItem="nEg-ly-l6n" secondAttribute="bottom" constant="20" id="b4q-8m-3ED"/>
+                                        <constraint firstItem="nEg-ly-l6n" firstAttribute="centerX" secondItem="tke-Ic-1b4" secondAttribute="centerX" id="diq-1U-jFP"/>
+                                        <constraint firstItem="nEg-ly-l6n" firstAttribute="top" secondItem="rC5-bA-obR" secondAttribute="bottom" constant="10" id="sZO-k9-HHD"/>
+                                    </constraints>
+                                </view>
+                                <color key="fillColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="aXd-TX-pVw" firstAttribute="leading" secondItem="Jwv-wM-5oI" secondAttribute="leading" id="6T4-ST-QMh"/>
+                            <constraint firstItem="aXd-TX-pVw" firstAttribute="top" secondItem="Jwv-wM-5oI" secondAttribute="top" id="AhK-4l-dTO"/>
+                            <constraint firstAttribute="bottom" secondItem="aXd-TX-pVw" secondAttribute="bottom" id="Dst-fw-8o7"/>
+                            <constraint firstAttribute="trailing" secondItem="aXd-TX-pVw" secondAttribute="trailing" id="jRj-je-s2j"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="YSz-1u-lRY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-171" y="26"/>
+        </scene>
+    </scenes>
+</document>

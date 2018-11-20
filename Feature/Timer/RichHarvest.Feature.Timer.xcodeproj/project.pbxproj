@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		68B694AA58EC8DB5B5632333 /* HarvestApiSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarvestApiSessionManager.swift; sourceTree = "<group>"; };
-		68B695A92A48E3E8A45ACA91 /* HarvestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarvestApi.swift; sourceTree = "<group>"; };
-		68B698A718690529577989E4 /* NetworkingDomainAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingDomainAssembly.swift; sourceTree = "<group>"; };
-		A3760CF121A03C90002084D4 /* RichHarvest.Domain.Networking.Implementation.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Domain.Networking.Implementation.podspec; sourceTree = "<group>"; };
+		68B69024AFF90FE7371FE57D /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		68B693962E758DE8592F1356 /* Timer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
+		68B693C5FA7670F933F76062 /* TimerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		68B69DF633F42B7873BDB4BD /* TimerFeatureAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerFeatureAssembly.swift; sourceTree = "<group>"; };
+		A3760CF121A03C90002084D4 /* RichHarvest.Feature.Timer.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Feature.Timer.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		68B696A2DE849D6A36EF3730 = {
 			isa = PBXGroup;
 			children = (
-				A3760CF121A03C90002084D4 /* RichHarvest.Domain.Networking.Implementation.podspec */,
+				A3760CF121A03C90002084D4 /* RichHarvest.Feature.Timer.podspec */,
 				A3C9CDBC2188937100EF5FD7 /* Sources */,
 			);
 			sourceTree = "<group>";
@@ -34,9 +35,9 @@
 		A3C9CDBD2188937100EF5FD7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				68B695A92A48E3E8A45ACA91 /* HarvestApi.swift */,
-				68B694AA58EC8DB5B5632333 /* HarvestApiSessionManager.swift */,
-				68B698A718690529577989E4 /* NetworkingDomainAssembly.swift */,
+				68B69024AFF90FE7371FE57D /* TimerViewController.swift */,
+				68B69DF633F42B7873BDB4BD /* TimerFeatureAssembly.swift */,
+				68B693C5FA7670F933F76062 /* TimerViewModel.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -44,6 +45,7 @@
 		A3C9CDC32188937100EF5FD7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				68B693962E758DE8592F1356 /* Timer.storyboard */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -56,7 +58,7 @@
 			attributes = {
 				LastUpgradeCheck = 1000;
 			};
-			buildConfigurationList = 68B69E74F513D89BD93D3084 /* Build configuration list for PBXProject "RichHarvest.Domain.Networking.Implementation" */;
+			buildConfigurationList = 68B69E74F513D89BD93D3084 /* Build configuration list for PBXProject "RichHarvest.Feature.Timer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -140,7 +142,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		68B69E74F513D89BD93D3084 /* Build configuration list for PBXProject "RichHarvest.Domain.Networking.Implementation" */ = {
+		68B69E74F513D89BD93D3084 /* Build configuration list for PBXProject "RichHarvest.Feature.Timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68B69C4C8C3EA0F9C940D5A1 /* Debug */,

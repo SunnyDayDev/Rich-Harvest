@@ -9,6 +9,7 @@
 /* Begin PBXFileReference section */
 		68B692E35DFF5141EC37A4BA /* HarvestRepositoryTypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarvestRepositoryTypeAliases.swift; sourceTree = "<group>"; };
 		68B695BE1E9441A8A87ACAF8 /* HarvestRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarvestRepository.swift; sourceTree = "<group>"; };
+		68B6988B3CF5FEA2E08B61C2 /* HarvestDomainAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarvestDomainAssembly.swift; sourceTree = "<group>"; };
 		68B69AA8612716745C9FEFFE /* HarvestRepositoryMappers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarvestRepositoryMappers.swift; sourceTree = "<group>"; };
 		A3760CF121A03C90002084D4 /* RichHarvest.Domain.Harvest.Implementation.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Domain.Harvest.Implementation.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,6 +38,7 @@
 				68B695BE1E9441A8A87ACAF8 /* HarvestRepository.swift */,
 				68B69AA8612716745C9FEFFE /* HarvestRepositoryMappers.swift */,
 				68B692E35DFF5141EC37A4BA /* HarvestRepositoryTypeAliases.swift */,
+				68B6988B3CF5FEA2E08B61C2 /* HarvestDomainAssembly.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

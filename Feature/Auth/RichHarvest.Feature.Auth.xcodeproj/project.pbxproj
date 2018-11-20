@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		68B694AA58EC8DB5B5632333 /* HarvestApiSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarvestApiSessionManager.swift; sourceTree = "<group>"; };
-		68B695A92A48E3E8A45ACA91 /* HarvestApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarvestApi.swift; sourceTree = "<group>"; };
-		68B698A718690529577989E4 /* NetworkingDomainAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingDomainAssembly.swift; sourceTree = "<group>"; };
-		A3760CF121A03C90002084D4 /* RichHarvest.Domain.Networking.Implementation.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Domain.Networking.Implementation.podspec; sourceTree = "<group>"; };
+		68B69640B545B758D5D493B2 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		68B697642977F223B8A874F7 /* AuthFeatureAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthFeatureAssembly.swift; sourceTree = "<group>"; };
+		68B69AB97656A3B9CEDB4B00 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		68B69CC1200634998B0C7C07 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		A3760CF121A03C90002084D4 /* RichHarvest.Feature.Auth.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Feature.Auth.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		68B696A2DE849D6A36EF3730 = {
 			isa = PBXGroup;
 			children = (
-				A3760CF121A03C90002084D4 /* RichHarvest.Domain.Networking.Implementation.podspec */,
+				A3760CF121A03C90002084D4 /* RichHarvest.Feature.Auth.podspec */,
 				A3C9CDBC2188937100EF5FD7 /* Sources */,
 			);
 			sourceTree = "<group>";
@@ -34,9 +35,9 @@
 		A3C9CDBD2188937100EF5FD7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				68B695A92A48E3E8A45ACA91 /* HarvestApi.swift */,
-				68B694AA58EC8DB5B5632333 /* HarvestApiSessionManager.swift */,
-				68B698A718690529577989E4 /* NetworkingDomainAssembly.swift */,
+				68B69AB97656A3B9CEDB4B00 /* AuthViewController.swift */,
+				68B697642977F223B8A874F7 /* AuthFeatureAssembly.swift */,
+				68B69640B545B758D5D493B2 /* AuthViewModel.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -44,6 +45,7 @@
 		A3C9CDC32188937100EF5FD7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				68B69CC1200634998B0C7C07 /* Auth.storyboard */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -56,7 +58,7 @@
 			attributes = {
 				LastUpgradeCheck = 1000;
 			};
-			buildConfigurationList = 68B69E74F513D89BD93D3084 /* Build configuration list for PBXProject "RichHarvest.Domain.Networking.Implementation" */;
+			buildConfigurationList = 68B69E74F513D89BD93D3084 /* Build configuration list for PBXProject "RichHarvest.Feature.Auth" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -140,7 +142,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		68B69E74F513D89BD93D3084 /* Build configuration list for PBXProject "RichHarvest.Domain.Networking.Implementation" */ = {
+		68B69E74F513D89BD93D3084 /* Build configuration list for PBXProject "RichHarvest.Feature.Auth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68B69C4C8C3EA0F9C940D5A1 /* Debug */,
