@@ -12,7 +12,7 @@
                     <tabViewItems>
                         <tabViewItem id="LH8-WH-FaG"/>
                     </tabViewItems>
-                    <tabView key="tabView" type="noTabsNoBorder" id="yY4-cV-XvN">
+                    <tabView key="tabView" drawsBackground="NO" type="noTabsNoBorder" id="yY4-cV-XvN">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="message"/>

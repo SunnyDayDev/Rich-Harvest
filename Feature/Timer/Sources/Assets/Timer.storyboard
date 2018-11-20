@@ -19,7 +19,7 @@
                                     <rect key="frame" x="1" y="1" width="448" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="fillColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
+                                <color key="fillColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
                             </box>
                         </subviews>
                         <constraints>
