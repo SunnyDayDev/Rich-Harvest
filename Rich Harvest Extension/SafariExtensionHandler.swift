@@ -11,18 +11,17 @@ import SafariServices
 import SwiftyBeaver
 import RichHarvest_Core_Core
 
-private var logInitialized = false
-
-private func initLog() {
-
-    guard !logInitialized else { return }
-    logInitialized = true
+private var initLog: () -> () = {
 
     let console = ConsoleDestination()
     console.useNSLog = true
     SwiftyBeaver.addDestination(console)
 
-}
+    Log.debug("Log initiated.")
+
+    return { }
+
+}()
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
     
