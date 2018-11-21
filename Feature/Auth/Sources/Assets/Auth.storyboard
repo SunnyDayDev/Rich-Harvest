@@ -5,10 +5,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Auth View Controller-->
+        <!--Auth-->
         <scene sceneID="HAf-S3-piX">
             <objects>
-                <viewController id="CLw-hA-d1M" customClass="AuthViewController" customModule="RichHarvest_Feature_Auth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Auth" id="CLw-hA-d1M" customClass="AuthViewController" customModule="RichHarvest_Feature_Auth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Jwv-wM-5oI">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
