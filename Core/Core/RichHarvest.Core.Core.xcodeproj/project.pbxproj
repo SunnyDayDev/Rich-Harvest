@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		68B694397B75116B37FB172F /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		A3760CF121A03C90002084D4 /* RichHarvest.Core.Core.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Core.Core.podspec; sourceTree = "<group>"; };
 		A3760CF321A27491002084D4 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A3760CF421A27491002084D4 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 				A3760CFA21A27491002084D4 /* Logging */,
 				A3760D0621A27491002084D4 /* Rx */,
 				A3760CFC21A27491002084D4 /* Utils */,
+				68B694397B75116B37FB172F /* UserDefaults.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

@@ -17,12 +17,13 @@ protocol AuthStore {
 
 class AuthStoreImplementation: AuthStore {
 
-    private let ud = UserDefaults.standard
+    private let ud = UserDefaults.shared
 
     func storePersonalToken(_ token: String, forAccount account: Int) -> Completable {
         return Completable.fromAction { [ud] in
             ud.set(token, forKey: "RichHarvest.AuthStore.personalToken")
             ud.set(account, forKey: "RichHarvest.AuthStore.account")
+            ud.synchronize()
         }
     }
 

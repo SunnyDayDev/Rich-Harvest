@@ -5,6 +5,7 @@
 import Foundation
 
 import RxSwift
+import RxCocoa
 
 import RichHarvest_Core_Core
 import RichHarvest_Domain_Networking_Api
@@ -12,16 +13,25 @@ import RichHarvest_Domain_Auth_Api
 
 class AuthRepositoryImplementation: AuthRepository {
 
+    private static let eTag = "authRepositoryETag"
+
     private let sessionManager: HarvestApiSessionManager
     private let authStore: AuthStore
     private let schedulers: Schedulers
 
-    private let authChangedSubject = PublishSubject<()>()
+    private let repositoryETag: UserDefaultETag
+
+    private let authChangedEvent: Observable<()>
 
     init(sessionManager: HarvestApiSessionManager, authStore: AuthStore, schedulers: Schedulers) {
+
         self.sessionManager = sessionManager
         self.authStore = authStore
         self.schedulers = schedulers
+
+        self.repositoryETag = UserDefaults.shared.eTag(name: AuthRepositoryImplementation.eTag)
+        self.authChangedEvent = repositoryETag.value.map { _ in () }
+
     }
 
     func auth(byPersonalToken token: String, forAccount account: Int) -> Completable {
@@ -30,13 +40,13 @@ class AuthRepositoryImplementation: AuthRepository {
                 sessionManager.set(session: session)
                 return authStore.storePersonalToken(token, forAccount: account)
             }
-            .do(onCompleted: { [authChangedSubject] in authChangedSubject.on(.next(())) })
+            .do(onCompleted: { [repositoryETag] in  repositoryETag.markChanged() })
             .subscribeOn(schedulers.io)
             .observeOn(schedulers.background)
     }
 
     func storedAuthorization() -> Observable<Authorization?> {
-        return authChangedSubject.startWith(())
+        return authChangedEvent.startWith(())
             .flatMapSingle { [authStore, schedulers] in
                 authStore.getPersonalToken()
                     .subscribeOn(schedulers.io)
