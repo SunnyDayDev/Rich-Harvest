@@ -24,7 +24,7 @@
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Auth" id="jjd-xd-szp">
                                                 <font key="font" metaFont="system" size="20"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rC5-bA-obR">
@@ -35,7 +35,7 @@
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Personal token" bezelStyle="round" id="S2h-jO-cUC">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nEg-ly-l6n">
@@ -46,7 +46,7 @@
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="AccountId" bezelStyle="round" id="N8I-Jo-Edc">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UhW-FZ-qps">
@@ -81,6 +81,11 @@ DQ
                             <constraint firstAttribute="trailing" secondItem="aXd-TX-pVw" secondAttribute="trailing" id="jRj-je-s2j"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="accountIdTextField" destination="nEg-ly-l6n" id="ef3-J7-0o7"/>
+                        <outlet property="applyButton" destination="UhW-FZ-qps" id="9V4-LQ-4Ec"/>
+                        <outlet property="personalTokenTextField" destination="rC5-bA-obR" id="3bH-7O-Ao2"/>
+                    </connections>
                 </viewController>
                 <customObject id="YSz-1u-lRY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -33,7 +33,10 @@ public class AuthFeatureAssembly: Assembly {
     public func assemble(container: Container) {
 
         container.register(AuthViewModel.self) { (r: Resolver) in
-            AuthViewModel(authRepository: r.resolve(AuthRepository.self)!)
+            AuthViewModel(
+                authRepository: r.resolve(AuthRepository.self)!,
+                schedulers: r.resolve(Schedulers.self)!
+            )
         }
 
         container.register(AuthViewController.self) { (r: Resolver) in

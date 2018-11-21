@@ -4,6 +4,12 @@
 
 import Foundation
 
+import RichHarvest_Core_Core
+
 public class SafariExtensionRootViewController: NSTabViewController {
+
+    deinit {
+        Log.debug("Deinited")
+    }
 
 }

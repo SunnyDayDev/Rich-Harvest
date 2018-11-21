@@ -45,6 +45,8 @@ public class SafariExtensionAssembly: Assembly {
 
             viewController.tabViewItems = tabs
 
+            tabs.forEach { viewController.addChild($0.viewController!) }
+
             return viewController
         }
 

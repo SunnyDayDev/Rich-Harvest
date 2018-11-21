@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		58C1FCC2434226D84B02DD3C /* Pods_Rich_Harvest_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2BD3A04CA60C7D54FB96534 /* Pods_Rich_Harvest_Extension.framework */; };
 		68B693416DD52402BF701DBA /* RichHarvestExtensionAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B69D85226991A3FBA9E622 /* RichHarvestExtensionAssembly.swift */; };
+		68B6949AFD82F0F4982EFAC7 /* RichHarvestApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B69FED37F15CC07D5ABA63 /* RichHarvestApplication.swift */; };
 		A3332922219F165D0068C9C5 /* Rich_Harvest.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = A3332921219F165D0068C9C5 /* Rich_Harvest.entitlements */; };
 		A3332924219F165D0068C9C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3332923219F165D0068C9C5 /* AppDelegate.swift */; };
 		A3332927219F165D0068C9C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3332925219F165D0068C9C5 /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 		68B69683F02F7FEB3A5E8A44 /* AppIcon.sketch */ = {isa = PBXFileReference; lastKnownFileType = file.sketch; path = AppIcon.sketch; sourceTree = "<group>"; };
 		68B69D85226991A3FBA9E622 /* RichHarvestExtensionAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichHarvestExtensionAssembly.swift; sourceTree = "<group>"; };
 		68B69ED762C3300684FF5D84 /* RichHarvestAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichHarvestAssembly.swift; sourceTree = "<group>"; };
+		68B69FED37F15CC07D5ABA63 /* RichHarvestApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichHarvestApplication.swift; sourceTree = "<group>"; };
 		7E500ECD3AB8341BB2B7BDDC /* Pods-Rich Harvest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rich Harvest.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest.release.xcconfig"; sourceTree = "<group>"; };
 		A2BD3A04CA60C7D54FB96534 /* Pods_Rich_Harvest_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rich_Harvest_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A333291E219F165D0068C9C5 /* Rich Harvest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rich Harvest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +151,7 @@
 				A333292A219F165E0068C9C5 /* Assets.xcassets */,
 				A333292C219F165E0068C9C5 /* Info.plist */,
 				68B69ED762C3300684FF5D84 /* RichHarvestAssembly.swift */,
+				68B69FED37F15CC07D5ABA63 /* RichHarvestApplication.swift */,
 			);
 			path = "Rich Harvest";
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				A3332929219F165D0068C9C5 /* ViewController.swift in Sources */,
 				A3F04EC821A41FD000C7BFC3 /* RichHarvestAssembly.swift in Sources */,
 				A3332924219F165D0068C9C5 /* AppDelegate.swift in Sources */,
+				68B6949AFD82F0F4982EFAC7 /* RichHarvestApplication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

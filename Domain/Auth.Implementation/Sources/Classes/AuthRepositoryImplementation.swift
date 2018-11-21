@@ -14,31 +14,64 @@ class AuthRepositoryImplementation: AuthRepository {
 
     private let sessionManager: HarvestApiSessionManager
     private let authStore: AuthStore
+    private let schedulers: Schedulers
 
-    init(sessionManager: HarvestApiSessionManager, authStore: AuthStore) {
+    private let authChangedSubject = PublishSubject<()>()
+
+    init(sessionManager: HarvestApiSessionManager, authStore: AuthStore, schedulers: Schedulers) {
         self.sessionManager = sessionManager
         self.authStore = authStore
+        self.schedulers = schedulers
     }
 
     func auth(byPersonalToken token: String, forAccount account: Int) -> Completable {
         return Completable.deferred { [authStore, sessionManager] in
-            let session = HarvestApiSession(accountId: account, personalToken: token)
-            sessionManager.set(session: session)
-            return authStore.storePersonalToken(token, forAccount: account)
-        }
+                let session = HarvestApiSession(accountId: account, personalToken: token)
+                sessionManager.set(session: session)
+                return authStore.storePersonalToken(token, forAccount: account)
+            }
+            .do(onCompleted: { [authChangedSubject] in authChangedSubject.on(.next(())) })
+            .subscribeOn(schedulers.io)
+            .observeOn(schedulers.background)
+    }
+
+    func storedAuthorization() -> Observable<Authorization?> {
+        return authChangedSubject.startWith(())
+            .flatMapSingle { [authStore, schedulers] in
+                authStore.getPersonalToken()
+                    .subscribeOn(schedulers.io)
+                    .observeOn(schedulers.background)
+            }
+            .map { (authData: (token: String, account: Int)?) -> Authorization? in
+                if let authData = authData {
+                    return .personalToken(token: authData.token, account: authData.account)
+                } else {
+                    return nil
+                }
+            }
     }
 
     func restoreSession() -> Single<Bool> {
-        return authStore.getPersonalToken().map { [sessionManager] (authData: (token: String, account: Int)?) -> Bool in
-            if let authData = authData {
-                let session = HarvestApiSession(accountId: authData.account, personalToken: authData.token)
-                sessionManager.set(session: session)
+        return storedAuthorization()
+            .firstOrError()
+            .map { [sessionManager] (auth: Authorization?) -> Bool in
+
+                guard let auth = auth else {
+                    sessionManager.set(session: nil)
+                    return false
+                }
+
+                switch auth {
+
+                case let .personalToken(token, account):
+                    let session = HarvestApiSession(accountId: account, personalToken: token)
+                    sessionManager.set(session: session)
+
+                }
+
                 return true
-            } else {
-                sessionManager.set(session: nil)
-                return false
+
             }
-        }
     }
 
 }

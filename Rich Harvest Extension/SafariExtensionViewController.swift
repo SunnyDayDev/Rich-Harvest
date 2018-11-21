@@ -37,7 +37,6 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
             )
         })
 
-
         Log.debug("Shared view controller is created.")
 
         return shared

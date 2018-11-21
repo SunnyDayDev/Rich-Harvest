@@ -31,14 +31,17 @@ class ViewController: NSViewController {
     
     @IBAction func openAuth(_ sender: Any) {
 
-        let viewController = (NSApplication.shared.delegate as! AppDelegate).resolver.resolve(AuthViewController.self)!
+        let authViewController = (NSApplication.shared.delegate as! AppDelegate).resolver.resolve(AuthViewController.self)!
 
         let container = self.view.superview!
+        let containerViewController = self.parent!
 
         self.view.removeFromSuperview()
+        containerViewController.removeChild(at: containerViewController.children.firstIndex(of: self)!)
 
-        viewController.view.frame = container.bounds
-        container.addSubview(viewController.view)
+        authViewController.view.frame = container.bounds
+        container.addSubview(authViewController.view)
+        containerViewController.addChild(authViewController)
 
     }
     
