@@ -102,9 +102,8 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ypz-Lo-rPT">
-                                            <rect key="frame" x="198" y="200" width="70" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ypz-Lo-rPT">
+                                            <rect key="frame" x="197" y="198" width="70" height="32"/>
                                             <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xjw-u2-qbR">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -124,6 +123,8 @@
                                         <constraint firstItem="n4i-8q-gwP" firstAttribute="firstBaseline" secondItem="PHu-0L-49K" secondAttribute="firstBaseline" id="Nvx-gl-VUp"/>
                                         <constraint firstItem="wUN-bi-ydJ" firstAttribute="top" secondItem="8Ki-O1-Rhj" secondAttribute="bottom" constant="10" id="bA8-Xn-aLl"/>
                                         <constraint firstItem="owf-H3-2th" firstAttribute="leading" secondItem="zMK-ga-S5F" secondAttribute="leading" constant="20" id="cVX-sM-U5Q"/>
+                                        <constraint firstItem="Ypz-Lo-rPT" firstAttribute="centerX" secondItem="zMK-ga-S5F" secondAttribute="centerX" id="ev1-uq-eZ6"/>
+                                        <constraint firstItem="Ypz-Lo-rPT" firstAttribute="top" secondItem="bWD-fs-FMd" secondAttribute="bottom" constant="10" id="gCb-Fb-a7t"/>
                                         <constraint firstItem="a9S-cZ-tuw" firstAttribute="firstBaseline" secondItem="8Ki-O1-Rhj" secondAttribute="firstBaseline" id="hxd-n8-2cx"/>
                                         <constraint firstItem="bWD-fs-FMd" firstAttribute="leading" secondItem="owf-H3-2th" secondAttribute="trailing" constant="10" id="oV3-Ul-X54"/>
                                         <constraint firstAttribute="trailing" secondItem="wUN-bi-ydJ" secondAttribute="trailing" constant="20" id="rgb-oE-Fs8"/>

@@ -42,6 +42,19 @@ public class TimerViewController: NSViewController {
             })
             .disposed(by: dispose)
 
+        viewModel.url.drive(urlLabel.rx.text).disposed(by: dispose)
+
+        viewModel.notes
+            .filter { [unowned self] in self.notesTextField.stringValue != $0 }
+            .bind(to: notesTextField.rx.text)
+            .disposed(by: dispose)
+
+        notesTextField.rx.text
+            .map { $0 ?? "" }
+            .filter { [unowned self] in self.viewModel.notes.value != $0 }
+            .bind(to: viewModel.notes)
+            .disposed(by: dispose)
+
     }
 
     public override func viewWillAppear() {

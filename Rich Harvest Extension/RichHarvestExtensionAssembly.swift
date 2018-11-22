@@ -18,35 +18,33 @@ import RichHarvest_Feature_Timer
 
 import RichHarvest_App_SafariExtension
 
-class RichHarvestExtensionAssembly {
+let DependencyResolver: Resolver = {
 
-    func assembly() -> SafariExtensionRootViewController {
+    Log.debug("Start assembly.")
 
-        Log.debug("Start assembly.")
+    let container = Container()
 
-        let container = Container()
+    container.register(ExtensionEventsSource.self) { _ in ExtensionEventsSource() }
+        .inObjectScope(.container)
 
-        let assembler = Assembler([
+    let assembler = Assembler([
 
-            CoreAssembly(),
+        CoreAssembly(),
 
-            NetworkingDomainAssembly(),
-            AuthDomainAssembly(),
-            HarvestDomainAssembly(),
+        NetworkingDomainAssembly(),
+        AuthDomainAssembly(),
+        HarvestDomainAssembly(),
 
-            AuthFeatureAssembly(),
-            TimerFeatureAssembly(),
+        AuthFeatureAssembly(),
+        TimerFeatureAssembly(),
 
-            SafariExtensionAssembly()
+        SafariExtensionAssembly()
 
-        ], container: container)
+    ], container: container)
 
-        let root = assembler.resolver.resolve(SafariExtensionRootViewController.self)!
 
-        Log.debug("Root view controller resolved.")
+    Log.debug("Dependency resolver prepared.")
 
-        return root
+    return assembler.resolver
 
-    }
-
-}
+}()

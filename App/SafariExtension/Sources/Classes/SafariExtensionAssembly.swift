@@ -36,22 +36,34 @@ public class SafariExtensionAssembly: Assembly {
 
     public func assemble(container: Container) {
 
-        container.register(SafariExtensionRootViewModel.self) { (r: Resolver) in
+        container.register(SafariExtensionRootViewModel.self) {
+            (r: Resolver, events: ExtensionEventsSource, timerEvents: TimerEventsSource) in
+
             SafariExtensionRootViewModel(
                 authRepository: r.resolve(AuthRepository.self)!,
-                schedulers: r.resolve(Schedulers.self)!
+                schedulers: r.resolve(Schedulers.self)!,
+                extensionEventSource: events,
+                timerEventSource: timerEvents
             )
+
         }
 
-        container.register(SafariExtensionRootViewController.self) { (r: Resolver) in
+        container.register(SafariExtensionRootViewController.self) { (r: Resolver, events: ExtensionEventsSource) in
 
             let viewController = NSStoryboard.safariExtensionApp.instantiateInitialController()
                 as! SafariExtensionRootViewController
 
-            viewController.inject(viewModel: r.resolve(SafariExtensionRootViewModel.self)!)
+            let timerEventSource = TimerEventsSource()
+
+            viewController.inject(
+                viewModel: r.resolve(
+                    SafariExtensionRootViewModel.self,
+                    arguments: events, timerEventSource
+                )!
+            )
 
             let tabs = [
-                NSTabViewItem(viewController: r.resolve(TimerViewController.self)!),
+                NSTabViewItem(viewController: r.resolve(TimerViewController.self, argument: timerEventSource)!),
                 NSTabViewItem(viewController: r.resolve(AuthViewController.self)!)
             ]
 
@@ -62,6 +74,7 @@ public class SafariExtensionAssembly: Assembly {
             tabs.forEach { viewController.addChild($0.viewController!) }
 
             return viewController
+
         }
 
     }

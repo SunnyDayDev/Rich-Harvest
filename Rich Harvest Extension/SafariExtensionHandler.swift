@@ -11,6 +11,8 @@ import SafariServices
 import SwiftyBeaver
 import RichHarvest_Core_Core
 
+import RichHarvest_App_SafariExtension
+
 private var initLog: () -> () = {
 
     let console = ConsoleDestination()
@@ -24,6 +26,8 @@ private var initLog: () -> () = {
 }()
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
+
+    private let extensionEvents = DependencyResolver.resolve(ExtensionEventsSource.self)!
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
 
@@ -55,8 +59,16 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         initLog()
 
         // This is called when Safari's state changed in some way that would require the extension's toolbar item to be validated again.
-        window.getActiveTab { $0?.getPagesWithCompletionHandler { $0?[0].getPropertiesWithCompletionHandler { properties in
-            //SafariExtensionViewController.shared.testLabbel2.stringValue = " (\(String(describing: properties?.url))))"
+        window.getActiveTab { [extensionEvents] in $0?.getPagesWithCompletionHandler { $0?[0].getPropertiesWithCompletionHandler { properties in
+
+            guard let properties = properties else { return }
+
+            extensionEvents.on(.pageOpened(
+                url: properties.url,
+                title: properties.title ?? "",
+                isActive: properties.isActive
+            ))
+
         } } }
         validationHandler(true, " ")
 

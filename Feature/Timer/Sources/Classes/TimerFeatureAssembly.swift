@@ -32,16 +32,17 @@ public class TimerFeatureAssembly: Assembly {
 
     public func assemble(container: Container) {
 
-        container.register(TimerViewModel.self) { (r: Resolver) in
+        container.register(TimerViewModel.self) { (r: Resolver, eventSource: TimerEventsSource) in
             TimerViewModel(
                 harvestRepository: r.resolve(HarvestRepository.self)!,
-                schedulers: r.resolve(Schedulers.self)!
+                schedulers: r.resolve(Schedulers.self)!,
+                eventsSource: eventSource
             )
         }
 
-        container.register(TimerViewController.self) { (r: Resolver) in
+        container.register(TimerViewController.self) { (r: Resolver, eventSource: TimerEventsSource) in
             let viewController = NSStoryboard.timerFeature.instantiateInitialController() as! TimerViewController
-            viewController.inject(viewModel: r.resolve(TimerViewModel.self)!)
+            viewController.inject(viewModel: r.resolve(TimerViewModel.self, argument: eventSource)!)
             return viewController
         }
 

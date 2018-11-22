@@ -10,6 +10,7 @@ import SafariServices
 import AppKit
 
 import RichHarvest_Core_Core
+import RichHarvest_App_SafariExtension
 
 class SafariExtensionViewController: SFSafariExtensionViewController {
 
@@ -20,7 +21,10 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         let shared = SafariExtensionViewController()
 
         shared.preferredContentSize = NSSize(width:320, height:240)
-        let viewController = RichHarvestExtensionAssembly().assembly()
+        let viewController = DependencyResolver.resolve(
+            SafariExtensionRootViewController.self,
+            argument: DependencyResolver.resolve(ExtensionEventsSource.self)!
+        )!
 
         shared.view.addSubview(viewController.view)
         shared.addChild(viewController)
