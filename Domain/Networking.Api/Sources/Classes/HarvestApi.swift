@@ -18,6 +18,12 @@ public protocol HarvestApi {
 
     func project(byId: Int) -> Single<ProjectDetail>
 
+    func taskAssignments(byProjectId: Int,
+                         isActive: Bool,
+                         updatedSince: Date?,
+                         page: Int,
+                         perPage: Int) -> Single<TaskAssignments>
+
 }
 
 public extension HarvestApi {
@@ -26,10 +32,18 @@ public extension HarvestApi {
         isActive: Bool = true,
         clientId: String? =  nil,
         updatedSince since: Date? = nil,
-        page: Int,
+        page: Int = 1,
         perPage: Int = 100
     ) -> Single<Projects> {
         return projects(isActive: isActive, clientId: clientId, updatedSince: since, page: page, perPage: perPage)
+    }
+
+    func taskAssignments(byProjectId id: Int,
+                         isActive: Bool = true,
+                         updatedSince since: Date? = nil,
+                         page: Int = 1,
+                         perPage: Int = 100) -> Single<TaskAssignments> {
+        return taskAssignments(byProjectId: id, isActive: isActive, updatedSince: since, page: page, perPage: perPage)
     }
 
 }

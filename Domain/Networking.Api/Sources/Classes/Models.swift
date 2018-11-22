@@ -146,6 +146,112 @@ public struct ProjectDetail: Codable {
 
 }
 
+public struct TaskAssignments: Codable {
+
+    public let taskAssignments: [TaskAssignment]
+    public let perPage: Int
+    public let totalPages: Int
+    public let totalEntries: Int
+    public let nextPage: Int?
+    public let previousPage: Int?
+    public let page: Int
+    public let links: Links
+
+    public init(taskAssignments: [TaskAssignment], perPage: Int, totalPages: Int, totalEntries: Int, nextPage: Int?, previousPage: Int?, page: Int, links: Links) {
+        self.taskAssignments = taskAssignments
+        self.perPage = perPage
+        self.totalPages = totalPages
+        self.totalEntries = totalEntries
+        self.nextPage = nextPage
+        self.previousPage = previousPage
+        self.page = page
+        self.links = links
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case taskAssignments = "task_assignments"
+        case perPage = "per_page"
+        case totalPages = "total_pages"
+        case totalEntries = "total_entries"
+        case nextPage = "next_page"
+        case previousPage = "previous_page"
+        case page = "page"
+        case links = "links"
+    }
+
+}
+
+public struct TaskAssignment: Codable {
+
+    public let id: Int
+    public let billable: Bool
+    public let isActive: Bool
+    public let createdAt: HarvestApiDate
+    public let updatedAt: HarvestApiDate
+    public let hourlyRate: Int
+    public let budget: Double?
+    public let project: Project
+    public let task: Task
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case billable = "billable"
+        case isActive = "is_active"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case hourlyRate = "hourly_rate"
+        case budget = "budget"
+        case project = "project"
+        case task = "task"
+    }
+
+    public init(id: Int, billable: Bool, isActive: Bool, createdAt: Date, updatedAt: Date, hourlyRate: Int, budget: Double?, project: Project, task: Task) {
+        self.id = id
+        self.billable = billable
+        self.isActive = isActive
+        self.createdAt = HarvestApiDate(date: createdAt)
+        self.updatedAt = HarvestApiDate(date: updatedAt)
+        self.hourlyRate = hourlyRate
+        self.budget = budget
+        self.project = project
+        self.task = task
+    }
+
+}
+
+public struct Project: Codable {
+    public let id: Int
+    public let name: String
+    public let code: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+        case code = "code"
+    }
+
+    public init(id: Int, name: String, code: String) {
+        self.id = id
+        self.name = name
+        self.code = code
+    }
+}
+
+public struct Task: Codable {
+    public let id: Int
+    public let name: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+    }
+
+    public init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
+}
+
 public struct Client: Codable {
 
     public let id: Int

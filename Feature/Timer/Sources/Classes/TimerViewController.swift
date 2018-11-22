@@ -26,6 +26,8 @@ public class TimerViewController: NSViewController {
 
         guard let viewModel = self.viewModel else { return }
 
+        // TODO: generalize NSPopUpButton binding
+
         viewModel.projects
             .drive(onNext: { [weak self] (projects: [String]) in
                 guard let `self` = self else { return }
@@ -39,6 +41,22 @@ public class TimerViewController: NSViewController {
             .drive(onNext: { [weak self] (position: Int) in
                 guard let `self` = self else { return }
                 self.projectsPopUpButton.selectItem(at: position)
+            })
+            .disposed(by: dispose)
+
+        viewModel.tasks
+            .drive(onNext: { [weak self] (projects: [String]) in
+                guard let `self` = self else { return }
+                self.tasksPopUpButton.removeAllItems()
+                self.tasksPopUpButton.addItems(withTitles: projects)
+            })
+            .disposed(by: dispose)
+
+        viewModel.tasks
+            .flatMap { _ in viewModel.selectedTask.asDriver() }
+            .drive(onNext: { [weak self] (position: Int) in
+                guard let `self` = self else { return }
+                self.tasksPopUpButton.selectItem(at: position)
             })
             .disposed(by: dispose)
 
@@ -70,6 +88,10 @@ public class TimerViewController: NSViewController {
     }
     
     @IBAction func taskSelected(_ sender: Any) {
+        guard let item = tasksPopUpButton.selectedItem,
+              let index = tasksPopUpButton.menu?.items.firstIndex(of: item)
+            else { return }
+        viewModel.selectedTask.accept(index)
     }
     
 }

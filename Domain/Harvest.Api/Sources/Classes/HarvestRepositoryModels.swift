@@ -113,3 +113,79 @@ public struct Client {
     }
 
 }
+
+public struct TaskAssignments {
+
+    public let taskAssignments: [TaskAssignment]
+    public let perPage: Int
+    public let totalPages: Int
+    public let totalEntries: Int
+    public let nextPage: Int?
+    public let previousPage: Int?
+    public let page: Int
+    public let links: Links
+
+    public init(taskAssignments: [TaskAssignment], perPage: Int, totalPages: Int, totalEntries: Int, nextPage: Int?, previousPage: Int?, page: Int, links: Links) {
+        self.taskAssignments = taskAssignments
+        self.perPage = perPage
+        self.totalPages = totalPages
+        self.totalEntries = totalEntries
+        self.nextPage = nextPage
+        self.previousPage = previousPage
+        self.page = page
+        self.links = links
+    }
+
+}
+
+public struct TaskAssignment {
+
+    public let id: Int
+    public let billable: Bool
+    public let isActive: Bool
+    public let createdAt: Date
+    public let updatedAt: Date
+    public let hourlyRate: Int
+    public let budget: Double?
+    public let project: Project
+    public let task: Task
+
+    public init(id: Int, billable: Bool, isActive: Bool, createdAt: Date, updatedAt: Date, hourlyRate: Int, budget: Double?, project: Project, task: Task) {
+        self.id = id
+        self.billable = billable
+        self.isActive = isActive
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.hourlyRate = hourlyRate
+        self.budget = budget
+        self.project = project
+        self.task = task
+    }
+
+}
+
+public struct Project {
+
+    public let id: Int
+    public let name: String
+    public let code: String
+
+    public init(id: Int, name: String, code: String) {
+        self.id = id
+        self.name = name
+        self.code = code
+    }
+
+}
+
+public struct Task {
+
+    public let id: Int
+    public let name: String
+
+    public init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
+
+}

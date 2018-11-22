@@ -11,8 +11,16 @@ typealias ProjectsDto = RichHarvest_Domain_Networking_Api.Projects
 typealias ProjectDetailDto = RichHarvest_Domain_Networking_Api.ProjectDetail
 typealias ClientDto = RichHarvest_Domain_Networking_Api.Client
 typealias LinksDto = RichHarvest_Domain_Networking_Api.Links
+typealias TaskAssignmentsDto = RichHarvest_Domain_Networking_Api.TaskAssignments
+typealias TaskAssignmentDto = RichHarvest_Domain_Networking_Api.TaskAssignment
+typealias ProjectDto = RichHarvest_Domain_Networking_Api.Project
+typealias TaskDto = RichHarvest_Domain_Networking_Api.Task
 
 typealias ProjectsPlain = RichHarvest_Domain_Harvest_Api.Projects
 typealias ProjectDetailPlain = RichHarvest_Domain_Harvest_Api.ProjectDetail
 typealias ClientPlain = RichHarvest_Domain_Harvest_Api.Client
 typealias LinksPlain = RichHarvest_Domain_Harvest_Api.Links
+typealias TaskAssignmentsPlain = RichHarvest_Domain_Harvest_Api.TaskAssignments
+typealias TaskAssignmentPlain = RichHarvest_Domain_Harvest_Api.TaskAssignment
+typealias ProjectPlain = RichHarvest_Domain_Harvest_Api.Project
+typealias TaskPlain = RichHarvest_Domain_Harvest_Api.Task

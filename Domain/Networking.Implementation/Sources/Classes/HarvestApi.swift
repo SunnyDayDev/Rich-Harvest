@@ -14,9 +14,23 @@ import RichHarvest_Domain_Networking_Api
 class HarvestApiImplementation: HarvestApi {
 
     struct Urls {
+
         static let host = "https://api.harvestapp.com/v2/"
+
         static let projects = "\(host)projects/"
+
         static func project(id: Int) -> String { return "\(projects)\(id)/" }
+
+        static func taskAssignments(byProjectId id: Int) -> String { return "\(projects)\(id)/task_assignments/" }
+
+    }
+
+    enum UrlParam: String {
+        case isActive = "is_active"
+        case page = "page"
+        case perPage = "per_page"
+        case updatedSince = "updated_since"
+        case clientId = "clientId"
     }
 
     private let sessionManager: HarvestApiSessionManager
@@ -33,18 +47,45 @@ class HarvestApiImplementation: HarvestApi {
                   updatedSince: Date?,
                   page: Int,
                   perPage: Int) -> Single<Projects> {
-        return authorized { self.request(.get, Urls.projects, headers: $0) }
+
+        let params: [UrlParam: Any?] = [
+            .isActive: isActive,
+            .clientId: clientId,
+            .updatedSince: updatedSince.map(DateFormatter.harvestDateFormat.string(from:)),
+            .page: page,
+            .perPage: perPage
+        ]
+
+        return authorized { self.request(.get, Urls.projects, parameters: params, headers: $0) }
+
     }
 
     func project(byId id: Int) -> Single<ProjectDetail> {
         return authorized { self.request(.get, Urls.project(id: id), headers: $0) }
     }
 
-    func authorized<T>(creator: @escaping (_ authHeaders: [String: String]) -> Single<T>) -> Single<T> {
+    func taskAssignments(byProjectId id: Int,
+                         isActive: Bool,
+                         updatedSince: Date?,
+                         page: Int,
+                         perPage: Int) -> Single<TaskAssignments> {
+
+        let params: [UrlParam: Any?] = [
+            .isActive: isActive,
+            .updatedSince: updatedSince.map(DateFormatter.harvestDateFormat.string(from:)),
+            .page: page,
+            .perPage: perPage
+        ]
+
+        return authorized { self.request(.get, Urls.taskAssignments(byProjectId: id), parameters: params, headers: $0) }
+
+    }
+
+    private func authorized<T>(creator: @escaping (_ authHeaders: [String: String]) -> Single<T>) -> Single<T> {
         return authHeaders().flatMap { creator($0) }
     }
 
-    func authHeaders() -> Single<[String: String]> {
+    private func authHeaders() -> Single<[String: String]> {
         return sessionManager.session.firstOrError()
             .map { (session: HarvestApiSession?) -> [String: String] in
                 guard let session = session else {
@@ -59,17 +100,25 @@ class HarvestApiImplementation: HarvestApi {
 
     private func request<T: Decodable>(_ method: Alamofire.HTTPMethod,
                          _ url: URLConvertible,
-                         parameters: [String: Any]? = nil,
+                         parameters: [UrlParam: Any?]? = nil,
                          encoding: ParameterEncoding = URLEncoding.default,
                          headers: [String: String]? = nil,
                          logRequestData: Bool = true,
                          function: String = #function,
                          line: Int = #line
     ) -> Single<T> {
+
+        let parameters = parameters?
+            .filter { (_, value) in value != nil }
+            .map { (key, value) in (key: key.rawValue, value: value!) }
+            .associate { $0 }
+
         let requestSource = urlSessionManager.rx
             .request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+
         return request(from: requestSource, logRequestData: logRequestData,  function: function, line: line)
             .parse(T.self)
+
     }
 
     private func request(from source: Observable<DataRequest>,

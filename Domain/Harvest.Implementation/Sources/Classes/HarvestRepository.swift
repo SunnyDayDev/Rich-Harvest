@@ -44,13 +44,32 @@ class HarvestRepositoryImplementation: HarvestRepository {
 
     func project(byId id: Int) -> Single<ProjectDetailPlain> {
 
-        let mapper = mappers.fromApi.toPlain.project
+        let mapper = mappers.fromApi.toPlain.projectDetail
 
         return network.project(byId: id)
             .subscribeOn(schedulers.io)
             .observeOn(schedulers.background)
             .map(mapper)
 
+    }
+
+    func taskAssignments(byProjectId id: Int,
+                         isActive: Bool,
+                         updatedSince since: Date?,
+                         page: Int,
+                         perPage: Int) -> Single<TaskAssignmentsPlain> {
+
+        let mapper = mappers.fromApi.toPlain.taskAssignments
+
+        return network.taskAssignments(byProjectId: id,
+                isActive: isActive,
+                updatedSince: since,
+                page: page,
+                perPage: perPage
+            )
+            .subscribeOn(schedulers.io)
+            .observeOn(schedulers.background)
+            .map(mapper)
     }
 
 }

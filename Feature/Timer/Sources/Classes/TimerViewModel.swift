@@ -16,6 +16,9 @@ class TimerViewModel {
     let projects: Driver<[String]>
     let selectedProject = BehaviorRelay(value: -1)
 
+    let tasks: Driver<[String]>
+    let selectedTask = BehaviorRelay(value: -1)
+
     let url: Driver<String>
     let notes = BehaviorRelay(value: "")
 
@@ -24,6 +27,7 @@ class TimerViewModel {
     private let eventsSource: TimerEventsSource
 
     private let projectsRelay = BehaviorRelay<[ProjectDetail]>(value: [])
+    private let tasksRelay = BehaviorRelay<[Task]>(value: [])
     private let urlRelay = BehaviorRelay(value: "")
 
     private let dispose = DisposeBag()
@@ -35,6 +39,7 @@ class TimerViewModel {
         self.eventsSource = eventsSource
 
         self.projects = projectsRelay.map { $0.map { $0.name } } .asDriver(onErrorJustReturn: [])
+        self.tasks = tasksRelay.map { $0.map { $0.name } } .asDriver(onErrorJustReturn: [])
         self.url = urlRelay.asDriver()
 
         initSources()
@@ -49,7 +54,7 @@ class TimerViewModel {
 
         Log.debug("Start update projects.")
 
-        harvestRepository.projects(isActive: true, page: 0)
+        harvestRepository.projects(isActive: true)
             .observeOn(schedulers.ui)
             .subscribe(
                 onSuccess: { [weak self] in self?.handle(projects: $0) },
@@ -60,6 +65,7 @@ class TimerViewModel {
     }
 
     private func initSources() {
+
         eventsSource.events
             .subscribe(onNext: { [urlRelay, notes] in
                 switch $0 {
@@ -70,15 +76,39 @@ class TimerViewModel {
             })
             .disposed(by: dispose)
 
+        selectedProject
+            .filter { [projectsRelay] in $0 >= 0 && $0 < projectsRelay.value.count }
+            .map { [projectsRelay] in projectsRelay.value[$0].id }
+            .flatMapSingle { [harvestRepository] in harvestRepository.taskAssignments(byProjectId: $0) }
+            .observeOn(schedulers.ui)
+            .subscribe(
+                onNext: { [weak self] in self?.handle(tasks: $0) },
+                onError: { Log.error($0) }
+            )
+            .disposed(by: dispose)
+
     }
 
     private func handle(projects: Projects) {
+
         Log.debug("Projects: \(projects)")
 
         projectsRelay.accept(projects.projects)
 
         if projectsRelay.value.count > 0 && selectedProject.value == -1 {
             selectedProject.accept(0)
+        }
+
+    }
+
+    private func handle(tasks: TaskAssignments) {
+
+        Log.debug("Tasks: \(tasks)")
+
+        tasksRelay.accept(tasks.taskAssignments.map { $0.task })
+
+        if tasksRelay.value.count > 0 && selectedTask.value == -1 {
+            selectedTask.accept(0)
         }
 
     }

@@ -11,16 +11,30 @@ public protocol HarvestRepository {
 
     func project(byId: Int) -> Single<ProjectDetail>
 
+    func taskAssignments(byProjectId: Int,
+                         isActive: Bool,
+                         updatedSince: Date?,
+                         page: Int,
+                         perPage: Int) -> Single<TaskAssignments>
+
 }
 
 public extension HarvestRepository {
 
     func projects(isActive: Bool = true,
                   clientId: String? =  nil,
-                  updatedSince: Date? = nil,
-                  page: Int,
+                  updatedSince since: Date? = nil,
+                  page: Int = 1,
                   perPage: Int = 100) -> Single<Projects> {
-        return projects(isActive: isActive, clientId: clientId, updatedSince: updatedSince, page: page, perPage: perPage)
+        return projects(isActive: isActive, clientId: clientId, updatedSince: since, page: page, perPage: perPage)
+    }
+
+    func taskAssignments(byProjectId id: Int,
+                         isActive: Bool = true,
+                         updatedSince since: Date? = nil,
+                         page: Int = 1,
+                         perPage: Int = 100) -> Single<TaskAssignments> {
+        return taskAssignments(byProjectId: id, isActive: isActive, updatedSince: since, page: page, perPage: perPage)
     }
 
 }

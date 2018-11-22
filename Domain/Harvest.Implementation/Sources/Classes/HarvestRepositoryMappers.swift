@@ -4,9 +4,6 @@
 
 import Foundation
 
-import RichHarvest_Domain_Networking_Api
-import RichHarvest_Domain_Harvest_Api
-
 class HarvestRepositoryMappers {
 
     var fromApi: FromApi { return FromApi() }
@@ -20,7 +17,7 @@ class HarvestRepositoryMappers {
             var projects: (ProjectsDto) -> ProjectsPlain {
 
                 let linksMapper = self.links
-                let projectMapper = self.project
+                let projectMapper = self.projectDetail
 
                 return { dto in
                     ProjectsPlain(
@@ -36,7 +33,7 @@ class HarvestRepositoryMappers {
                 }
             }
 
-            var project: (ProjectDetailDto) -> ProjectDetailPlain {
+            var projectDetail: (ProjectDetailDto) -> ProjectDetailPlain {
 
                 let mapClient = self.client
 
@@ -87,6 +84,65 @@ class HarvestRepositoryMappers {
                         next: dto.next,
                         previous: dto.previous,
                         last: dto.last
+                    )
+                }
+            }
+
+            var taskAssignments: (TaskAssignmentsDto) -> TaskAssignmentsPlain {
+
+                let linksMapper = self.links
+                let taskMapper = self.taskAssignment
+
+                return { dto in
+                    TaskAssignmentsPlain(
+                        taskAssignments: dto.taskAssignments.map(taskMapper),
+                        perPage: dto.perPage,
+                        totalPages: dto.totalPages,
+                        totalEntries: dto.totalEntries,
+                        nextPage: dto.nextPage,
+                        previousPage: dto.previousPage,
+                        page: dto.page,
+                        links: linksMapper(dto.links)
+                    )
+                }
+
+            }
+
+            var taskAssignment: (TaskAssignmentDto) -> TaskAssignmentPlain {
+
+                let projectMapper = self.project
+                let taskMapper = self.task
+
+                return { dto in
+                    TaskAssignmentPlain(
+                        id: dto.id,
+                        billable: dto.billable,
+                        isActive: dto.isActive,
+                        createdAt: dto.createdAt.date,
+                        updatedAt: dto.updatedAt.date,
+                        hourlyRate: dto.hourlyRate,
+                        budget: dto.budget,
+                        project: projectMapper(dto.project),
+                        task: taskMapper(dto.task)
+                    )
+                }
+            }
+
+            var project: (ProjectDto) -> ProjectPlain {
+                return { dto in
+                    ProjectPlain(
+                        id: dto.id,
+                        name: dto.name,
+                        code: dto.code
+                    )
+                }
+            }
+
+            var task: (TaskDto) -> TaskPlain {
+                return { dto in
+                    TaskPlain(
+                        id: dto.id,
+                        name: dto.name
                     )
                 }
             }
