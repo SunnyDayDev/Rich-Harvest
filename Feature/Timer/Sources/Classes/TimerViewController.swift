@@ -12,6 +12,10 @@ import RichHarvest_Core_Core
 public class TimerViewController: NSViewController {
 
     @IBOutlet weak var projectsPopUpButton: NSPopUpButton!
+    @IBOutlet weak var tasksPopUpButton: NSPopUpButton!
+    @IBOutlet weak var urlLabel: NSTextField!
+    @IBOutlet weak var notesTextField: NSTextField!
+    @IBOutlet weak var startButton: NSButton!
     
     var viewModel: TimerViewModel!
     
@@ -50,6 +54,9 @@ public class TimerViewController: NSViewController {
               let index = projectsPopUpButton.menu?.items.firstIndex(of: item)
             else { return }
         viewModel.selectedProject.accept(index)
+    }
+    
+    @IBAction func taskSelected(_ sender: Any) {
     }
     
 }

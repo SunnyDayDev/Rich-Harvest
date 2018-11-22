@@ -40,7 +40,7 @@ class TimerViewModel {
 
         Log.debug("Start update projects.")
 
-        harvestRepository.projects(page: 0)
+        harvestRepository.projects(isActive: true, page: 0)
             .observeOn(schedulers.ui)
             .subscribe(
                 onSuccess: { [weak self] in self?.handle(projects: $0) },
