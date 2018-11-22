@@ -53,7 +53,7 @@ public struct ProjectDetail {
     public let isBillable: Bool
     public let isFixedFee: Bool
     public let billBy: String
-    public let budget: Double
+    public let budget: Double?
     public let budgetBy: String
     public let budgetIsMonthly: Bool
     public let notifyWhenOverBudget: Bool
@@ -64,14 +64,14 @@ public struct ProjectDetail {
     public let startsOn: Date?
     public let endsOn: Date?
     public let overBudgetNotificationDate: Date?
-    public let notes: String
+    public let notes: String?
     public let costBudget: Double?
     public let costBudgetIncludeExpenses: Bool
-    public let hourlyRate: Double
+    public let hourlyRate: Double?
     public let fee: Double?
     public let client: Client
 
-    public init(id: Int, name: String, code: String, isActive: Bool, isBillable: Bool, isFixedFee: Bool, billBy: String, budget: Double, budgetBy: String, budgetIsMonthly: Bool, notifyWhenOverBudget: Bool, overBudgetNotificationPercentage: Float, showBudgetToAll: Bool, createdAt: Date, updatedAt: Date, startsOn: Date?, endsOn: Date?, overBudgetNotificationDate: Date?, notes: String, costBudget: Double?, costBudgetIncludeExpenses: Bool, hourlyRate: Double, fee: Double?, client: Client) {
+    public init(id: Int, name: String, code: String, isActive: Bool, isBillable: Bool, isFixedFee: Bool, billBy: String, budget: Double?, budgetBy: String, budgetIsMonthly: Bool, notifyWhenOverBudget: Bool, overBudgetNotificationPercentage: Float, showBudgetToAll: Bool, createdAt: Date, updatedAt: Date, startsOn: Date?, endsOn: Date?, overBudgetNotificationDate: Date?, notes: String?, costBudget: Double?, costBudgetIncludeExpenses: Bool, hourlyRate: Double?, fee: Double?, client: Client) {
         self.id = id
         self.name = name
         self.code = code

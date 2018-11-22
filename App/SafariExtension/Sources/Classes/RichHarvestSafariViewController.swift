@@ -19,6 +19,7 @@ public class SafariExtensionRootViewController: NSTabViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.viewDidLoad()
     }
 
 }

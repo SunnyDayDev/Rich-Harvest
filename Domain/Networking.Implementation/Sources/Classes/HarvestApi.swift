@@ -15,8 +15,8 @@ class HarvestApiImplementation: HarvestApi {
 
     struct Urls {
         static let host = "https://api.harvestapp.com/v2/"
-        static let projects = "\(host)/projects/"
-        static func project(id: Int) -> String { return "\(project)/\(id)" }
+        static let projects = "\(host)projects/"
+        static func project(id: Int) -> String { return "\(projects)\(id)/" }
     }
 
     private let sessionManager: HarvestApiSessionManager
@@ -51,7 +51,7 @@ class HarvestApiImplementation: HarvestApi {
                     throw NetworkError.sessionNotExists
                 }
                 return [
-                    "Autorization": "Bearer \(session.personalToken)",
+                    "Authorization": "Bearer \(session.personalToken)",
                     "Harvest-Account-Id": "\(session.accountId)"
                 ]
             }
@@ -81,14 +81,24 @@ class HarvestApiImplementation: HarvestApi {
 
                 guard let request = $0.request else { return }
 
+                let urlString = request.url?.absoluteString ?? "unknown url"
+                Log.debug("Make request: \(urlString)")
+
                 let dataString: String
-                if logRequestData { dataString = String(data: request.httpBody!, encoding: .utf8)! }
+                if logRequestData {
+                    if let body = request.httpBody,
+                       let stringifiedBody = String(data: body, encoding: .utf8) {
+                        dataString = stringifiedBody
+                    } else {
+                        dataString = "unreadable data"
+                    }
+                }
                 else { dataString = "removed from log" }
 
                 Log.debug(
-                    "REQUEST: \(request.httpMethod!) " +
-                        "\(request.url!)\n" +
-                        "\tHeaders: \(request.allHTTPHeaderFields!),\n" +
+                    "REQUEST: \(request.httpMethod ?? "unknown") " +
+                        "\(urlString)\n" +
+                        "\tHeaders: \(request.allHTTPHeaderFields ?? [:]),\n" +
                         "\tData: \(dataString)"
                 )
 
@@ -164,8 +174,31 @@ private extension PrimitiveSequence where Trait == SingleTrait, Element == (HTTP
 
     func parse<T: Decodable>(_ type: T.Type) -> Single<T> {
         return map { (response: HTTPURLResponse, data: Data) in
-            return try JSONDecoder().decode(type, from: data)
+            return try JSONDecoder.harvestJSONDecoder.decode(type, from: data)
         }
+    }
+
+}
+
+extension JSONDecoder {
+
+    static let harvestJSONDecoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.harvestDateFormat)
+        return decoder
+    }()
+
+}
+
+extension DateFormatter {
+
+    static var harvestDateFormat: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
     }
 
 }

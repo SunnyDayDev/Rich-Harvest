@@ -6,6 +6,7 @@ import Foundation
 
 import Swinject
 
+import RichHarvest_Core_Core
 import RichHarvest_Domain_Harvest_Api
 
 public extension Bundle {
@@ -32,7 +33,10 @@ public class TimerFeatureAssembly: Assembly {
     public func assemble(container: Container) {
 
         container.register(TimerViewModel.self) { (r: Resolver) in
-            TimerViewModel(harvestRepository: r.resolve(HarvestRepository.self)!)
+            TimerViewModel(
+                harvestRepository: r.resolve(HarvestRepository.self)!,
+                schedulers: r.resolve(Schedulers.self)!
+            )
         }
 
         container.register(TimerViewController.self) { (r: Resolver) in

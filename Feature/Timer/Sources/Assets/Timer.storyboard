@@ -18,8 +18,40 @@
                                 <view key="contentView" id="zMK-ga-S5F">
                                     <rect key="frame" x="1" y="1" width="448" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PHu-0L-49K">
+                                            <rect key="frame" x="354" y="254" width="77" height="25"/>
+                                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="bWz-7L-yeh" id="1VH-9I-SrK">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="xcI-Xz-a6V">
+                                                    <items>
+                                                        <menuItem title="Item 1" state="on" id="bWz-7L-yeh"/>
+                                                        <menuItem title="Item 2" id="K9h-9O-yDf"/>
+                                                        <menuItem title="Item 3" id="81t-Nl-ubY"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <action selector="projectSelected:" target="5dM-ip-GDe" id="v9P-ZB-3sN"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="n4i-8q-gwP">
+                                            <rect key="frame" x="301" y="259" width="47" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Project" id="P4G-b0-Dev">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="PHu-0L-49K" secondAttribute="trailing" constant="20" id="Egr-Ye-wQC"/>
+                                        <constraint firstItem="PHu-0L-49K" firstAttribute="leading" secondItem="n4i-8q-gwP" secondAttribute="trailing" constant="10" id="LJe-Mz-vXB"/>
+                                        <constraint firstItem="n4i-8q-gwP" firstAttribute="firstBaseline" secondItem="PHu-0L-49K" secondAttribute="firstBaseline" id="Nvx-gl-VUp"/>
+                                        <constraint firstItem="PHu-0L-49K" firstAttribute="top" secondItem="zMK-ga-S5F" secondAttribute="top" constant="20" id="sYN-Pg-b5y"/>
+                                    </constraints>
                                 </view>
-                                <color key="fillColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
                             </box>
                         </subviews>
                         <constraints>
@@ -29,6 +61,9 @@
                             <constraint firstAttribute="trailing" secondItem="nxd-fi-gmQ" secondAttribute="trailing" id="z85-DW-ziV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="projectsPopUpButton" destination="PHu-0L-49K" id="xBe-55-RbR"/>
+                    </connections>
                 </viewController>
                 <customObject id="III-RQ-wfC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -4,10 +4,54 @@
 
 import Foundation
 
+import RxSwift
+import RxCocoa
+
+import RichHarvest_Core_Core
+
 public class TimerViewController: NSViewController {
 
+    @IBOutlet weak var projectsPopUpButton: NSPopUpButton!
+    
     var viewModel: TimerViewModel!
+    
+    private let dispose = DisposeBag()
 
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+
+        guard let viewModel = self.viewModel else { return }
+
+        viewModel.projects
+            .drive(onNext: { [weak self] (projects: [String]) in
+                guard let `self` = self else { return }
+                self.projectsPopUpButton.removeAllItems()
+                self.projectsPopUpButton.addItems(withTitles: projects)
+            })
+            .disposed(by: dispose)
+
+        viewModel.projects
+            .flatMap { _ in viewModel.selectedProject.asDriver() }
+            .drive(onNext: { [weak self] (position: Int) in
+                guard let `self` = self else { return }
+                self.projectsPopUpButton.selectItem(at: position)
+            })
+            .disposed(by: dispose)
+
+    }
+
+    public override func viewWillAppear() {
+        super.viewWillAppear()
+        viewModel.viewWillAppear()
+    }
+    
+    @IBAction func projectSelected(_ sender: Any) {
+        guard let item = projectsPopUpButton.selectedItem,
+              let index = projectsPopUpButton.menu?.items.firstIndex(of: item)
+            else { return }
+        viewModel.selectedProject.accept(index)
+    }
+    
 }
 
 extension TimerViewController {

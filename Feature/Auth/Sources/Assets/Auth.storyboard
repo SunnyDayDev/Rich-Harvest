@@ -71,7 +71,6 @@ DQ
                                         <constraint firstItem="nEg-ly-l6n" firstAttribute="top" secondItem="rC5-bA-obR" secondAttribute="bottom" constant="10" id="sZO-k9-HHD"/>
                                     </constraints>
                                 </view>
-                                <color key="fillColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
                             </box>
                         </subviews>
                         <constraints>

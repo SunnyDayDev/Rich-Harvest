@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import RichHarvest_Core_Core
 
 public struct Projects: Codable {
 
@@ -71,25 +72,25 @@ public struct ProjectDetail: Codable {
     public let isBillable: Bool
     public let isFixedFee: Bool
     public let billBy: String
-    public let budget: Double
+    public let budget: Double?
     public let budgetBy: String
     public let budgetIsMonthly: Bool
     public let notifyWhenOverBudget: Bool
     public let overBudgetNotificationPercentage: Float
     public let showBudgetToAll: Bool
-    public let createdAt: Date
-    public let updatedAt: Date
-    public let startsOn: Date?
-    public let endsOn: Date?
-    public let overBudgetNotificationDate: Date?
-    public let notes: String
+    public let createdAt: HarvestApiDate
+    public let updatedAt: HarvestApiDate
+    public let startsOn: HarvestApiDate?
+    public let endsOn: HarvestApiDate?
+    public let overBudgetNotificationDate: HarvestApiDate?
+    public let notes: String?
     public let costBudget: Double?
     public let costBudgetIncludeExpenses: Bool
-    public let hourlyRate: Double
+    public let hourlyRate: Double?
     public let fee: Double?
     public let client: Client
 
-    public init(id: Int, name: String, code: String, isActive: Bool, isBillable: Bool, isFixedFee: Bool, billBy: String, budget: Double, budgetBy: String, budgetIsMonthly: Bool, notifyWhenOverBudget: Bool, overBudgetNotificationPercentage: Float, showBudgetToAll: Bool, createdAt: Date, updatedAt: Date, startsOn: Date?, endsOn: Date?, overBudgetNotificationDate: Date?, notes: String, costBudget: Double?, costBudgetIncludeExpenses: Bool, hourlyRate: Double, fee: Double?, client: Client) {
+    public init(id: Int, name: String, code: String, isActive: Bool, isBillable: Bool, isFixedFee: Bool, billBy: String, budget: Double?, budgetBy: String, budgetIsMonthly: Bool, notifyWhenOverBudget: Bool, overBudgetNotificationPercentage: Float, showBudgetToAll: Bool, createdAt: Date, updatedAt: Date, startsOn: Date?, endsOn: Date?, overBudgetNotificationDate: Date?, notes: String?, costBudget: Double?, costBudgetIncludeExpenses: Bool, hourlyRate: Double?, fee: Double?, client: Client) {
         self.id = id
         self.name = name
         self.code = code
@@ -103,11 +104,11 @@ public struct ProjectDetail: Codable {
         self.notifyWhenOverBudget = notifyWhenOverBudget
         self.overBudgetNotificationPercentage = overBudgetNotificationPercentage
         self.showBudgetToAll = showBudgetToAll
-        self.createdAt = createdAt
-        self.updatedAt = updatedAt
-        self.startsOn = startsOn
-        self.endsOn = endsOn
-        self.overBudgetNotificationDate = overBudgetNotificationDate
+        self.createdAt = HarvestApiDate(date: createdAt)
+        self.updatedAt = HarvestApiDate(date: updatedAt)
+        self.startsOn = HarvestApiDate(date: startsOn)
+        self.endsOn = HarvestApiDate(date: endsOn)
+        self.overBudgetNotificationDate = HarvestApiDate(date: overBudgetNotificationDate)
         self.notes = notes
         self.costBudget = costBudget
         self.costBudgetIncludeExpenses = costBudgetIncludeExpenses
@@ -162,5 +163,64 @@ public struct Client: Codable {
         case name = "name"
         case currency = "currency"
     }
+
+}
+
+public struct HarvestApiDate: Codable {
+
+    enum Error: RichHarvestError {
+        case incorrectFormat(date: String)
+    }
+
+    public let date: Date
+
+    public init(date: Date) {
+        self.date = date
+    }
+
+    public init?(date: Date?) {
+        guard let date = date else { return nil }
+        self.date = date
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let dateString = try container.decode(String.self)
+        if let date = DateFormatter.harvestFullDate.date(from: dateString) {
+            self.date = date
+        } else if let date = DateFormatter.harvestShortDate.date(from: dateString) {
+            self.date = date
+        } else {
+            throw Error.incorrectFormat(date: dateString)
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(DateFormatter.harvestFullDate.string(from: date))
+    }
+
+}
+
+
+extension DateFormatter {
+
+    static var harvestFullDate: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+
+    static var harvestShortDate: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
 
 }
