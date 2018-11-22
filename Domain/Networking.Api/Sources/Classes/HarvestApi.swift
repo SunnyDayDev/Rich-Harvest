@@ -24,6 +24,8 @@ public protocol HarvestApi {
                          page: Int,
                          perPage: Int) -> Single<TaskAssignments>
 
+    func startTimer(withData: StartTimerData) -> Single<StartTimerData>
+
 }
 
 public extension HarvestApi {

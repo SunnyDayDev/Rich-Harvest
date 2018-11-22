@@ -22,6 +22,8 @@ class TimerViewModel {
     let url: Driver<String>
     let notes = BehaviorRelay(value: "")
 
+    let startTap = PublishRelay<()>()
+
     private let harvestRepository: HarvestRepository
     private let schedulers: Schedulers
     private let eventsSource: TimerEventsSource
@@ -43,6 +45,7 @@ class TimerViewModel {
         self.url = urlRelay.asDriver()
 
         initSources()
+        initActions()
 
     }
 
@@ -85,6 +88,33 @@ class TimerViewModel {
                 onNext: { [weak self] in self?.handle(tasks: $0) },
                 onError: { Log.error($0) }
             )
+            .disposed(by: dispose)
+
+    }
+
+    private func initActions() {
+
+        startTap.asObservable()
+            .switchMapCompletable { [unowned self] in
+
+                let projectId = self.projectsRelay.value[self.selectedProject.value].id
+                let taskId = self.tasksRelay.value[self.selectedTask.value].id
+                let notes = self.notes.value
+                let url = self.urlRelay.value
+
+                let timer = StartTimerData(
+                    projectID: "\(projectId)",
+                    taskID: "\(taskId)",
+                    spentDate: Date(),
+                    notes: notes,
+                    url: url
+                )
+
+                return self.harvestRepository.startTimer(withData: timer)
+                    .catchError { _ in Completable.empty() }
+
+            }
+            .subscribe()
             .disposed(by: dispose)
 
     }

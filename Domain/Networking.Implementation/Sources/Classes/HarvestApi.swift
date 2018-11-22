@@ -23,6 +23,8 @@ class HarvestApiImplementation: HarvestApi {
 
         static func taskAssignments(byProjectId id: Int) -> String { return "\(projects)\(id)/task_assignments/" }
 
+        static let timeEntries = "\(host)time_entries/"
+
     }
 
     enum UrlParam: String {
@@ -49,7 +51,7 @@ class HarvestApiImplementation: HarvestApi {
                   perPage: Int) -> Single<Projects> {
 
         let params: [UrlParam: Any?] = [
-            .isActive: isActive,
+            .isActive: isActive ? "true" : "false",
             .clientId: clientId,
             .updatedSince: updatedSince.map(DateFormatter.harvestDateFormat.string(from:)),
             .page: page,
@@ -71,7 +73,7 @@ class HarvestApiImplementation: HarvestApi {
                          perPage: Int) -> Single<TaskAssignments> {
 
         let params: [UrlParam: Any?] = [
-            .isActive: isActive,
+            .isActive: isActive ? "true" : "false",
             .updatedSince: updatedSince.map(DateFormatter.harvestDateFormat.string(from:)),
             .page: page,
             .perPage: perPage
@@ -79,6 +81,10 @@ class HarvestApiImplementation: HarvestApi {
 
         return authorized { self.request(.get, Urls.taskAssignments(byProjectId: id), parameters: params, headers: $0) }
 
+    }
+
+    func startTimer(withData data: StartTimerData) -> Single<StartTimerData> {
+        return authorized { self.postJson(.post, Urls.timeEntries, data: data, headers: $0) }
     }
 
     private func authorized<T>(creator: @escaping (_ authHeaders: [String: String]) -> Single<T>) -> Single<T> {
@@ -98,26 +104,65 @@ class HarvestApiImplementation: HarvestApi {
             }
     }
 
-    private func request<T: Decodable>(_ method: Alamofire.HTTPMethod,
-                         _ url: URLConvertible,
-                         parameters: [UrlParam: Any?]? = nil,
-                         encoding: ParameterEncoding = URLEncoding.default,
-                         headers: [String: String]? = nil,
-                         logRequestData: Bool = true,
-                         function: String = #function,
-                         line: Int = #line
+    private func request<T: Decodable>(
+        _ method: Alamofire.HTTPMethod,
+        _ url: URLConvertible,
+        parameters: [UrlParam: Any?]? = nil,
+        encoding: ParameterEncoding = URLEncoding.default,
+        headers: [String: String]? = nil,
+        logRequestData: Bool = true,
+        function: String = #function,
+        line: Int = #line
     ) -> Single<T> {
 
-        let parameters = parameters?
-            .filter { (_, value) in value != nil }
-            .map { (key, value) in (key: key.rawValue, value: value!) }
-            .associate { $0 }
+        return Single.deferred {
 
-        let requestSource = urlSessionManager.rx
-            .request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+            let parameters = parameters?
+                .filter { (_, value) in value != nil }
+                .map { (key, value) in (key: key.rawValue, value: value!) }
+                .associate { $0 }
 
-        return request(from: requestSource, logRequestData: logRequestData,  function: function, line: line)
-            .parse(T.self)
+            let requestSource = self.urlSessionManager.rx
+                .request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+
+            return self.request(from: requestSource, logRequestData: logRequestData,  function: function, line: line)
+                .parse(T.self)
+
+        }
+
+    }
+
+    private func postJson<T: Decodable, D: Encodable>(
+        _ method: Alamofire.HTTPMethod,
+        _ url: URLConvertible,
+        data: D,
+        parameters: [UrlParam: Any?]? = nil,
+        headers: [String: String]? = nil,
+        logRequestData: Bool = true,
+        function: String = #function,
+        line: Int = #line
+    ) -> Single<T> {
+
+        return Single.deferred {
+
+            var urlComponent = URLComponents(url: try url.asURL(), resolvingAgainstBaseURL: false)!
+
+            urlComponent.queryItems = parameters?
+                .filter { (_, value) in value != nil }
+                .map { (key, value) in URLQueryItem(name: key.rawValue, value: "\(value!)") }
+
+            var request = URLRequest(url: urlComponent.url!)
+
+            request.httpMethod = method.rawValue
+            request.httpBody = try JSONEncoder.harvestJSONEncoder.encode(data)
+            request.allHTTPHeaderFields = (headers ?? [:]) + [ "Content-Type": "application/json" ]
+
+            let requestSource = self.urlSessionManager.rx.request(urlRequest: request)
+
+            return self.request(from: requestSource, logRequestData: logRequestData,  function: function, line: line)
+                .parse(T.self)
+
+        }
 
     }
 
@@ -239,6 +284,17 @@ extension JSONDecoder {
 
 }
 
+extension JSONEncoder {
+
+    static let harvestJSONEncoder: JSONEncoder = {
+        let encoder = JSONEncoder()
+        //encoder.outputFormatting = .prettyPrinted
+        encoder.dateEncodingStrategy = .iso8601//.formatted(DateFormatter.harvestDateFormat)
+        return encoder
+    }()
+
+}
+
 extension DateFormatter {
 
     static var harvestDateFormat: DateFormatter {
@@ -250,4 +306,12 @@ extension DateFormatter {
         return formatter
     }
 
+}
+
+extension ISO8601DateFormatter {
+    convenience init(_ formatOptions: Options, timeZone: TimeZone? = nil) {
+        self.init()
+        self.formatOptions = formatOptions
+        self.timeZone = timeZone ?? TimeZone(abbreviation: "UTC")!
+    }
 }

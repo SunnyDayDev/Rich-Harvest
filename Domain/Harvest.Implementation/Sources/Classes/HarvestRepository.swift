@@ -72,4 +72,15 @@ class HarvestRepositoryImplementation: HarvestRepository {
             .map(mapper)
     }
 
+    func startTimer(withData data: StartTimerDataPlain) -> Completable {
+
+        let dto = mappers.fromPlain.toApi.startTimerData(data)
+
+        return network.startTimer(withData: dto)
+            .asCompletable()
+            .subscribeOn(schedulers.io)
+            .observeOn(schedulers.background)
+
+    }
+
 }

@@ -189,3 +189,56 @@ public struct Task {
     }
 
 }
+
+public struct StartTimerData {
+
+    public let projectID: String
+    public let taskID: String
+    public let spentDate: Date
+    public let notes: String
+    public let externalReference: ExternalReference
+
+    public init(projectID: String, taskID: String, spentDate: Date, notes: String, externalReference: ExternalReference) {
+        self.projectID = projectID
+        self.taskID = taskID
+        self.spentDate = spentDate
+        self.notes = notes
+        self.externalReference = externalReference
+    }
+
+}
+
+public extension StartTimerData {
+
+    init(projectID: String, taskID: String, spentDate: Date, notes: String, url: String) {
+
+        self.projectID = projectID
+        self.taskID = taskID
+        self.spentDate = spentDate
+        self.notes = notes
+
+        let groupId = Data(url.utf8).base64EncodedString()
+
+        self.externalReference = ExternalReference(
+            id: "\(groupId)-\(spentDate.timeIntervalSince1970)",
+            groupID: groupId,
+            permalink: url
+        )
+
+    }
+
+}
+
+public struct ExternalReference {
+
+    public let id: String
+    public let groupID: String
+    public let permalink: String
+
+    public init(id: String, groupID: String, permalink: String) {
+        self.id = id
+        self.groupID = groupID
+        self.permalink = permalink
+    }
+
+}

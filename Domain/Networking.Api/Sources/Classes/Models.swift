@@ -272,6 +272,50 @@ public struct Client: Codable {
 
 }
 
+public struct StartTimerData: Codable {
+
+    public let projectID: String
+    public let taskID: String
+    public let spentDate: HarvestApiDate
+    public let notes: String
+    public let externalReference: ExternalReference
+
+    enum CodingKeys: String, CodingKey {
+        case projectID = "project_id"
+        case taskID = "task_id"
+        case spentDate = "spent_date"
+        case notes = "notes"
+        case externalReference = "external_reference"
+    }
+
+    public init(projectID: String, taskID: String, spentDate: Date, notes: String, externalReference: ExternalReference) {
+        self.projectID = projectID
+        self.taskID = taskID
+        self.spentDate = HarvestApiDate(date: spentDate)
+        self.notes = notes
+        self.externalReference = externalReference
+    }
+
+}
+
+public struct ExternalReference: Codable {
+    public let id: String
+    public let groupID: String
+    public let permalink: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case groupID = "group_id"
+        case permalink = "permalink"
+    }
+
+    public init(id: String, groupID: String, permalink: String) {
+        self.id = id
+        self.groupID = groupID
+        self.permalink = permalink
+    }
+}
+
 public struct HarvestApiDate: Codable {
 
     enum Error: RichHarvestError {

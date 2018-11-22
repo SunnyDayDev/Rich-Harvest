@@ -8,6 +8,8 @@ class HarvestRepositoryMappers {
 
     var fromApi: FromApi { return FromApi() }
 
+    var fromPlain: FromPlain { return FromPlain() }
+
     class FromApi {
 
         var toPlain: ToPlain { return ToPlain() }
@@ -143,6 +145,42 @@ class HarvestRepositoryMappers {
                     TaskPlain(
                         id: dto.id,
                         name: dto.name
+                    )
+                }
+            }
+
+        }
+
+    }
+
+    class FromPlain {
+
+        var toApi: ToApi { return ToApi() }
+
+        class ToApi {
+
+            var startTimerData: (StartTimerDataPlain) -> StartTimerDataDto {
+
+                let referenceMapper = self.externalReference
+
+                return { plain in
+                    StartTimerDataDto(
+                        projectID: plain.projectID,
+                        taskID: plain.taskID,
+                        spentDate: plain.spentDate,
+                        notes: plain.notes,
+                        externalReference: referenceMapper(plain.externalReference)
+                    )
+                }
+
+            }
+
+            var externalReference: (ExternalReferencePlain) -> ExternalReferenceDto {
+                return { plain in
+                    ExternalReferenceDto(
+                        id: plain.id,
+                        groupID: plain.groupID,
+                        permalink: plain.permalink
                     )
                 }
             }

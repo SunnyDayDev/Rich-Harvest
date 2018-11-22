@@ -73,6 +73,8 @@ public class TimerViewController: NSViewController {
             .bind(to: viewModel.notes)
             .disposed(by: dispose)
 
+        startButton.rx.tap.bind(to: viewModel.startTap).disposed(by: dispose)
+
     }
 
     public override func viewWillAppear() {

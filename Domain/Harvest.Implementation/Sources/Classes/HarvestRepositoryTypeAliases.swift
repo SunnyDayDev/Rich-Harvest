@@ -15,6 +15,8 @@ typealias TaskAssignmentsDto = RichHarvest_Domain_Networking_Api.TaskAssignments
 typealias TaskAssignmentDto = RichHarvest_Domain_Networking_Api.TaskAssignment
 typealias ProjectDto = RichHarvest_Domain_Networking_Api.Project
 typealias TaskDto = RichHarvest_Domain_Networking_Api.Task
+typealias StartTimerDataDto = RichHarvest_Domain_Networking_Api.StartTimerData
+typealias ExternalReferenceDto = RichHarvest_Domain_Networking_Api.ExternalReference
 
 typealias ProjectsPlain = RichHarvest_Domain_Harvest_Api.Projects
 typealias ProjectDetailPlain = RichHarvest_Domain_Harvest_Api.ProjectDetail
@@ -24,3 +26,5 @@ typealias TaskAssignmentsPlain = RichHarvest_Domain_Harvest_Api.TaskAssignments
 typealias TaskAssignmentPlain = RichHarvest_Domain_Harvest_Api.TaskAssignment
 typealias ProjectPlain = RichHarvest_Domain_Harvest_Api.Project
 typealias TaskPlain = RichHarvest_Domain_Harvest_Api.Task
+typealias StartTimerDataPlain = RichHarvest_Domain_Harvest_Api.StartTimerData
+typealias ExternalReferencePlain = RichHarvest_Domain_Harvest_Api.ExternalReference
