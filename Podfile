@@ -16,6 +16,9 @@ target 'Rich Harvest' do
   pod 'RichHarvest.Domain.Auth.Api', :path => 'Domain/Auth.Api'
   pod 'RichHarvest.Domain.Auth.Implementation', :path => 'Domain/Auth.Implementation'
 
+  pod 'RichHarvest.Domain.Rules.Api', :path => 'Domain/Rules/Rules.Api'
+  pod 'RichHarvest.Domain.Rules.Implementation', :path => 'Domain/Rules/Rules.Implementation'
+
   pod 'RichHarvest.Domain.Harvest.Api', :path => 'Domain/Harvest.Api'
   pod 'RichHarvest.Domain.Harvest.Implementation', :path => 'Domain/Harvest.Implementation'
   pod 'RichHarvest.Feature.Rules', :path => 'Feature/Rules'
@@ -43,6 +46,9 @@ target 'Rich Harvest Extension' do
 
   pod 'RichHarvest.Domain.Harvest.Api', :path => 'Domain/Harvest.Api'
   pod 'RichHarvest.Domain.Harvest.Implementation', :path => 'Domain/Harvest.Implementation'
+
+  pod 'RichHarvest.Domain.Rules.Api', :path => 'Domain/Rules/Rules.Api'
+  pod 'RichHarvest.Domain.Rules.Implementation', :path => 'Domain/Rules/Rules.Implementation'
 
   pod 'RichHarvest.Feature.Auth', :path => 'Feature/Auth'
   pod 'RichHarvest.Feature.Timer', :path => 'Feature/Timer'

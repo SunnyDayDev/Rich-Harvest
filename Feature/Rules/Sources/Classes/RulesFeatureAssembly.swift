@@ -7,6 +7,7 @@ import Foundation
 import Swinject
 
 import RichHarvest_Core_Core
+import RichHarvest_Domain_Rules_Api
 
 public extension Bundle {
 
@@ -33,6 +34,7 @@ public class RulesFeatureAssembly: Assembly {
 
         container.register(RulesViewModel.self) { (r: Resolver) in
             RulesViewModel(
+                repository: r.resolve(RulesRepository.self)!,
                 schedulers: r.resolve(Schedulers.self)!
             )
         }

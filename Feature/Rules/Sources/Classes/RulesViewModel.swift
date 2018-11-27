@@ -8,14 +8,16 @@ import RxSwift
 import RxCocoa
 
 import RichHarvest_Core_Core
+import RichHarvest_Domain_Rules_Api
 
 class RulesViewModel {
 
+    private let repository: RulesRepository
     private let schedulers: Schedulers
 
-    init(schedulers: Schedulers) {
+    init(repository: RulesRepository, schedulers: Schedulers) {
+        self.repository = repository
         self.schedulers = schedulers
-        Log.debug("Initiated")
     }
 
     deinit {

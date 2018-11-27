@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint RichHarvest.Feature.Rules.podspec' to ensure this is a
+# Be sure to run `pod lib lint RichHarvest.Domain.Rules.Api.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 
-  s.name             = 'RichHarvest.Feature.Rules'
+  s.name             = 'RichHarvest.Domain.Rules.Api'
   s.version          = '0.1.0'
   s.summary          = 'Rich harvest Module'
 
@@ -23,14 +23,12 @@ Pod::Spec.new do |s|
   s.source_files = 'Sources/Classes/**/*'
 
   s.resource_bundles = {
-    'RichHarvest.Feature.Rules' => ['Sources/Assets/**/*']
+    'RichHarvest.Domain.Rules.Api' => ['Sources/Assets/**/*']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = #'UIKit', 'MapKit'
 
-  s.dependency 'RichHarvest.Core.UI'
-
-  s.dependency 'RichHarvest.Domain.Rules.Api'
+  s.dependency 'RichHarvest.Core.Core'
 
 end

@@ -12,6 +12,7 @@ import RichHarvest_Core_Core
 import RichHarvest_Domain_Networking_Implementation
 import RichHarvest_Domain_Auth_Implementation
 import RichHarvest_Domain_Harvest_Implementation
+import RichHarvest_Domain_Rules_Implementation
 
 import RichHarvest_Feature_Auth
 import RichHarvest_Feature_Timer
@@ -35,6 +36,7 @@ let DependencyResolver: Resolver = {
         NetworkingDomainAssembly(),
         AuthDomainAssembly(),
         HarvestDomainAssembly(),
+        RulesDomainAssembly(),
 
         AuthFeatureAssembly(),
         TimerFeatureAssembly(),
