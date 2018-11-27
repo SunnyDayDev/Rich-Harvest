@@ -11,6 +11,7 @@ import RichHarvest_Domain_Auth_Api
 
 import RichHarvest_Feature_Timer
 import RichHarvest_Feature_Auth
+import RichHarvest_Feature_Rules
 
 public extension Bundle {
 
@@ -64,6 +65,7 @@ public class SafariExtensionAssembly: Assembly {
 
             let tabs = [
                 NSTabViewItem(viewController: r.resolve(TimerViewController.self, argument: timerEventSource)!),
+                NSTabViewItem(viewController: r.resolve(RulesViewController.self)!),
                 NSTabViewItem(viewController: r.resolve(AuthViewController.self)!)
             ]
 

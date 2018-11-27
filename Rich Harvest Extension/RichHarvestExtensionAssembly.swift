@@ -15,6 +15,7 @@ import RichHarvest_Domain_Harvest_Implementation
 
 import RichHarvest_Feature_Auth
 import RichHarvest_Feature_Timer
+import RichHarvest_Feature_Rules
 
 import RichHarvest_App_SafariExtension
 
@@ -37,6 +38,7 @@ let DependencyResolver: Resolver = {
 
         AuthFeatureAssembly(),
         TimerFeatureAssembly(),
+        RulesFeatureAssembly(),
 
         SafariExtensionAssembly()
 

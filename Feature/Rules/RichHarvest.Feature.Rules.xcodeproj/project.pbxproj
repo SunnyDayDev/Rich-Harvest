@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		A38E857221AD18DB00DABE3A /* RulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RulesViewModel.swift"; sourceTree = "<group>"; };
-		A38E857321AD18DB00DABE3A /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RulesViewController.swift"; sourceTree = "<group>"; };
-		A38E857421AD18DB00DABE3A /* RulesFeatureAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RulesFeatureAssembly.swift"; sourceTree = "<group>"; };
-		A38E857621AD18DB00DABE3A /* Rules.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Rules.storyboard"; sourceTree = "<group>"; };
-		A38E857721AD18DB00DABE3A /* RichHarvest.Feature.Rules.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RichHarvest.Feature.Rules.podspec"; sourceTree = "<group>"; };
+		A38E857221AD18DB00DABE3A /* RulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewModel.swift; sourceTree = "<group>"; };
+		A38E857321AD18DB00DABE3A /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
+		A38E857421AD18DB00DABE3A /* RulesFeatureAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesFeatureAssembly.swift; sourceTree = "<group>"; };
+		A38E857621AD18DB00DABE3A /* Rules.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rules.storyboard; sourceTree = "<group>"; };
+		A38E857721AD18DB00DABE3A /* RichHarvest.Feature.Rules.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Feature.Rules.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */

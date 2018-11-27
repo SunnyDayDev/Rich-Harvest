@@ -194,7 +194,6 @@
 				A333291C219F165D0068C9C5 /* Resources */,
 				A333294B219F165E0068C9C5 /* Embed App Extensions */,
 				9C31F43414DC71C3E45E0221 /* [CP] Embed Pods Frameworks */,
-				B02B7F839CA197DAE77275CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,7 +213,6 @@
 				A333292D219F165E0068C9C5 /* Sources */,
 				A333292E219F165E0068C9C5 /* Frameworks */,
 				A333292F219F165E0068C9C5 /* Resources */,
-				56917D3D471987ACA2B3E88A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,28 +301,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		56917D3D471987ACA2B3E88A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest Extension/Pods-Rich Harvest Extension-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Core.UI/RichHarvest.Core.UI.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Core.UI.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest Extension/Pods-Rich Harvest Extension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9B874712A9DC1783CE5C673C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,6 +334,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Core.Core/RichHarvest_Core_Core.framework",
+				"${BUILT_PRODUCTS_DIR}/RichHarvest.Core.UI/RichHarvest_Core_UI.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Domain.Auth.Api/RichHarvest_Domain_Auth_Api.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Domain.Auth.Implementation/RichHarvest_Domain_Auth_Implementation.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Domain.Harvest.Api/RichHarvest_Domain_Harvest_Api.framework",
@@ -381,6 +358,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Core_Core.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Core_UI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Domain_Auth_Api.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Domain_Auth_Implementation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Domain_Harvest_Api.framework",
@@ -401,28 +379,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B02B7F839CA197DAE77275CB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Core.UI/RichHarvest.Core.UI.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Core.UI.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F80DFA0F1B15559CE9F59AFA /* [CP] Check Pods Manifest.lock */ = {
