@@ -57,6 +57,16 @@
             location = "group:Domain/Networking.Implementation/RichHarvest.Domain.Networking.Implementation.xcodeproj">
          </FileRef>
       </Group>
+      <Group
+         location = "container:"
+         name = "Rules">
+         <FileRef
+            location = "group:Domain/Rules/Rules.Api/RichHarvest.Domain.Rules.Api.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:Domain/Rules/Rules.Implementation/RichHarvest.Domain.Rules.Implementation.xcodeproj">
+         </FileRef>
+      </Group>
    </Group>
    <Group
       location = "container:"
