@@ -8,7 +8,7 @@
         <!--${M_N|capitalize}-->
         <scene sceneID="HAf-S3-piX">
             <objects>
-                <viewController title="${M_N|capitalize}" id="CLw-hA-d1M" sceneMemberID="viewController">
+                <viewController title="${M_N|capitalize}" storyboardIdentifier="${M_N|capitalize}ViewController" id="CLw-hA-d1M" sceneMemberID="viewController">
                     <view key="view" id="Jwv-wM-5oI">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

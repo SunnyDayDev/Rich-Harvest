@@ -8,7 +8,7 @@
         <!--Rules-->
         <scene sceneID="HAf-S3-piX">
             <objects>
-                <viewController title="Rules" id="CLw-hA-d1M" sceneMemberID="viewController">
+                <viewController title="Rules" storyboardIdentifier="RulesViewController" id="CLw-hA-d1M" customClass="RulesViewController" customModule="RichHarvest_Feature_Rules" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Jwv-wM-5oI">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
