@@ -97,11 +97,15 @@ class HarvestApiImplementation: HarvestApi {
                 guard let session = session else {
                     throw NetworkError.sessionNotExists
                 }
-                return [
-                    "Authorization": "Bearer \(session.personalToken)",
-                    "Harvest-Account-Id": "\(session.accountId)"
-                ]
+                return self.authHeaders(forSession: session)
             }
+    }
+
+    private func authHeaders(forSession session: HarvestApiSession) -> [String: String]{
+        return [
+            "Authorization": "Bearer \(session.personalToken)",
+            "Harvest-Account-Id": "\(session.accountId)"
+        ]
     }
 
     private func request<T: Decodable>(

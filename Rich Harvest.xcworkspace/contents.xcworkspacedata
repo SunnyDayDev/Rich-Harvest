@@ -67,5 +67,8 @@
       <FileRef
          location = "group:Feature/Timer/RichHarvest.Feature.Timer.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:Feature/Rules/RichHarvest.Feature.Rules.xcodeproj">
+      </FileRef>
    </Group>
 </Workspace>

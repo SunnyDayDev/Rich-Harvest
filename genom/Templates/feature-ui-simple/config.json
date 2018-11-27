@@ -1,0 +1,16 @@
+{
+  "description": "UI Feature module.",
+  "path": "../Feature/${M_N|capitalize}",
+  "values": { },
+  "variables": [
+    {
+      "name": "M_N",
+      "type": "String",
+      "description": "Module name",
+      "consoleKey": ["n", "name"]
+    }
+  ],
+  "scripts": {
+
+  }
+}

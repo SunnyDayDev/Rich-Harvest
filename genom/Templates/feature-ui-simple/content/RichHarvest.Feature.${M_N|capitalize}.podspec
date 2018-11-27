@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint RichHarvest.App.SafariExtension.podspec' to ensure this is a
+# Be sure to run `pod lib lint RichHarvest.Feature.${M_N|capitalize}.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 
-  s.name             = 'RichHarvest.App.SafariExtension'
+  s.name             = 'RichHarvest.Feature.${M_N|capitalize}'
   s.version          = '0.1.0'
   s.summary          = 'Rich harvest Module'
 
@@ -23,16 +23,12 @@ Pod::Spec.new do |s|
   s.source_files = 'Sources/Classes/**/*'
 
   s.resource_bundles = {
-    'RichHarvest.App.SafariExtension' => ['Sources/Assets/**/*']
+    'RichHarvest.Feature.${M_N|capitalize}' => ['Sources/Assets/**/*']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = #'UIKit', 'MapKit'
 
-  s.dependency 'RichHarvest.Core.Core'
-
-  s.dependency 'RichHarvest.Feature.Auth'
-  s.dependency 'RichHarvest.Feature.Timer'
-  s.dependency 'RichHarvest.Feature.Rules'
+  s.dependency 'RichHarvest.Core.UI'
 
 end
