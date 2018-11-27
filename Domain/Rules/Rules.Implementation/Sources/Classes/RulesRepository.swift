@@ -20,4 +20,12 @@ class RulesRepositoryImplementation: RulesRepository {
         self.schedulers = schedulers
     }
 
+    func rules() -> Observable<[UrlCheckRule]> {
+        fatalError("rules() has not been implemented")
+    }
+
+    func store(rule: UrlCheckRule) -> Completable {
+        fatalError("store(rule:) has not been implemented")
+    }
+
 }

@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.homepage         = 'https://ima.org.il'
 
-  s.author           = { 'Aleksandr Tcikin' => 'mail@sunnydaydev.me' }
+  s.author           = { 'Aleksandr Tcikin' => 'maisl@sunnydaydev.me' }
 
   s.source           = { :path => '../' }
 
@@ -28,6 +28,8 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = #'UIKit', 'MapKit'
+
+  # s.dependency 'RealmSwift', '3.12.0'
 
   s.dependency 'RichHarvest.Core.Core'
   s.dependency 'RichHarvest.Domain.Rules.Api'

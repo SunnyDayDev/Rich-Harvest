@@ -35,7 +35,8 @@ public class RulesFeatureAssembly: Assembly {
         container.register(RulesViewModel.self) { (r: Resolver) in
             RulesViewModel(
                 repository: r.resolve(RulesRepository.self)!,
-                schedulers: r.resolve(Schedulers.self)!
+                schedulers: r.resolve(Schedulers.self)!,
+                itemFactory: RuleItemViewModel.Factory()
             )
         }
 
