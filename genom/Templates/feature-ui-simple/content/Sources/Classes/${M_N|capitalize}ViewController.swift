@@ -12,7 +12,7 @@ import RichHarvest_Core_UI
 
 public class ${M_N|capitalize}ViewController: NSViewController {
     
-    var viewModel: ${M_N|capitalize}ViewModel!
+    private var viewModel: ${M_N|capitalize}ViewModel!
 
     private let dispose = DisposeBag()
 
