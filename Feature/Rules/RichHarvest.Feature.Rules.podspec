@@ -32,5 +32,6 @@ Pod::Spec.new do |s|
   s.dependency 'RichHarvest.Core.UI'
 
   s.dependency 'RichHarvest.Domain.Rules.Api'
+  s.dependency 'RichHarvest.Domain.Harvest.Api'
 
 end

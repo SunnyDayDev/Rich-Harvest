@@ -17,6 +17,8 @@ public protocol HarvestRepository {
                          page: Int,
                          perPage: Int) -> Single<TaskAssignments>
 
+    func task(byId id: Int) -> Single<TaskDetail>
+
     func startTimer(withData: StartTimerData) -> Completable
 
 }

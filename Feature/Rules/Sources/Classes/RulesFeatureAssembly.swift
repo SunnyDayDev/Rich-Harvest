@@ -8,6 +8,7 @@ import Swinject
 
 import RichHarvest_Core_Core
 import RichHarvest_Domain_Rules_Api
+import RichHarvest_Domain_Harvest_Api
 
 public extension Bundle {
 
@@ -33,11 +34,18 @@ public class RulesFeatureAssembly: Assembly {
     public func assemble(container: Container) {
 
         container.register(RulesViewModel.self) { (r: Resolver) in
-            RulesViewModel(
-                repository: r.resolve(RulesRepository.self)!,
-                schedulers: r.resolve(Schedulers.self)!,
-                itemFactory: RuleItemViewModel.Factory()
+
+            let interactor = RulesInteractor(
+                rulesRepository: r.resolve(RulesRepository.self)!,
+                harvestRepository: r.resolve(HarvestRepository.self)!
             )
+
+            return RulesViewModel(
+                interactor: interactor,
+                schedulers: r.resolve(Schedulers.self)!,
+                itemFactory: RuleItemViewModel.Factory(interactor: interactor)
+            )
+
         }
 
         container.register(RulesViewController.self) { (r: Resolver) in

@@ -100,6 +100,11 @@ public struct ProjectDetail {
 
 }
 
+public struct TaskDetail {
+    public let id: Int
+    public let name: String
+}
+
 public struct Client {
 
     public let id: Int

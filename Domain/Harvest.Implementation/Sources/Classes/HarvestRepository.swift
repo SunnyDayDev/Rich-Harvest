@@ -72,6 +72,10 @@ class HarvestRepositoryImplementation: HarvestRepository {
             .map(mapper)
     }
 
+    func task(byId id: Int) -> Single<TaskDetail> {
+        return Single.error(CoreError.notImplemented(message: "task(byId id: Int) is not implemented yet."))
+    }
+
     func startTimer(withData data: StartTimerDataPlain) -> Completable {
 
         let dto = mappers.fromPlain.toApi.startTimerData(data)

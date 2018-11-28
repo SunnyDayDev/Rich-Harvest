@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		68B69D5A20103D5AAFCEFE5D /* RulesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesInteractor.swift; sourceTree = "<group>"; };
 		A38E857221AD18DB00DABE3A /* RulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewModel.swift; sourceTree = "<group>"; };
 		A38E857321AD18DB00DABE3A /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
 		A38E857421AD18DB00DABE3A /* RulesFeatureAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesFeatureAssembly.swift; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 				A38E857221AD18DB00DABE3A /* RulesViewModel.swift */,
 				A38E857321AD18DB00DABE3A /* RulesViewController.swift */,
 				A38E857421AD18DB00DABE3A /* RulesFeatureAssembly.swift */,
+				68B69D5A20103D5AAFCEFE5D /* RulesInteractor.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
