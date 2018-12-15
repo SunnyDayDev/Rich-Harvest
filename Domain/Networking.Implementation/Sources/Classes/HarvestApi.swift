@@ -17,6 +17,8 @@ class HarvestApiImplementation: HarvestApi {
 
         static let host = "https://api.harvestapp.com/v2/"
 
+        static let clients = "\(host)clients/"
+
         static let projects = "\(host)projects/"
 
         static func project(id: Int) -> String { return "\(projects)\(id)/" }
@@ -32,7 +34,7 @@ class HarvestApiImplementation: HarvestApi {
         case page = "page"
         case perPage = "per_page"
         case updatedSince = "updated_since"
-        case clientId = "clientId"
+        case clientId = "client_id"
     }
 
     private let sessionManager: HarvestApiSessionManager
@@ -44,8 +46,16 @@ class HarvestApiImplementation: HarvestApi {
         self.urlSessionManager = urlSessionManager
     }
 
+    func clients(isActive: Bool) -> Single<Clients> {
+
+        let params: [UrlParam: Any?] = [.isActive: isActive ? "true" : "false"]
+
+        return authorized { self.request(.get, Urls.clients, parameters: params, headers: $0) }
+
+    }
+
     func projects(isActive: Bool,
-                  clientId: String?,
+                  clientId: Int?,
                   updatedSince: Date?,
                   page: Int,
                   perPage: Int) -> Single<Projects> {

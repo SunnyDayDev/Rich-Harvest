@@ -7,6 +7,9 @@ import Foundation
 import RichHarvest_Domain_Harvest_Api
 import RichHarvest_Domain_Networking_Api
 
+
+typealias ClientsDto = RichHarvest_Domain_Networking_Api.Clients
+typealias ClientDetailDto = RichHarvest_Domain_Networking_Api.ClientDetail
 typealias ProjectsDto = RichHarvest_Domain_Networking_Api.Projects
 typealias ProjectDetailDto = RichHarvest_Domain_Networking_Api.ProjectDetail
 typealias ClientDto = RichHarvest_Domain_Networking_Api.Client
@@ -18,6 +21,8 @@ typealias TaskDto = RichHarvest_Domain_Networking_Api.Task
 typealias StartTimerDataDto = RichHarvest_Domain_Networking_Api.StartTimerData
 typealias ExternalReferenceDto = RichHarvest_Domain_Networking_Api.ExternalReference
 
+typealias ClientsPlain = RichHarvest_Domain_Harvest_Api.Clients
+typealias ClientDetailPlain = RichHarvest_Domain_Harvest_Api.ClientDetail
 typealias ProjectsPlain = RichHarvest_Domain_Harvest_Api.Projects
 typealias ProjectDetailPlain = RichHarvest_Domain_Harvest_Api.ProjectDetail
 typealias ClientPlain = RichHarvest_Domain_Harvest_Api.Client

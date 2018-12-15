@@ -82,7 +82,7 @@ class RuleCell: NSTableCellView {
         dispose = DisposeBag()
 
         viewModel.name.drive(nameTextField.rx.text).disposed(by: dispose)
-        viewModel.regex.drive(regexTextField.rx.text).disposed(by: dispose)
+        viewModel.value.drive(regexTextField.rx.text).disposed(by: dispose)
         viewModel.project.map { "\($0):" } .drive(projectTextField.rx.text).disposed(by: dispose)
         viewModel.task.drive(taskTextField.rx.text).disposed(by: dispose)
 

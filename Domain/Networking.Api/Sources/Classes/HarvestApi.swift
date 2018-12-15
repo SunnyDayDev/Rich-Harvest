@@ -14,7 +14,9 @@ public enum NetworkError: RichHarvestError {
 
 public protocol HarvestApi {
 
-    func projects(isActive: Bool, clientId: String?, updatedSince: Date?, page: Int, perPage: Int) -> Single<Projects>
+    func clients(isActive: Bool) -> Single<Clients>
+
+    func projects(isActive: Bool, clientId: Int?, updatedSince: Date?, page: Int, perPage: Int) -> Single<Projects>
 
     func project(byId: Int) -> Single<ProjectDetail>
 
@@ -30,9 +32,13 @@ public protocol HarvestApi {
 
 public extension HarvestApi {
 
+    func clients(isActive: Bool = true) -> Single<Clients> {
+        return clients(isActive: true)
+    }
+
     func projects(
         isActive: Bool = true,
-        clientId: String? =  nil,
+        clientId: Int? =  nil,
         updatedSince since: Date? = nil,
         page: Int = 1,
         perPage: Int = 100

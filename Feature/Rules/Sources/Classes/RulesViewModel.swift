@@ -66,19 +66,22 @@ class RuleItemViewModel {
     let name: Driver<String>
     let project: Driver<String>
     let task: Driver<String>
-    let regex: Driver<String>
+    let value: Driver<String>
 
     init(rule: UrlCheckRule, interactor: RulesInteractor) {
 
         name = Driver.just(rule.name)
-        regex = Driver.just(rule.regex)
 
-        project = interactor.project(byId: rule.projectId)
+        switch rule.rule {
+        case let .regex(expr): value = Driver.just(expr)
+        }
+
+        project = interactor.project(byId: rule.result.projectId)
             .map { $0.name }
             .asDriver(onErrorJustReturn: "<unknown>")
 
         task = interactor
-            .task(byId: rule.taskId).map { $0.name }
+            .task(byId: rule.result.taskId).map { $0.name }
             .asDriver(onErrorJustReturn: "<unknown>")
 
     }

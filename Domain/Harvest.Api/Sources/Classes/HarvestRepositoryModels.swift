@@ -105,6 +105,64 @@ public struct TaskDetail {
     public let name: String
 }
 
+public struct Clients {
+
+    public let clients: [ClientDetail]
+    public let perPage: Int
+    public let totalPages: Int
+    public let totalEntries: Int
+    public let nextPage: Int?
+    public let previousPage: Int?
+    public let page: Int
+    public let links: Links
+
+    public init(clients: [ClientDetail],
+                perPage: Int,
+                totalPages: Int,
+                totalEntries: Int,
+                nextPage: Int?,
+                previousPage: Int?,
+                page: Int,
+                links: Links) {
+        self.clients = clients
+        self.perPage = perPage
+        self.totalPages = totalPages
+        self.totalEntries = totalEntries
+        self.nextPage = nextPage
+        self.previousPage = previousPage
+        self.page = page
+        self.links = links
+    }
+
+}
+
+public struct ClientDetail {
+
+    public let id: Int
+    public let name: String
+    public let isActive: Bool
+    public let address: String?
+    public let createdAt: Date
+    public let updatedAt: Date
+    public let currency: String
+
+    public init(id: Int, name: String,
+                isActive: Bool,
+                address: String?,
+                createdAt: Date,
+                updatedAt: Date,
+                currency: String) {
+        self.id = id
+        self.name = name
+        self.isActive = isActive
+        self.address = address
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.currency = currency
+    }
+
+}
+
 public struct Client {
 
     public let id: Int

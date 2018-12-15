@@ -7,7 +7,9 @@ import RxSwift
 
 public protocol HarvestRepository {
 
-    func projects(isActive: Bool, clientId: String?, updatedSince: Date?, page: Int, perPage: Int) -> Single<Projects>
+    func clients(isActive: Bool) -> Single<Clients>
+
+    func projects(isActive: Bool, clientId: Int?, updatedSince: Date?, page: Int, perPage: Int) -> Single<Projects>
 
     func project(byId: Int) -> Single<ProjectDetail>
 
@@ -26,7 +28,7 @@ public protocol HarvestRepository {
 public extension HarvestRepository {
 
     func projects(isActive: Bool = true,
-                  clientId: String? =  nil,
+                  clientId: Int? =  nil,
                   updatedSince since: Date? = nil,
                   page: Int = 1,
                   perPage: Int = 100) -> Single<Projects> {
@@ -39,6 +41,10 @@ public extension HarvestRepository {
                          page: Int = 1,
                          perPage: Int = 100) -> Single<TaskAssignments> {
         return taskAssignments(byProjectId: id, isActive: isActive, updatedSince: since, page: page, perPage: perPage)
+    }
+
+    func clients(isActive: Bool = true) -> Single<Clients> {
+        return clients(isActive: true)
     }
 
 }
