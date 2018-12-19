@@ -50,10 +50,10 @@ class TimerViewModel {
         self.schedulers = schedulers
         self.eventsSource = eventsSource
 
-        self.clients = clientsRelay.map { $0.map { $0.name } } .asDriver(onErrorJustReturn: [])
-        self.projects = projectsRelay.map { $0.map { $0.name } } .asDriver(onErrorJustReturn: [])
-        self.tasks = tasksRelay.map { $0.map { $0.name } } .asDriver(onErrorJustReturn: [])
-        self.url = urlRelay.asDriver()
+        self.clients = clientsRelay.asDriver().map { $0.map { $0.name } }
+        self.projects = projectsRelay.asDriver().map { $0.map { $0.name } }
+        self.tasks = tasksRelay.asDriver().map { $0.map { $0.name } }
+        self.url = urlRelay.asDriver().map { $0.removingPercentEncoding ?? "" }
 
         initSources()
         initActions()
@@ -84,7 +84,7 @@ class TimerViewModel {
             .subscribe(onNext: { [urlRelay, notes] (event: TimerEvent) in
                 switch event {
                 case let .pageOpened(url, title):
-                    urlRelay.accept(url?.absoluteString.removingPercentEncoding ?? "")
+                    urlRelay.accept(url?.absoluteString ?? "")
                     notes.accept(title)
                 }
             })

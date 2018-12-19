@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import RichHarvest_Core_Core
 
 public struct Projects {
 
@@ -280,10 +281,10 @@ public extension StartTimerData {
         self.spentDate = spentDate
         self.notes = notes
 
-        let groupId = Data(url.utf8).base64EncodedString()
+        let groupId = url.utf8.md5.rawValue
 
         self.externalReference = ExternalReference(
-            id: "\(groupId)-\(spentDate.timeIntervalSince1970)",
+            id: "\(groupId)-\(Int(spentDate.timeIntervalSince1970))",
             groupID: groupId,
             permalink: url
         )
