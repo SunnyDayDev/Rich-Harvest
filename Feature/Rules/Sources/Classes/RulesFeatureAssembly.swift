@@ -40,10 +40,12 @@ public class RulesFeatureAssembly: Assembly {
                 harvestRepository: r.resolve(HarvestRepository.self)!
             )
 
+            let schedulers = r.resolve(Schedulers.self)!
+
             return RulesViewModel(
                 interactor: interactor,
-                schedulers: r.resolve(Schedulers.self)!,
-                itemFactory: RuleItemViewModel.Factory(interactor: interactor)
+                schedulers: schedulers,
+                itemFactory: RuleItemViewModel.Factory(interactor: interactor, schedulers: schedulers)
             )
 
         }

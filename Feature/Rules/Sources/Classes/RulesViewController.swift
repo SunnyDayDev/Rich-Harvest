@@ -70,20 +70,23 @@ extension RulesViewController: NSTableViewDataSource, NSTableViewDelegate {
 }
 
 class RuleCell: NSTableCellView {
-    
+
     @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var regexTextField: NSTextField!
+    @IBOutlet weak var clientTextField: NSTextField!
     @IBOutlet weak var projectTextField: NSTextField!
     @IBOutlet weak var taskTextField: NSTextField!
     
     private var dispose: DisposeBag!
 
     func bind(viewModel: RuleItemViewModel) {
+
         dispose = DisposeBag()
 
         viewModel.name.drive(nameTextField.rx.text).disposed(by: dispose)
         viewModel.value.drive(regexTextField.rx.text).disposed(by: dispose)
-        viewModel.project.map { "\($0):" } .drive(projectTextField.rx.text).disposed(by: dispose)
+        viewModel.client.drive(clientTextField.rx.text).disposed(by: dispose)
+        viewModel.project.drive(projectTextField.rx.text).disposed(by: dispose)
         viewModel.task.drive(taskTextField.rx.text).disposed(by: dispose)
 
     }

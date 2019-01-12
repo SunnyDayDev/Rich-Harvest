@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint RichHarvest.Domain.Rules.Implementation.podspec' to ensure this is a
+# Be sure to run `pod lib lint RichHarvest.Feature.Timer.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -8,13 +8,13 @@
 
 Pod::Spec.new do |s|
 
-  s.name             = 'RichHarvest.Domain.Rules.Implementation'
+  s.name             = 'RichHarvest.Feature.Timer'
   s.version          = '0.1.0'
   s.summary          = 'Rich harvest Module'
 
   s.homepage         = 'https://ima.org.il'
 
-  s.author           = { 'Aleksandr Tcikin' => 'maisl@sunnydaydev.me' }
+  s.author           = { 'Aleksandr Tcikin' => 'mail@sunnydaydev.me' }
 
   s.source           = { :path => '../' }
 
@@ -23,20 +23,15 @@ Pod::Spec.new do |s|
   s.source_files = 'Sources/Classes/**/*'
 
   s.resource_bundles = {
-    'RichHarvest.Domain.Rules.Implementation' => ['Sources/Assets/**/*']
+    'RichHarvest.Feature.Timer' => ['Sources/Assets/**/*']
   }
-
-  s.static_framework = true
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = #'UIKit', 'MapKit'
 
-  # s.dependency 'RealmSwift', '3.12.0'
+  s.dependency 'RichHarvest.Core.UI'
 
-  s.dependency 'FirebaseCore', '5.1.9'
-  s.dependency 'FirebaseDatabase', '5.0.4'
-
-  s.dependency 'RichHarvest.Core.Core'
+  s.dependency 'RichHarvest.Domain.Harvest.Api'
   s.dependency 'RichHarvest.Domain.Rules.Api'
 
 end

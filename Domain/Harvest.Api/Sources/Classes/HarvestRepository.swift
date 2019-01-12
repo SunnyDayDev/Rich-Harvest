@@ -11,6 +11,8 @@ public protocol HarvestRepository {
 
     func projects(isActive: Bool, clientId: Int?, updatedSince: Date?, page: Int, perPage: Int) -> Single<Projects>
 
+    func client(byId: Int) -> Single<ClientDetail>
+
     func project(byId: Int) -> Single<ProjectDetail>
 
     func taskAssignments(byProjectId: Int,

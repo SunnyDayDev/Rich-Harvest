@@ -8,6 +8,7 @@ import RxSwift
 import RxCocoa
 
 import RichHarvest_Core_Core
+import RichHarvest_Core_UI
 import RichHarvest_Domain_Rules_Api
 
 class RulesViewModel {
@@ -64,11 +65,12 @@ class RulesViewModel {
 class RuleItemViewModel {
 
     let name: Driver<String>
+    let value: Driver<String>
+    let client: Driver<String>
     let project: Driver<String>
     let task: Driver<String>
-    let value: Driver<String>
 
-    init(rule: UrlCheckRule, interactor: RulesInteractor) {
+    init(rule: UrlCheckRule, interactor: RulesInteractor, schedulers: Schedulers) {
 
         name = Driver.just(rule.name)
 
@@ -76,26 +78,53 @@ class RuleItemViewModel {
         case let .regex(expr): value = Driver.just(expr)
         }
 
-        project = interactor.project(byId: rule.result.projectId)
-            .map { $0.name }
-            .asDriver(onErrorJustReturn: "<unknown>")
+        let retryAfterTimeout: (Observable<Error>) -> Observable<()> = { errs in
+            errs.switchToWait(1, scheduler: schedulers.background)
+        }
 
-        task = interactor
-            .task(byId: rule.result.taskId).map { $0.name }
-            .asDriver(onErrorJustReturn: "<unknown>")
+        let unset = Driver.just("Unset")
+
+        if rule.result.clientId != UrlCheckRule.UNSPECIFIED {
+            client = interactor.client(byId: rule.result.clientId)
+                .retryWhen(retryAfterTimeout)
+                .map { $0.name }
+                .asDriver(onErrorJustReturn: "<unknown>")
+        } else {
+            client = unset
+        }
+
+        if rule.result.projectId != UrlCheckRule.UNSPECIFIED {
+            project = interactor.project(byId: rule.result.projectId)
+                .retryWhen(retryAfterTimeout)
+                .map { $0.name }
+                .asDriver(onErrorJustReturn: "<unknown>")
+        } else {
+            project = unset
+        }
+
+        if rule.result.taskId != UrlCheckRule.UNSPECIFIED {
+            task = interactor.task(byId: rule.result.taskId)
+                .retryWhen(retryAfterTimeout)
+                .map { $0.name }
+                .asDriver(onErrorJustReturn: "<unknown>")
+        } else {
+            task = unset
+        }
 
     }
 
     class Factory {
 
         private let interactor: RulesInteractor
+        private let schedulers: Schedulers
 
-        init(interactor: RulesInteractor) {
+        init(interactor: RulesInteractor, schedulers: Schedulers) {
             self.interactor = interactor
+            self.schedulers = schedulers
         }
 
         func create(by rule: UrlCheckRule) -> RuleItemViewModel {
-            return RuleItemViewModel(rule: rule, interactor: interactor)
+            return RuleItemViewModel(rule: rule, interactor: interactor, schedulers: schedulers)
         }
 
     }

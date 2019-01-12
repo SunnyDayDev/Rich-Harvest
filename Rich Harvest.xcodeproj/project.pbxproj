@@ -194,6 +194,7 @@
 				A333291C219F165D0068C9C5 /* Resources */,
 				A333294B219F165E0068C9C5 /* Embed App Extensions */,
 				9C31F43414DC71C3E45E0221 /* [CP] Embed Pods Frameworks */,
+				2E03623B54EE7818FB60C7F7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,6 +214,7 @@
 				A333292D219F165E0068C9C5 /* Sources */,
 				A333292E219F165E0068C9C5 /* Frameworks */,
 				A333292F219F165E0068C9C5 /* Resources */,
+				47E1F066CE9C72EFCA2DCD60 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -301,6 +303,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2E03623B54EE7818FB60C7F7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Domain.Rules.Implementation/RichHarvest.Domain.Rules.Implementation.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Domain.Rules.Implementation.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47E1F066CE9C72EFCA2DCD60 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest Extension/Pods-Rich Harvest Extension-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RichHarvest.Domain.Rules.Implementation/RichHarvest.Domain.Rules.Implementation.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RichHarvest.Domain.Rules.Implementation.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest Extension/Pods-Rich Harvest Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9B874712A9DC1783CE5C673C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -333,6 +379,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Rich Harvest/Pods-Rich Harvest-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Core.Core/RichHarvest_Core_Core.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Core.UI/RichHarvest_Core_UI.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Domain.Auth.Api/RichHarvest_Domain_Auth_Api.framework",
@@ -342,7 +389,6 @@
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Domain.Networking.Api/RichHarvest_Domain_Networking_Api.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Domain.Networking.Implementation/RichHarvest_Domain_Networking_Implementation.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Domain.Rules.Api/RichHarvest_Domain_Rules_Api.framework",
-				"${BUILT_PRODUCTS_DIR}/RichHarvest.Domain.Rules.Implementation/RichHarvest_Domain_Rules_Implementation.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Feature.Auth/RichHarvest_Feature_Auth.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Feature.Rules/RichHarvest_Feature_Rules.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
@@ -351,6 +397,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.App.SafariExtension/RichHarvest_App_SafariExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/RichHarvest.Feature.Timer/RichHarvest_Feature_Timer.framework",
 			);
@@ -359,6 +406,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Core_Core.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Core_UI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Domain_Auth_Api.framework",
@@ -368,7 +416,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Domain_Networking_Api.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Domain_Networking_Implementation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Domain_Rules_Api.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Domain_Rules_Implementation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Feature_Auth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Feature_Rules.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
@@ -377,6 +424,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_App_SafariExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichHarvest_Feature_Timer.framework",
 			);
@@ -580,6 +628,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 12DE319C08ED58DE987FDD00 /* Pods-Rich Harvest Extension.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_ENTITLEMENTS = "Rich Harvest Extension/Rich Harvest Extension.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -604,6 +653,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AB3358D2520010D02991DB32 /* Pods-Rich Harvest Extension.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_ENTITLEMENTS = "Rich Harvest Extension/Rich Harvest Extension.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -628,7 +678,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 63F37618B1FD469D72C9089A /* Pods-Rich Harvest.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Rich Harvest/Rich_Harvest.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -651,7 +701,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7E500ECD3AB8341BB2B7BDDC /* Pods-Rich Harvest.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Rich Harvest/Rich_Harvest.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";

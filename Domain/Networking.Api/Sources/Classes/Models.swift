@@ -319,6 +319,41 @@ public struct Task: Codable {
     }
 }
 
+public struct TaskDetail: Codable {
+
+    public let id: Int
+    public let name: String
+    public let billableByDefault: Bool
+    public let defaultHourlyRate: Double?
+    public let isDefault: Bool
+    public let isActive: Bool
+    public let createdAt: Date
+    public let updatedAt: Date
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+        case billableByDefault = "billable_by_default"
+        case defaultHourlyRate = "default_hourly_rate"
+        case isDefault = "is_default"
+        case isActive = "is_active"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+
+    public init(id: Int, name: String, billableByDefault: Bool, defaultHourlyRate: Double?, isDefault: Bool, isActive: Bool, createdAt: Date, updatedAt: Date) {
+        self.id = id
+        self.name = name
+        self.billableByDefault = billableByDefault
+        self.defaultHourlyRate = defaultHourlyRate
+        self.isDefault = isDefault
+        self.isActive = isActive
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
+
+}
+
 public struct Client: Codable {
 
     public let id: Int

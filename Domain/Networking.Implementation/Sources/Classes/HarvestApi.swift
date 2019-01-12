@@ -19,11 +19,17 @@ class HarvestApiImplementation: HarvestApi {
 
         static let clients = "\(host)clients/"
 
+        static func client(id: Int) -> String { return "\(clients)\(id)/" }
+
         static let projects = "\(host)projects/"
 
         static func project(id: Int) -> String { return "\(projects)\(id)/" }
 
         static func taskAssignments(byProjectId id: Int) -> String { return "\(projects)\(id)/task_assignments/" }
+
+        static let tasks = "\(host)tasks/"
+
+        static func task(byId id: Int) -> String { return "\(tasks)\(id)/" }
 
         static let timeEntries = "\(host)time_entries/"
 
@@ -52,6 +58,10 @@ class HarvestApiImplementation: HarvestApi {
 
         return authorized { self.request(.get, Urls.clients, parameters: params, headers: $0) }
 
+    }
+
+    func client(byId id: Int) -> Single<ClientDetail> {
+        return authorized { self.request(.get, Urls.client(id: id), headers: $0) }
     }
 
     func projects(isActive: Bool,
@@ -91,6 +101,10 @@ class HarvestApiImplementation: HarvestApi {
 
         return authorized { self.request(.get, Urls.taskAssignments(byProjectId: id), parameters: params, headers: $0) }
 
+    }
+
+    func task(byId id: Int) -> Single<TaskDetail> {
+        return authorized { self.request(.get, Urls.task(byId: id), headers: $0) }
     }
 
     func startTimer(withData data: StartTimerData) -> Single<StartTimerData> {

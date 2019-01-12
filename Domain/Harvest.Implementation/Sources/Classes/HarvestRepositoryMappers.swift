@@ -182,6 +182,21 @@ class HarvestRepositoryMappers {
                 }
             }
 
+            var taskDetail: (TaskDetailDto) -> TaskDetailPlain {
+                return { dto in
+                    TaskDetailPlain(
+                        id: dto.id,
+                        name: dto.name,
+                        billableByDefault: dto.billableByDefault,
+                        defaultHourlyRate: dto.defaultHourlyRate,
+                        isDefault: dto.isDefault,
+                        isActive: dto.isActive,
+                        createdAt: dto.createdAt,
+                        updatedAt: dto.updatedAt
+                    )
+                }
+            }
+
         }
 
     }

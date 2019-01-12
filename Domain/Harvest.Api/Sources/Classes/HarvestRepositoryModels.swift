@@ -101,11 +101,6 @@ public struct ProjectDetail {
 
 }
 
-public struct TaskDetail {
-    public let id: Int
-    public let name: String
-}
-
 public struct Clients {
 
     public let clients: [ClientDetail]
@@ -250,6 +245,30 @@ public struct Task {
     public init(id: Int, name: String) {
         self.id = id
         self.name = name
+    }
+
+}
+
+public struct TaskDetail {
+
+    public let id: Int
+    public let name: String
+    public let billableByDefault: Bool
+    public let defaultHourlyRate: Double?
+    public let isDefault: Bool
+    public let isActive: Bool
+    public let createdAt: Date
+    public let updatedAt: Date
+
+    public init(id: Int, name: String, billableByDefault: Bool, defaultHourlyRate: Double?, isDefault: Bool, isActive: Bool, createdAt: Date, updatedAt: Date) {
+        self.id = id
+        self.name = name
+        self.billableByDefault = billableByDefault
+        self.defaultHourlyRate = defaultHourlyRate
+        self.isDefault = isDefault
+        self.isActive = isActive
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
     }
 
 }

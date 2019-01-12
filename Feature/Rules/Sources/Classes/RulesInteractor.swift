@@ -14,6 +14,7 @@ class RulesInteractor {
     private let rulesRepository: RulesRepository
     private let harvestRepository: HarvestRepository
 
+    private var clientsCache: [Int: ClientDetail] = [:]
     private var tasksCache: [Int: TaskDetail] = [:]
     private var projectCache: [Int: ProjectDetail] = [:]
 
@@ -23,6 +24,18 @@ class RulesInteractor {
     }
 
     func rules() -> Observable<[UrlCheckRule]> { return rulesRepository.rules() }
+
+    func client(byId id: Int) -> Observable<ClientDetail> {
+        if let cached = clientsCache[id] {
+            return Observable.just(cached)
+        } else {
+            return harvestRepository.client(byId: id).asObservable()
+                .do(onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.clientsCache[id] = $0
+                })
+        }
+    }
 
     func project(byId id: Int) -> Observable<ProjectDetail> {
         if let cached = projectCache[id] {

@@ -16,6 +16,8 @@ public protocol HarvestApi {
 
     func clients(isActive: Bool) -> Single<Clients>
 
+    func client(byId: Int) -> Single<ClientDetail>
+
     func projects(isActive: Bool, clientId: Int?, updatedSince: Date?, page: Int, perPage: Int) -> Single<Projects>
 
     func project(byId: Int) -> Single<ProjectDetail>
@@ -25,6 +27,8 @@ public protocol HarvestApi {
                          updatedSince: Date?,
                          page: Int,
                          perPage: Int) -> Single<TaskAssignments>
+
+    func task(byId: Int) -> Single<TaskDetail>
 
     func startTimer(withData: StartTimerData) -> Single<StartTimerData>
 

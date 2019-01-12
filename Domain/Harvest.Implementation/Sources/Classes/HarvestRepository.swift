@@ -34,6 +34,17 @@ class HarvestRepositoryImplementation: HarvestRepository {
 
     }
 
+    func client(byId id: Int) -> Single<ClientDetailPlain> {
+
+        let mapper = mappers.fromApi.toPlain.clientDetail
+
+        return network.client(byId: id)
+            .subscribeOn(schedulers.io)
+            .observeOn(schedulers.background)
+            .map(mapper)
+
+    }
+
     func projects(
         isActive: Bool, clientId: Int?, updatedSince: Date?, page: Int, perPage: Int
     ) -> Single<ProjectsPlain> {
@@ -83,8 +94,15 @@ class HarvestRepositoryImplementation: HarvestRepository {
             .map(mapper)
     }
 
-    func task(byId id: Int) -> Single<TaskDetail> {
-        return Single.error(CoreError.notImplemented(message: "task(byId id: Int) is not implemented yet."))
+    func task(byId id: Int) -> Single<TaskDetailPlain> {
+
+        let mapper = mappers.fromApi.toPlain.taskDetail
+
+        return network.task(byId: id)
+            .subscribeOn(schedulers.io)
+            .observeOn(schedulers.background)
+            .map(mapper)
+
     }
 
     func startTimer(withData data: StartTimerDataPlain) -> Completable {
