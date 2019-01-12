@@ -11,4 +11,6 @@ public protocol RulesRepository {
 
     func store(rule: UrlCheckRule) -> Completable
 
+    func deleteRule(byId: Int) -> Completable
+
 }

@@ -28,7 +28,7 @@ class RulesRepositoryImplementation: RulesRepository {
             )
         ),
         UrlCheckRule(
-            id: 0,
+            id: 1,
             name: "Gpost.iOS-Programming",
             priority: 1,
             rule: .regex(expr: "https?:\\/\\/gpostcorp\\.atlassian\\.net.*?GI-.*?"),
@@ -39,7 +39,7 @@ class RulesRepositoryImplementation: RulesRepository {
             )
         ),
         UrlCheckRule(
-            id: 0,
+            id: 2,
             name: "Gpost.Android-Programming",
             priority: 1,
             rule: .regex(expr: "https?:\\/\\/gpostcorp\\.atlassian\\.net.*?GA-.*?"),
@@ -50,7 +50,7 @@ class RulesRepositoryImplementation: RulesRepository {
             )
         ),
         UrlCheckRule(
-            id: 0,
+            id: 3,
             name: "Driver.1331",
             priority: 0,
             rule: .regex(expr: "https?:\\/\\/trello.com/b/RGwDru6e/.*?$"),
@@ -61,7 +61,7 @@ class RulesRepositoryImplementation: RulesRepository {
             )
         ),
         UrlCheckRule(
-            id: 0,
+            id: 4,
             name: "IMA",
             priority: 0,
             rule: .regex(expr: "https?:\\/\\/redmine.idd.group.*?$"),
@@ -97,6 +97,13 @@ class RulesRepositoryImplementation: RulesRepository {
             } else {
                 RulesRepositoryImplementation.memoryRules.append(rule)
             }
+            changedSubject.on(.next(()))
+        }
+    }
+
+    func deleteRule(byId id: Int) -> Completable {
+        return Completable.fromAction { [changedSubject] in
+            RulesRepositoryImplementation.memoryRules.removeAll(where: { $0.id == id })
             changedSubject.on(.next(()))
         }
     }

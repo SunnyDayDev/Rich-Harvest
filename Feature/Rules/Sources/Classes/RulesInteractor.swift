@@ -61,4 +61,8 @@ class RulesInteractor {
         }
     }
 
+    func deleteRule(byId id: Int) -> Completable {
+        return rulesRepository.deleteRule(byId: id)
+    }
+
 }

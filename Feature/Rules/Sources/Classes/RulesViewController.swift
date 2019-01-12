@@ -67,6 +67,27 @@ extension RulesViewController: NSTableViewDataSource, NSTableViewDelegate {
         return cell
     }
 
+    public func tableView(_ tableView: NSTableView,
+                          rowActionsForRow row: Int,
+                          edge: NSTableView.RowActionEdge) -> [NSTableViewRowAction] {
+
+        if edge == .trailing {
+            let deleteAction = NSTableViewRowAction(
+                style: .destructive,
+                title: "Delete",
+                handler: { [weak self] (rowAction, row) in
+                    guard let self = self else { return }
+                    self.viewModel.deleteTapped.accept(row)
+                }
+            )
+            deleteAction.backgroundColor = NSColor.red
+            return [deleteAction]
+        } else {
+            return []
+        }
+
+    }
+
 }
 
 class RuleCell: NSTableCellView {

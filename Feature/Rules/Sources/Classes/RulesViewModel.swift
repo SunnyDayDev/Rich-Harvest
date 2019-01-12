@@ -15,6 +15,8 @@ class RulesViewModel {
 
     let items: Driver<[RuleItemViewModel]>
 
+    let deleteTapped = PublishRelay<Int>()
+
     private let interactor: RulesInteractor
     private let schedulers: Schedulers
     private let itemFactory: RuleItemViewModel.Factory
@@ -32,6 +34,7 @@ class RulesViewModel {
         self.items = self.itemsRelay.asDriver()//.skip(1)
 
         self.initSources()
+        self.initActions()
 
     }
 
@@ -46,6 +49,29 @@ class RulesViewModel {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.handle(rules: $0)
+            })
+            .disposed(by: dispose)
+
+    }
+
+    private func initActions() {
+
+        deleteTapped
+            .flatMap { [itemsRelay] (position: Int) -> Observable<Int> in
+
+                if let rule = itemsRelay.value.getOrNil(position)?.rule.id {
+                    return Observable.just(rule)
+                } else {
+                    return Observable.empty()
+                }
+
+            }
+            .subscribe(onNext: { [interactor, dispose] (ruleId: Int) in
+
+                interactor.deleteRule(byId: ruleId)
+                    .subscribe()
+                    .disposed(by: dispose)
+
             })
             .disposed(by: dispose)
 
@@ -70,7 +96,11 @@ class RuleItemViewModel {
     let project: Driver<String>
     let task: Driver<String>
 
+    fileprivate let rule: UrlCheckRule
+
     init(rule: UrlCheckRule, interactor: RulesInteractor, schedulers: Schedulers) {
+
+        self.rule = rule
 
         name = Driver.just(rule.name)
 
