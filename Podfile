@@ -57,3 +57,24 @@ target 'Rich Harvest Extension' do
   pod 'RichHarvest.App.SafariExtension', :path => 'App/SafariExtension'
 
 end
+
+#region Swift version
+
+DEFAULT_SWIFT_VERSION = '5'
+POD_SWIFT_VERSION_MAP = {
+    '' => '4.2'
+}
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+
+    swift_version = POD_SWIFT_VERSION_MAP[target.name] || DEFAULT_SWIFT_VERSION
+
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = swift_version
+    end
+
+  end
+end
+
+#endregion

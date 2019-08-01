@@ -33,8 +33,8 @@ Pod::Spec.new do |s|
 
   # s.dependency 'RealmSwift', '3.12.0'
 
-  s.dependency 'FirebaseCore', '5.1.9'
-  s.dependency 'FirebaseDatabase', '5.0.4'
+  s.dependency 'FirebaseCore', '6.1.0'
+  s.dependency 'FirebaseDatabase', '6.0.0'
 
   s.dependency 'RichHarvest.Core.Core'
   s.dependency 'RichHarvest.Domain.Rules.Api'

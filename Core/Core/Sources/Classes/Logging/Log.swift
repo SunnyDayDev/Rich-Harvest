@@ -19,7 +19,7 @@ public struct Log {
                                _ function: String = #function,
                                line: Int = #line,
                                context: Any? = nil) {
-        log.verbose(message, file, function, line: line, context: context)
+        log.verbose(message(), file, function, line: line, context: context)
     }
 
     public static func debug(_ message: @autoclosure () -> Any,
@@ -27,7 +27,7 @@ public struct Log {
                              _ function: String = #function,
                              line: Int = #line,
                              context: Any? = nil) {
-        log.debug(message, file, function, line: line, context: context)
+        log.debug(message(), file, function, line: line, context: context)
     }
 
     public static func info(_ message: @autoclosure () -> Any,
@@ -35,7 +35,7 @@ public struct Log {
                             _ function: String = #function,
                             line: Int = #line,
                             context: Any? = nil) {
-        log.info(message, file, function, line: line, context: context)
+        log.info(message(), file, function, line: line, context: context)
     }
 
     public static func warning(_ message: @autoclosure () -> Any,
@@ -43,7 +43,7 @@ public struct Log {
                                _ function: String = #function,
                                line: Int = #line,
                                context: Any? = nil) {
-        log.warning(message, file, function, line: line, context: context)
+        log.warning(message(), file, function, line: line, context: context)
     }
 
     public static func error(_ message: @autoclosure () -> Any,
@@ -51,7 +51,7 @@ public struct Log {
                              _ function: String = #function,
                              line: Int = #line,
                              context: Any? = nil) {
-        log.error(message, file, function, line: line, context: context)
+        log.error(message(), file, function, line: line, context: context)
     }
 
     public static func error(_ error: Error,
