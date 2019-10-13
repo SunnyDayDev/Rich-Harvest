@@ -15,13 +15,13 @@ import RichHarvest_Domain_Rules_Api
 class TimerViewModel {
 
     let clients: Driver<[String]>
-    let selectedClient = BehaviorRelay(value: -1)
+    let selectedClientIndex = BehaviorRelay(value: -1)
 
     let projects: Driver<[String]>
-    let selectedProject = BehaviorRelay(value: -1)
+    let selectedProjectIndex = BehaviorRelay(value: -1)
 
     let tasks: Driver<[String]>
-    let selectedTask = BehaviorRelay(value: -1)
+    let selectedTaskIndex = BehaviorRelay(value: -1)
 
     let url: Driver<String>
     let notes = BehaviorRelay(value: "")
@@ -36,8 +36,9 @@ class TimerViewModel {
     private let clientsRelay = BehaviorRelay<[ClientDetail]>(value: [])
     private let projectsRelay = BehaviorRelay<[ProjectDetail]>(value: [])
     private let tasksRelay = BehaviorRelay<[Task]>(value: [])
+    
     private let urlRelay = BehaviorRelay(value: "")
-
+    
     private let dispose = DisposeBag()
 
     init(harvestRepository: HarvestRepository,
@@ -67,7 +68,12 @@ class TimerViewModel {
     func viewWillAppear() {
 
         Log.debug("Start update projects.")
+        refetchClients()
 
+    }
+    
+    private func refetchClients() {
+        
         harvestRepository.clients(isActive: true)
             .observeOn(schedulers.ui)
             .subscribe(
@@ -75,7 +81,29 @@ class TimerViewModel {
                 onError: { Log.error($0) }
             )
             .disposed(by: dispose)
-
+        
+    }
+    
+    private func handle(clients: [ClientDetail]) {
+        
+        Log.debug("Clients: \(clients)")
+        
+        guard !clients.isEmpty else {
+            clientsRelay.accept([])
+            selectedClientIndex.accept(-1)
+            return
+        }
+        
+        let previousSelectedClient: ClientDetail?
+        if selectedClientIndex.value != -1 {
+            previousSelectedClient = clientsRelay.value[selectedClientIndex.value]
+        } else {
+            previousSelectedClient = nil
+        }
+        
+        clientsRelay.accept(clients)
+        selectedClientIndex.accept(clients.firstIndex(where: { $0.id == previousSelectedClient?.id }) ?? 0)
+        
     }
 
     private func initSources() {
@@ -90,37 +118,107 @@ class TimerViewModel {
             })
             .disposed(by: dispose)
 
-        selectedClient.distinctUntilChanged()
-            .switchMap { [clientsRelay] index in
-                clientsRelay.asObservable().mapNonNil { $0.getOrNil(index) }
-            }
-            .switchMapSingle { [harvestRepository] (selected: ClientDetail) in
-                harvestRepository.projects(clientId: selected.id)
+        initProjectsFetching()
+        initTasksFetching()
+
+        initUrlRuleChecking()
+
+    }
+    
+    private func initProjectsFetching() {
+        
+        Observable<ClientDetail?>.combineLatest(
+                selectedClientIndex.distinctUntilChanged(),
+                clientsRelay,
+                resultSelector: { (i, clients) in clients.getOrNil(i) }
+            )
+            .distinctUntilChanged()
+            .switchMapSingle { [harvestRepository] (selected: ClientDetail?) -> Single<[ProjectDetail]> in
+                if let selected = selected {
+                    return harvestRepository.projects(clientId: selected.id)
+                        .map { $0.projects }
+                } else {
+                    return Single.just([])
+                }
             }
             .observeOn(schedulers.ui)
             .subscribe(
-                onNext: { [weak self] in self?.handle(projects: $0.projects) },
+                onNext: { [weak self] in self?.handle(projects: $0) },
                 onError: { Log.error($0) }
             )
             .disposed(by: dispose)
-
-        selectedProject.distinctUntilChanged()
-            .switchMap { [projectsRelay] index in
-                projectsRelay.asObservable().mapNonNil { $0.getOrNil(index) }
+        
+    }
+    
+    private func handle(projects: [ProjectDetail]) {
+        
+        Log.debug("Projects: \(projects)")
+    
+        guard !projects.isEmpty else {
+            projectsRelay.accept([])
+            selectedProjectIndex.accept(-1)
+            return
+        }
+        
+        let previousSelectedProject: ProjectDetail?
+        if selectedProjectIndex.value != -1 {
+            previousSelectedProject = projectsRelay.value[selectedProjectIndex.value]
+        } else {
+            previousSelectedProject = nil
+        }
+        
+        projectsRelay.accept(projects)
+        selectedProjectIndex.accept(projects.firstIndex(where: { $0.id == previousSelectedProject?.id }) ?? 0)
+        
+    }
+    
+    private func initTasksFetching() {
+        
+        let selectedProject: Observable<ProjectDetail?> = Observable<ProjectDetail?>.combineLatest(
+                selectedProjectIndex.distinctUntilChanged(),
+                projectsRelay,
+                resultSelector: { (i, projects) in projects.getOrNil(i) }
+            )
+            .distinctUntilChanged()
+    
+        selectedProject
+            .switchMapSingle { [harvestRepository] (selected: ProjectDetail?) -> Single<[Task]> in
+                if let selected = selected {
+                    return harvestRepository.taskAssignments(byProjectId: selected.id)
+                        .map { $0.taskAssignments.map { $0.task } }
+                } else {
+                    return Single.just([])
+                }
             }
-            .switchMapSingle { [harvestRepository] (project: ProjectDetail) in
-                harvestRepository.taskAssignments(byProjectId: project.id)
-            }
-            .map { $0.taskAssignments.map { $0.task } }
             .observeOn(schedulers.ui)
             .subscribe(
                 onNext: { [weak self] in self?.handle(tasks: $0) },
                 onError: { Log.error($0) }
             )
             .disposed(by: dispose)
-
-        initUrlRuleChecking()
-
+        
+    }
+    
+    private func handle(tasks: [Task]) {
+        
+        Log.debug("Tasks: \(tasks)")
+        
+        guard !tasks.isEmpty else {
+            tasksRelay.accept([])
+            selectedTaskIndex.accept(-1)
+            return
+        }
+        
+        let previousSelectedTask: Task?
+        if selectedTaskIndex.value != -1 {
+            previousSelectedTask = tasksRelay.value[selectedTaskIndex.value]
+        } else {
+            previousSelectedTask = nil
+        }
+        
+        tasksRelay.accept(tasks)
+        selectedTaskIndex.accept(tasks.firstIndex(where: { $0.id == previousSelectedTask?.id }) ?? 0)
+        
     }
 
     private func initUrlRuleChecking() {
@@ -153,7 +251,7 @@ class TimerViewModel {
             )
             .mapNonNil { $0 }
             .observeOn(schedulers.ui)
-            .subscribe(onNext: { [selectedClient] in selectedClient.accept($0) })
+            .subscribe(onNext: { [selectedClientIndex] in selectedClientIndex.accept($0) })
             .disposed(by: dispose)
 
         Observable.combineLatest(
@@ -165,7 +263,7 @@ class TimerViewModel {
             )
             .mapNonNil { $0 }
             .observeOn(schedulers.ui)
-            .subscribe(onNext: { [selectedProject] in selectedProject.accept($0) })
+            .subscribe(onNext: { [selectedProjectIndex] in selectedProjectIndex.accept($0) })
             .disposed(by: dispose)
 
         Observable.combineLatest(
@@ -177,7 +275,7 @@ class TimerViewModel {
             )
             .mapNonNil { $0 }
             .observeOn(schedulers.ui)
-            .subscribe(onNext: { [selectedTask] in selectedTask.accept($0) })
+            .subscribe(onNext: { [selectedTaskIndex] in selectedTaskIndex.accept($0) })
             .disposed(by: dispose)
 
     }
@@ -187,8 +285,8 @@ class TimerViewModel {
         startTap.asObservable()
             .switchMapCompletable { [unowned self] in
 
-                let projectId = self.projectsRelay.value[self.selectedProject.value].id
-                let taskId = self.tasksRelay.value[self.selectedTask.value].id
+                let projectId = self.projectsRelay.value[self.selectedProjectIndex.value].id
+                let taskId = self.tasksRelay.value[self.selectedTaskIndex.value].id
                 let notes = self.notes.value
                 let url = self.urlRelay.value
 
@@ -209,44 +307,8 @@ class TimerViewModel {
 
     }
 
-    private func handle(clients: [ClientDetail]) {
-
-        Log.debug("Clients: \(clients)")
-
-        clientsRelay.accept(clients)
-
-        if clientsRelay.value.count > 0 && selectedClient.value == -1 {
-            selectedClient.accept(0)
-        }
-
-    }
-
-    private func handle(projects: [ProjectDetail]) {
-
-        Log.debug("Projects: \(projects)")
-
-        projectsRelay.accept(projects)
-
-        if projectsRelay.value.count > 0 && selectedProject.value == -1 {
-            selectedProject.accept(0)
-        }
-
-    }
-
-    private func handle(tasks: [Task]) {
-
-        Log.debug("Tasks: \(tasks)")
-
-        tasksRelay.accept(tasks)
-
-        if tasksRelay.value.count > 0 && selectedTask.value == -1 {
-            selectedTask.accept(0)
-        }
-
-    }
-
     private func resolveBestRule(forUrl url: URL, byRules rules: [UrlCheckRule]) -> UrlCheckRule.Result? {
-        return rules.filter { (rule: UrlCheckRule) in
+        rules.filter { (rule: UrlCheckRule) in
                 switch rule.rule {
                 case let .regex(expr):
                     guard let regex = try? NSRegularExpression.init(pattern: expr, options: .caseInsensitive) else {

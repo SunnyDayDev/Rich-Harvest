@@ -60,7 +60,7 @@ end
 
 #region Swift version
 
-DEFAULT_SWIFT_VERSION = '5'
+DEFAULT_SWIFT_VERSION = '5.1'
 POD_SWIFT_VERSION_MAP = {
     '' => '4.2'
 }

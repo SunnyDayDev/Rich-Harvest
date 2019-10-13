@@ -5,7 +5,7 @@
 import Foundation
 import RichHarvest_Core_Core
 
-public struct Projects {
+public struct Projects: Equatable {
 
     public let projects: [ProjectDetail]
     public let perPage: Int
@@ -29,7 +29,7 @@ public struct Projects {
 
 }
 
-public struct Links {
+public struct Links: Equatable {
 
     public let first: String
     public let next: String?
@@ -45,7 +45,7 @@ public struct Links {
 
 }
 
-public struct ProjectDetail {
+public struct ProjectDetail: Equatable {
 
     public let id: Int
     public let name: String
@@ -101,7 +101,7 @@ public struct ProjectDetail {
 
 }
 
-public struct Clients {
+public struct Clients: Equatable {
 
     public let clients: [ClientDetail]
     public let perPage: Int
@@ -132,7 +132,7 @@ public struct Clients {
 
 }
 
-public struct ClientDetail {
+public struct ClientDetail: Equatable {
 
     public let id: Int
     public let name: String
@@ -159,7 +159,7 @@ public struct ClientDetail {
 
 }
 
-public struct Client {
+public struct Client: Equatable {
 
     public let id: Int
     public let name: String
@@ -173,7 +173,7 @@ public struct Client {
 
 }
 
-public struct TaskAssignments {
+public struct TaskAssignments: Equatable {
 
     public let taskAssignments: [TaskAssignment]
     public let perPage: Int
@@ -197,19 +197,19 @@ public struct TaskAssignments {
 
 }
 
-public struct TaskAssignment {
+public struct TaskAssignment: Equatable {
 
     public let id: Int
     public let billable: Bool
     public let isActive: Bool
     public let createdAt: Date
     public let updatedAt: Date
-    public let hourlyRate: Int
+    public let hourlyRate: Double
     public let budget: Double?
     public let project: Project
     public let task: Task
 
-    public init(id: Int, billable: Bool, isActive: Bool, createdAt: Date, updatedAt: Date, hourlyRate: Int, budget: Double?, project: Project, task: Task) {
+    public init(id: Int, billable: Bool, isActive: Bool, createdAt: Date, updatedAt: Date, hourlyRate: Double, budget: Double?, project: Project, task: Task) {
         self.id = id
         self.billable = billable
         self.isActive = isActive
@@ -223,7 +223,7 @@ public struct TaskAssignment {
 
 }
 
-public struct Project {
+public struct Project: Equatable {
 
     public let id: Int
     public let name: String
@@ -237,7 +237,7 @@ public struct Project {
 
 }
 
-public struct Task {
+public struct Task: Equatable {
 
     public let id: Int
     public let name: String
@@ -249,7 +249,7 @@ public struct Task {
 
 }
 
-public struct TaskDetail {
+public struct TaskDetail: Equatable {
 
     public let id: Int
     public let name: String
@@ -273,7 +273,7 @@ public struct TaskDetail {
 
 }
 
-public struct StartTimerData {
+public struct StartTimerData: Equatable {
 
     public let projectID: String
     public let taskID: String
@@ -312,7 +312,7 @@ public extension StartTimerData {
 
 }
 
-public struct ExternalReference {
+public struct ExternalReference: Equatable {
 
     public let id: String
     public let groupID: String

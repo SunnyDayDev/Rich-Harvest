@@ -255,7 +255,7 @@ public struct TaskAssignment: Codable {
     public let isActive: Bool
     public let createdAt: HarvestApiDate
     public let updatedAt: HarvestApiDate
-    public let hourlyRate: Int
+    public let hourlyRate: Double
     public let budget: Double?
     public let project: Project
     public let task: Task
@@ -272,7 +272,7 @@ public struct TaskAssignment: Codable {
         case task = "task"
     }
 
-    public init(id: Int, billable: Bool, isActive: Bool, createdAt: Date, updatedAt: Date, hourlyRate: Int, budget: Double?, project: Project, task: Task) {
+    public init(id: Int, billable: Bool, isActive: Bool, createdAt: Date, updatedAt: Date, hourlyRate: Double, budget: Double?, project: Project, task: Task) {
         self.id = id
         self.billable = billable
         self.isActive = isActive

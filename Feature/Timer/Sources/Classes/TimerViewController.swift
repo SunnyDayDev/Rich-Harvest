@@ -34,19 +34,19 @@ public class TimerViewController: NSViewController {
         bindPopUpButton(
             button: clientsPopUpButton,
             source: viewModel.clients,
-            selectionSource: viewModel.selectedClient
+            selectionSource: viewModel.selectedClientIndex
         )
 
         bindPopUpButton(
             button: projectsPopUpButton,
             source: viewModel.projects,
-            selectionSource: viewModel.selectedProject
+            selectionSource: viewModel.selectedProjectIndex
         )
 
         bindPopUpButton(
             button: tasksPopUpButton,
             source: viewModel.tasks,
-            selectionSource: viewModel.selectedTask
+            selectionSource: viewModel.selectedTaskIndex
         )
 
         viewModel.url.drive(urlLabel.rx.text).disposed(by: dispose)
@@ -72,15 +72,15 @@ public class TimerViewController: NSViewController {
     }
     
     @IBAction func clientSelected(_ sender: Any) {
-        selectionChanged(button: clientsPopUpButton, selectionSource: viewModel.selectedClient)
+        selectionChanged(button: clientsPopUpButton, selectionSource: viewModel.selectedClientIndex)
     }
     
     @IBAction func projectSelected(_ sender: Any) {
-        selectionChanged(button: projectsPopUpButton, selectionSource: viewModel.selectedProject)
+        selectionChanged(button: projectsPopUpButton, selectionSource: viewModel.selectedProjectIndex)
     }
     
     @IBAction func taskSelected(_ sender: Any) {
-        selectionChanged(button: tasksPopUpButton, selectionSource: viewModel.selectedTask)
+        selectionChanged(button: tasksPopUpButton, selectionSource: viewModel.selectedTaskIndex)
     }
 
     private func bindPopUpButton(button: NSPopUpButton, source: Driver<[String]>, selectionSource: BehaviorRelay<Int>) {
@@ -95,7 +95,11 @@ public class TimerViewController: NSViewController {
         source
             .flatMap { _ in selectionSource.asDriver() }
             .drive(onNext: { (position: Int) in
-                button.selectItem(at: position)
+                if position != -1 {
+                    button.selectItem(at: position)
+                } else {
+                    button.select(nil)
+                }
             })
             .disposed(by: dispose)
 
