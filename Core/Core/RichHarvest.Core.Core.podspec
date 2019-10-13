@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
   s.dependency 'RxSwift', '5.0.0'
   s.dependency 'RxCocoa', '5.0.0'
 
-  s.dependency 'SwiftyBeaver', '1.7.0'
-  s.dependency 'Swinject', '2.6.2'
+  s.dependency 'SwiftyBeaver', '1.8.2'
+  s.dependency 'Swinject', '2.7.1'
 
 end
