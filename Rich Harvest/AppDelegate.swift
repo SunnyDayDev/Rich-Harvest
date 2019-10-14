@@ -9,8 +9,9 @@
 import Cocoa
 
 import Swinject
-
 import SwiftyBeaver
+import FirebaseCore
+
 import RichHarvest_Core_Core
 
 @NSApplicationMain
@@ -19,22 +20,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private(set) var resolver: Resolver!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
 
-        let consoleLogger = ConsoleDestination()
-        consoleLogger.useNSLog = true
-        Log.initLogger(destinations: consoleLogger)
+        initLogging()
+        initFirebaseDataBase()
 
         resolver = RichHarvestAssembly().assembly()
 
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-        return true
+        true
+    }
+    
+    private func initLogging() {
+        let consoleLogger = ConsoleDestination()
+        consoleLogger.useNSLog = true
+        Log.initLogger(destinations: consoleLogger)
+    }
+    
+    private func initFirebaseDataBase() {
+        FirebaseApp.configure()
     }
 
 }

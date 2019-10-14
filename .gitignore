@@ -49,3 +49,5 @@ Pods/
 Podfile\.lock
 
 \.DS_Store
+
+*GoogleService-Info.plist

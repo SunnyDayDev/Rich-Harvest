@@ -22,6 +22,8 @@
 		A333293F219F165E0068C9C5 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A333293D219F165E0068C9C5 /* SafariExtensionViewController.xib */; };
 		A3332942219F165E0068C9C5 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = A3332941219F165E0068C9C5 /* script.js */; };
 		A3332944219F165E0068C9C5 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A3332943219F165E0068C9C5 /* ToolbarItemIcon.pdf */; };
+		A341F40A23543FFB00E86BB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A341F40923543FFB00E86BB6 /* GoogleService-Info.plist */; };
+		A341F40B23543FFB00E86BB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A341F40923543FFB00E86BB6 /* GoogleService-Info.plist */; };
 		A3760CB721A037A5002084D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A333292A219F165E0068C9C5 /* Assets.xcassets */; };
 		A3F04EC821A41FD000C7BFC3 /* RichHarvestAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B69ED762C3300684FF5D84 /* RichHarvestAssembly.swift */; };
 		D39CA5D9F446211292344446 /* Pods_Rich_Harvest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54EAE8DA91EEBB84CFCB8D53 /* Pods_Rich_Harvest.framework */; };
@@ -76,6 +78,7 @@
 		A3332940219F165E0068C9C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3332941219F165E0068C9C5 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		A3332943219F165E0068C9C5 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		A341F40923543FFB00E86BB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A3760CB221A01460002084D4 /* Rich Harvest Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Rich Harvest Extension.entitlements"; sourceTree = "<group>"; };
 		AB3358D2520010D02991DB32 /* Pods-Rich Harvest Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rich Harvest Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rich Harvest Extension/Pods-Rich Harvest Extension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +126,7 @@
 		A3332915219F165D0068C9C5 = {
 			isa = PBXGroup;
 			children = (
+				A341F40923543FFB00E86BB6 /* GoogleService-Info.plist */,
 				A3332920219F165D0068C9C5 /* Rich Harvest */,
 				A3332938219F165E0068C9C5 /* Rich Harvest Extension */,
 				A3332935219F165E0068C9C5 /* Frameworks */,
@@ -284,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3332922219F165D0068C9C5 /* Rich_Harvest.entitlements in Resources */,
+				A341F40A23543FFB00E86BB6 /* GoogleService-Info.plist in Resources */,
 				A333292B219F165E0068C9C5 /* Assets.xcassets in Resources */,
 				A3332927219F165D0068C9C5 /* Main.storyboard in Resources */,
 			);
@@ -295,6 +300,7 @@
 			files = (
 				A3332944219F165E0068C9C5 /* ToolbarItemIcon.pdf in Resources */,
 				A333293F219F165E0068C9C5 /* SafariExtensionViewController.xib in Resources */,
+				A341F40B23543FFB00E86BB6 /* GoogleService-Info.plist in Resources */,
 				A3332942219F165E0068C9C5 /* script.js in Resources */,
 				A3760CB721A037A5002084D4 /* Assets.xcassets in Resources */,
 			);

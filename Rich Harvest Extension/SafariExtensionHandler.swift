@@ -9,17 +9,20 @@
 import SafariServices
 
 import SwiftyBeaver
-import RichHarvest_Core_Core
+import FirebaseCore
 
+import RichHarvest_Core_Core
 import RichHarvest_App_SafariExtension
 
-private var initLog: () -> () = {
+private var initializeApp: () -> () = {
 
     let console = ConsoleDestination()
     console.useNSLog = true
     SwiftyBeaver.addDestination(console)
 
     Log.debug("Log initiated.")
+    
+    FirebaseApp.configure()
 
     return { }
 
@@ -30,8 +33,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     private let extensionEvents = DependencyResolver.resolve(ExtensionEventsSource.self)!
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
-
-        initLog()
+    
+        initializeApp()
 
         // This method will be called when a content script provided by your extension calls safari.extension.dispatchMessage("message").
         page.getPropertiesWithCompletionHandler { properties in
@@ -42,8 +45,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func toolbarItemClicked(in window: SFSafariWindow) {
-
-        initLog()
+    
+        initializeApp()
 
         // This method will be called when your toolbar item is clicked.
         Log.debug("The extension's toolbar item was clicked")
@@ -55,8 +58,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
-
-        initLog()
+    
+        initializeApp()
 
         // This is called when Safari's state changed in some way that would require the extension's toolbar item to be validated again.
         window.getActiveTab { [extensionEvents] in $0?.getPagesWithCompletionHandler { $0?[0].getPropertiesWithCompletionHandler { properties in
@@ -75,8 +78,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
-
-        initLog()
+    
+        initializeApp()
 
         Log.debug("Get popoverViewController")
 
