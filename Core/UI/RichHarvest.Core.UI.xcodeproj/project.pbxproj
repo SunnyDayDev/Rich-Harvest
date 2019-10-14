@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		A3760CF121A03C90002084D4 /* RichHarvest.Core.UI.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RichHarvest.Core.UI.podspec"; sourceTree = "<group>"; };
+		68B69EA7772414253791C41F /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		68B69EDF57A1BB4760D4DC54 /* UIUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtil.swift; sourceTree = "<group>"; };
+		A3760CF121A03C90002084D4 /* RichHarvest.Core.UI.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Core.UI.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -31,6 +33,8 @@
 		A3C9CDBD2188937100EF5FD7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				68B69EA7772414253791C41F /* Bundle+Extension.swift */,
+				68B69EDF57A1BB4760D4DC54 /* UIUtil.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

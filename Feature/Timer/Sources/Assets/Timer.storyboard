@@ -20,7 +20,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PHu-0L-49K">
-                                            <rect key="frame" x="370" y="374" width="77" height="25"/>
+                                            <rect key="frame" x="370" y="343" width="77" height="25"/>
                                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="bWz-7L-yeh" id="1VH-9I-SrK">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
@@ -37,15 +37,40 @@
                                             </connections>
                                         </popUpButton>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="n4i-8q-gwP">
-                                            <rect key="frame" x="317" y="379" width="47" height="17"/>
+                                            <rect key="frame" x="317" y="348" width="47" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Project" id="P4G-b0-Dev">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t0D-GT-Tav">
+                                            <rect key="frame" x="370" y="374" width="77" height="25"/>
+                                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="NQj-Ai-xdh" id="SPC-PV-WqH">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="1h9-Bf-ocd">
+                                                    <items>
+                                                        <menuItem title="Item 1" state="on" id="NQj-Ai-xdh"/>
+                                                        <menuItem title="Item 2" id="xmX-0S-oNX"/>
+                                                        <menuItem title="Item 3" id="zUJ-YD-nUv"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <action selector="clientSelected:" target="5dM-ip-GDe" id="Q1U-pE-R4F"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OI0-9H-9cx">
+                                            <rect key="frame" x="324" y="379" width="40" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Client" id="rGx-uX-PVs">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a9S-cZ-tuw">
-                                            <rect key="frame" x="334" y="348" width="32" height="17"/>
+                                            <rect key="frame" x="334" y="317" width="32" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Task" id="2NS-Ji-tEG">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -53,7 +78,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Ki-O1-Rhj">
-                                            <rect key="frame" x="370" y="343" width="77" height="25"/>
+                                            <rect key="frame" x="370" y="312" width="77" height="25"/>
                                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="pik-gU-S22" id="2zE-eI-gjv">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
@@ -70,7 +95,7 @@
                                             </connections>
                                         </popUpButton>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="92S-K1-YTi">
-                                            <rect key="frame" x="18" y="319" width="26" height="17"/>
+                                            <rect key="frame" x="18" y="288" width="26" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Url:" id="zqw-K9-fHO">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -78,7 +103,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wUN-bi-ydJ">
-                                            <rect key="frame" x="50" y="268" width="396" height="68"/>
+                                            <rect key="frame" x="50" y="237" width="396" height="68"/>
                                             <textFieldCell key="cell" selectable="YES" id="dy9-dc-zFr">
                                                 <font key="font" metaFont="system"/>
                                                 <string key="title">https://gist.githubusercontent.com/SunnyDayDev/983bedf2bbe0427da9bba1bcc2e8d89c/raw/13802f5bb7c7355e90327c24f156a4365ef4f4eb/common.dependencies.gradle</string>
@@ -86,16 +111,8 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="bWD-fs-FMd">
-                                            <rect key="frame" x="66" y="236" width="378" height="22"/>
-                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Gxy-BA-cAx">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="owf-H3-2th">
-                                            <rect key="frame" x="18" y="239" width="40" height="17"/>
+                                            <rect key="frame" x="18" y="209" width="40" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Notes" id="lVh-cM-GnX">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -103,33 +120,49 @@
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ypz-Lo-rPT">
-                                            <rect key="frame" x="197" y="198" width="70" height="32"/>
+                                            <rect key="frame" x="197" y="69" width="70" height="32"/>
                                             <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xjw-u2-qbR">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                         </button>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="r1M-kN-qbl">
+                                            <rect key="frame" x="66" y="107" width="378" height="120"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="120" id="AiL-PB-Tud"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="border" drawsBackground="YES" id="UgU-FR-jjz">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">https://gist.githubusercontent.com/SunnyDayDev/983bedf2bbe0427da9bba1bcc2e8d89c/raw/13802f5bb7c7355e90327c24f156a4365ef4f4eb/common.dependencies.gradle</string>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="bWD-fs-FMd" secondAttribute="trailing" constant="20" id="0cG-4e-uBX"/>
+                                        <constraint firstItem="r1M-kN-qbl" firstAttribute="leading" secondItem="owf-H3-2th" secondAttribute="trailing" constant="10" id="0Vf-qM-CVm"/>
                                         <constraint firstItem="8Ki-O1-Rhj" firstAttribute="top" secondItem="PHu-0L-49K" secondAttribute="bottom" constant="10" id="7he-H8-nbO"/>
                                         <constraint firstAttribute="trailing" secondItem="8Ki-O1-Rhj" secondAttribute="trailing" constant="20" id="8VF-gN-Px8"/>
                                         <constraint firstItem="92S-K1-YTi" firstAttribute="firstBaseline" secondItem="wUN-bi-ydJ" secondAttribute="firstBaseline" id="8hX-yj-Djn"/>
                                         <constraint firstItem="8Ki-O1-Rhj" firstAttribute="leading" secondItem="a9S-cZ-tuw" secondAttribute="trailing" constant="8" id="9DY-Us-Ydv"/>
+                                        <constraint firstItem="Ypz-Lo-rPT" firstAttribute="top" secondItem="r1M-kN-qbl" secondAttribute="bottom" constant="10" id="9wC-aL-6Jt"/>
+                                        <constraint firstItem="r1M-kN-qbl" firstAttribute="top" secondItem="wUN-bi-ydJ" secondAttribute="bottom" constant="10" id="A7I-i2-8gl"/>
+                                        <constraint firstItem="t0D-GT-Tav" firstAttribute="top" secondItem="zMK-ga-S5F" secondAttribute="top" constant="20" id="DMY-Hc-Kkv"/>
                                         <constraint firstAttribute="trailing" secondItem="PHu-0L-49K" secondAttribute="trailing" constant="20" id="Egr-Ye-wQC"/>
+                                        <constraint firstAttribute="trailing" secondItem="r1M-kN-qbl" secondAttribute="trailing" constant="20" id="H80-F5-2eh"/>
                                         <constraint firstItem="wUN-bi-ydJ" firstAttribute="leading" secondItem="92S-K1-YTi" secondAttribute="trailing" constant="10" id="IJ4-D9-UtF"/>
                                         <constraint firstItem="PHu-0L-49K" firstAttribute="leading" secondItem="n4i-8q-gwP" secondAttribute="trailing" constant="10" id="LJe-Mz-vXB"/>
-                                        <constraint firstItem="bWD-fs-FMd" firstAttribute="top" secondItem="wUN-bi-ydJ" secondAttribute="bottom" constant="10" id="Lsz-n6-Ixv"/>
                                         <constraint firstItem="n4i-8q-gwP" firstAttribute="firstBaseline" secondItem="PHu-0L-49K" secondAttribute="firstBaseline" id="Nvx-gl-VUp"/>
+                                        <constraint firstItem="owf-H3-2th" firstAttribute="firstBaseline" secondItem="r1M-kN-qbl" secondAttribute="firstBaseline" id="OHN-iQ-ObM"/>
                                         <constraint firstItem="wUN-bi-ydJ" firstAttribute="top" secondItem="8Ki-O1-Rhj" secondAttribute="bottom" constant="10" id="bA8-Xn-aLl"/>
                                         <constraint firstItem="owf-H3-2th" firstAttribute="leading" secondItem="zMK-ga-S5F" secondAttribute="leading" constant="20" id="cVX-sM-U5Q"/>
                                         <constraint firstItem="Ypz-Lo-rPT" firstAttribute="centerX" secondItem="zMK-ga-S5F" secondAttribute="centerX" id="ev1-uq-eZ6"/>
-                                        <constraint firstItem="Ypz-Lo-rPT" firstAttribute="top" secondItem="bWD-fs-FMd" secondAttribute="bottom" constant="10" id="gCb-Fb-a7t"/>
                                         <constraint firstItem="a9S-cZ-tuw" firstAttribute="firstBaseline" secondItem="8Ki-O1-Rhj" secondAttribute="firstBaseline" id="hxd-n8-2cx"/>
-                                        <constraint firstItem="bWD-fs-FMd" firstAttribute="leading" secondItem="owf-H3-2th" secondAttribute="trailing" constant="10" id="oV3-Ul-X54"/>
+                                        <constraint firstItem="OI0-9H-9cx" firstAttribute="firstBaseline" secondItem="t0D-GT-Tav" secondAttribute="firstBaseline" id="kDu-WW-dIh"/>
+                                        <constraint firstAttribute="trailing" secondItem="t0D-GT-Tav" secondAttribute="trailing" constant="20" id="lcY-O3-lzY"/>
+                                        <constraint firstItem="t0D-GT-Tav" firstAttribute="leading" secondItem="OI0-9H-9cx" secondAttribute="trailing" constant="10" id="r8d-5K-vUt"/>
+                                        <constraint firstItem="PHu-0L-49K" firstAttribute="top" secondItem="t0D-GT-Tav" secondAttribute="bottom" constant="10" id="rFS-lx-v1Q"/>
                                         <constraint firstAttribute="trailing" secondItem="wUN-bi-ydJ" secondAttribute="trailing" constant="20" id="rgb-oE-Fs8"/>
-                                        <constraint firstItem="PHu-0L-49K" firstAttribute="top" secondItem="zMK-ga-S5F" secondAttribute="top" constant="20" id="sYN-Pg-b5y"/>
-                                        <constraint firstItem="owf-H3-2th" firstAttribute="firstBaseline" secondItem="bWD-fs-FMd" secondAttribute="firstBaseline" id="t2R-Fq-P5E"/>
                                         <constraint firstItem="92S-K1-YTi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zMK-ga-S5F" secondAttribute="leading" constant="20" id="xN1-Sm-amM"/>
                                     </constraints>
                                 </view>
@@ -143,7 +176,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="notesTextField" destination="bWD-fs-FMd" id="q5U-CR-BU3"/>
+                        <outlet property="clientsPopUpButton" destination="t0D-GT-Tav" id="vVX-ce-ddx"/>
+                        <outlet property="notesTextField" destination="r1M-kN-qbl" id="Kv7-Uj-y0f"/>
                         <outlet property="projectsPopUpButton" destination="PHu-0L-49K" id="xBe-55-RbR"/>
                         <outlet property="startButton" destination="Ypz-Lo-rPT" id="3xH-B6-S5T"/>
                         <outlet property="tasksPopUpButton" destination="8Ki-O1-Rhj" id="tnR-IM-loT"/>

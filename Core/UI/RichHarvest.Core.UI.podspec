@@ -30,5 +30,6 @@ Pod::Spec.new do |s|
   # s.frameworks = #'UIKit', 'MapKit'
 
   s.dependency 'RichHarvest.Core.Core'
+  #s.dependency 'RxDataSources', '3.0.0'
 
 end

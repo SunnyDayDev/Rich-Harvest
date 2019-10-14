@@ -3,8 +3,9 @@
 //
 
 import Foundation
+import RichHarvest_Core_Core
 
-public struct Projects {
+public struct Projects: Equatable {
 
     public let projects: [ProjectDetail]
     public let perPage: Int
@@ -28,7 +29,7 @@ public struct Projects {
 
 }
 
-public struct Links {
+public struct Links: Equatable {
 
     public let first: String
     public let next: String?
@@ -44,7 +45,7 @@ public struct Links {
 
 }
 
-public struct ProjectDetail {
+public struct ProjectDetail: Equatable {
 
     public let id: Int
     public let name: String
@@ -100,7 +101,65 @@ public struct ProjectDetail {
 
 }
 
-public struct Client {
+public struct Clients: Equatable {
+
+    public let clients: [ClientDetail]
+    public let perPage: Int
+    public let totalPages: Int
+    public let totalEntries: Int
+    public let nextPage: Int?
+    public let previousPage: Int?
+    public let page: Int
+    public let links: Links
+
+    public init(clients: [ClientDetail],
+                perPage: Int,
+                totalPages: Int,
+                totalEntries: Int,
+                nextPage: Int?,
+                previousPage: Int?,
+                page: Int,
+                links: Links) {
+        self.clients = clients
+        self.perPage = perPage
+        self.totalPages = totalPages
+        self.totalEntries = totalEntries
+        self.nextPage = nextPage
+        self.previousPage = previousPage
+        self.page = page
+        self.links = links
+    }
+
+}
+
+public struct ClientDetail: Equatable {
+
+    public let id: Int
+    public let name: String
+    public let isActive: Bool
+    public let address: String?
+    public let createdAt: Date
+    public let updatedAt: Date
+    public let currency: String
+
+    public init(id: Int, name: String,
+                isActive: Bool,
+                address: String?,
+                createdAt: Date,
+                updatedAt: Date,
+                currency: String) {
+        self.id = id
+        self.name = name
+        self.isActive = isActive
+        self.address = address
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.currency = currency
+    }
+
+}
+
+public struct Client: Equatable {
 
     public let id: Int
     public let name: String
@@ -114,7 +173,7 @@ public struct Client {
 
 }
 
-public struct TaskAssignments {
+public struct TaskAssignments: Equatable {
 
     public let taskAssignments: [TaskAssignment]
     public let perPage: Int
@@ -138,19 +197,19 @@ public struct TaskAssignments {
 
 }
 
-public struct TaskAssignment {
+public struct TaskAssignment: Equatable {
 
     public let id: Int
     public let billable: Bool
     public let isActive: Bool
     public let createdAt: Date
     public let updatedAt: Date
-    public let hourlyRate: Int
+    public let hourlyRate: Double
     public let budget: Double?
     public let project: Project
     public let task: Task
 
-    public init(id: Int, billable: Bool, isActive: Bool, createdAt: Date, updatedAt: Date, hourlyRate: Int, budget: Double?, project: Project, task: Task) {
+    public init(id: Int, billable: Bool, isActive: Bool, createdAt: Date, updatedAt: Date, hourlyRate: Double, budget: Double?, project: Project, task: Task) {
         self.id = id
         self.billable = billable
         self.isActive = isActive
@@ -164,7 +223,7 @@ public struct TaskAssignment {
 
 }
 
-public struct Project {
+public struct Project: Equatable {
 
     public let id: Int
     public let name: String
@@ -178,7 +237,7 @@ public struct Project {
 
 }
 
-public struct Task {
+public struct Task: Equatable {
 
     public let id: Int
     public let name: String
@@ -190,7 +249,31 @@ public struct Task {
 
 }
 
-public struct StartTimerData {
+public struct TaskDetail: Equatable {
+
+    public let id: Int
+    public let name: String
+    public let billableByDefault: Bool
+    public let defaultHourlyRate: Double?
+    public let isDefault: Bool
+    public let isActive: Bool
+    public let createdAt: Date
+    public let updatedAt: Date
+
+    public init(id: Int, name: String, billableByDefault: Bool, defaultHourlyRate: Double?, isDefault: Bool, isActive: Bool, createdAt: Date, updatedAt: Date) {
+        self.id = id
+        self.name = name
+        self.billableByDefault = billableByDefault
+        self.defaultHourlyRate = defaultHourlyRate
+        self.isDefault = isDefault
+        self.isActive = isActive
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
+
+}
+
+public struct StartTimerData: Equatable {
 
     public let projectID: String
     public let taskID: String
@@ -217,10 +300,10 @@ public extension StartTimerData {
         self.spentDate = spentDate
         self.notes = notes
 
-        let groupId = Data(url.utf8).base64EncodedString()
+        let groupId = url.utf8.md5.rawValue
 
         self.externalReference = ExternalReference(
-            id: "\(groupId)-\(spentDate.timeIntervalSince1970)",
+            id: "\(groupId)-\(Int(spentDate.timeIntervalSince1970))",
             groupID: groupId,
             permalink: url
         )
@@ -229,7 +312,7 @@ public extension StartTimerData {
 
 }
 
-public struct ExternalReference {
+public struct ExternalReference: Equatable {
 
     public let id: String
     public let groupID: String

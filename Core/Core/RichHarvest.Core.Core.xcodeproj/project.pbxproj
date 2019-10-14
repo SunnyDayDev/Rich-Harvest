@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		68B691F44DC0B6256AAC4778 /* CollectionUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionUtil.swift; sourceTree = "<group>"; };
 		68B694397B75116B37FB172F /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		68B69ED9F5E773F92AE88A50 /* MD5Digest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5Digest.swift; sourceTree = "<group>"; };
 		A3760CF121A03C90002084D4 /* RichHarvest.Core.Core.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Core.Core.podspec; sourceTree = "<group>"; };
 		A3760CF321A27491002084D4 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A3760CF421A27491002084D4 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				A3760CF821A27491002084D4 /* CollectionsSumming.swift */,
 				A3760CF921A27491002084D4 /* CollectionsMapping.swift */,
+				68B691F44DC0B6256AAC4778 /* CollectionUtil.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -76,6 +79,7 @@
 				A3760CFF21A27491002084D4 /* String+Extensions.swift */,
 				A3760D0121A27491002084D4 /* Bundle+Extensions.swift */,
 				A3760D0221A27491002084D4 /* Numbers+Extensions.swift */,
+				68B69ED9F5E773F92AE88A50 /* MD5Digest.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

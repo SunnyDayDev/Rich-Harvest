@@ -23,8 +23,30 @@ class HarvestRepositoryImplementation: HarvestRepository {
         self.schedulers = schedulers
     }
 
+    func clients(isActive: Bool) -> Single<ClientsPlain> {
+
+        let mapper = mappers.fromApi.toPlain.clients
+
+        return network.clients(isActive: isActive)
+            .subscribeOn(schedulers.io)
+            .observeOn(schedulers.background)
+            .map(mapper)
+
+    }
+
+    func client(byId id: Int) -> Single<ClientDetailPlain> {
+
+        let mapper = mappers.fromApi.toPlain.clientDetail
+
+        return network.client(byId: id)
+            .subscribeOn(schedulers.io)
+            .observeOn(schedulers.background)
+            .map(mapper)
+
+    }
+
     func projects(
-        isActive: Bool, clientId: String?, updatedSince: Date?, page: Int, perPage: Int
+        isActive: Bool, clientId: Int?, updatedSince: Date?, page: Int, perPage: Int
     ) -> Single<ProjectsPlain> {
 
         let mapper = mappers.fromApi.toPlain.projects
@@ -70,6 +92,17 @@ class HarvestRepositoryImplementation: HarvestRepository {
             .subscribeOn(schedulers.io)
             .observeOn(schedulers.background)
             .map(mapper)
+    }
+
+    func task(byId id: Int) -> Single<TaskDetailPlain> {
+
+        let mapper = mappers.fromApi.toPlain.taskDetail
+
+        return network.task(byId: id)
+            .subscribeOn(schedulers.io)
+            .observeOn(schedulers.background)
+            .map(mapper)
+
     }
 
     func startTimer(withData data: StartTimerDataPlain) -> Completable {

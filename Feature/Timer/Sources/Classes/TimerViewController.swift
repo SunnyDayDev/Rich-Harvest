@@ -11,6 +11,7 @@ import RichHarvest_Core_Core
 
 public class TimerViewController: NSViewController {
 
+    @IBOutlet weak var clientsPopUpButton: NSPopUpButton!
     @IBOutlet weak var projectsPopUpButton: NSPopUpButton!
     @IBOutlet weak var tasksPopUpButton: NSPopUpButton!
     @IBOutlet weak var urlLabel: NSTextField!
@@ -24,41 +25,29 @@ public class TimerViewController: NSViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        urlLabel.maximumNumberOfLines = 5
+
         guard let viewModel = self.viewModel else { return }
 
         // TODO: generalize NSPopUpButton binding
 
-        viewModel.projects
-            .drive(onNext: { [weak self] (projects: [String]) in
-                guard let `self` = self else { return }
-                self.projectsPopUpButton.removeAllItems()
-                self.projectsPopUpButton.addItems(withTitles: projects)
-            })
-            .disposed(by: dispose)
+        bindPopUpButton(
+            button: clientsPopUpButton,
+            source: viewModel.clients,
+            selectionSource: viewModel.selectedClientIndex
+        )
 
-        viewModel.projects
-            .flatMap { _ in viewModel.selectedProject.asDriver() }
-            .drive(onNext: { [weak self] (position: Int) in
-                guard let `self` = self else { return }
-                self.projectsPopUpButton.selectItem(at: position)
-            })
-            .disposed(by: dispose)
+        bindPopUpButton(
+            button: projectsPopUpButton,
+            source: viewModel.projects,
+            selectionSource: viewModel.selectedProjectIndex
+        )
 
-        viewModel.tasks
-            .drive(onNext: { [weak self] (projects: [String]) in
-                guard let `self` = self else { return }
-                self.tasksPopUpButton.removeAllItems()
-                self.tasksPopUpButton.addItems(withTitles: projects)
-            })
-            .disposed(by: dispose)
-
-        viewModel.tasks
-            .flatMap { _ in viewModel.selectedTask.asDriver() }
-            .drive(onNext: { [weak self] (position: Int) in
-                guard let `self` = self else { return }
-                self.tasksPopUpButton.selectItem(at: position)
-            })
-            .disposed(by: dispose)
+        bindPopUpButton(
+            button: tasksPopUpButton,
+            source: viewModel.tasks,
+            selectionSource: viewModel.selectedTaskIndex
+        )
 
         viewModel.url.drive(urlLabel.rx.text).disposed(by: dispose)
 
@@ -82,18 +71,45 @@ public class TimerViewController: NSViewController {
         viewModel.viewWillAppear()
     }
     
+    @IBAction func clientSelected(_ sender: Any) {
+        selectionChanged(button: clientsPopUpButton, selectionSource: viewModel.selectedClientIndex)
+    }
+    
     @IBAction func projectSelected(_ sender: Any) {
-        guard let item = projectsPopUpButton.selectedItem,
-              let index = projectsPopUpButton.menu?.items.firstIndex(of: item)
-            else { return }
-        viewModel.selectedProject.accept(index)
+        selectionChanged(button: projectsPopUpButton, selectionSource: viewModel.selectedProjectIndex)
     }
     
     @IBAction func taskSelected(_ sender: Any) {
-        guard let item = tasksPopUpButton.selectedItem,
-              let index = tasksPopUpButton.menu?.items.firstIndex(of: item)
+        selectionChanged(button: tasksPopUpButton, selectionSource: viewModel.selectedTaskIndex)
+    }
+
+    private func bindPopUpButton(button: NSPopUpButton, source: Driver<[String]>, selectionSource: BehaviorRelay<Int>) {
+
+        source
+            .drive(onNext: { (values: [String]) in
+                button.removeAllItems()
+                button.addItems(withTitles: values)
+            })
+            .disposed(by: dispose)
+
+        source
+            .flatMap { _ in selectionSource.asDriver() }
+            .drive(onNext: { (position: Int) in
+                if position != -1 {
+                    button.selectItem(at: position)
+                } else {
+                    button.select(nil)
+                }
+            })
+            .disposed(by: dispose)
+
+    }
+
+    private func selectionChanged(button: NSPopUpButton, selectionSource: BehaviorRelay<Int>) {
+        guard let item = button.selectedItem,
+              let index = button.menu?.items.firstIndex(of: item)
             else { return }
-        viewModel.selectedTask.accept(index)
+        selectionSource.accept(index)
     }
     
 }

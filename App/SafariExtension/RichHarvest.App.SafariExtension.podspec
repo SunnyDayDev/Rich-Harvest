@@ -33,5 +33,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'RichHarvest.Feature.Auth'
   s.dependency 'RichHarvest.Feature.Timer'
+  s.dependency 'RichHarvest.Feature.Rules'
 
 end

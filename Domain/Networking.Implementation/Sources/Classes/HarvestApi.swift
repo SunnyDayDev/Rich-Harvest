@@ -17,11 +17,19 @@ class HarvestApiImplementation: HarvestApi {
 
         static let host = "https://api.harvestapp.com/v2/"
 
+        static let clients = "\(host)clients/"
+
+        static func client(id: Int) -> String { return "\(clients)\(id)/" }
+
         static let projects = "\(host)projects/"
 
         static func project(id: Int) -> String { return "\(projects)\(id)/" }
 
         static func taskAssignments(byProjectId id: Int) -> String { return "\(projects)\(id)/task_assignments/" }
+
+        static let tasks = "\(host)tasks/"
+
+        static func task(byId id: Int) -> String { return "\(tasks)\(id)/" }
 
         static let timeEntries = "\(host)time_entries/"
 
@@ -32,7 +40,7 @@ class HarvestApiImplementation: HarvestApi {
         case page = "page"
         case perPage = "per_page"
         case updatedSince = "updated_since"
-        case clientId = "clientId"
+        case clientId = "client_id"
     }
 
     private let sessionManager: HarvestApiSessionManager
@@ -44,8 +52,20 @@ class HarvestApiImplementation: HarvestApi {
         self.urlSessionManager = urlSessionManager
     }
 
+    func clients(isActive: Bool) -> Single<Clients> {
+
+        let params: [UrlParam: Any?] = [.isActive: isActive ? "true" : "false"]
+
+        return authorized { self.request(.get, Urls.clients, parameters: params, headers: $0) }
+
+    }
+
+    func client(byId id: Int) -> Single<ClientDetail> {
+        return authorized { self.request(.get, Urls.client(id: id), headers: $0) }
+    }
+
     func projects(isActive: Bool,
-                  clientId: String?,
+                  clientId: Int?,
                   updatedSince: Date?,
                   page: Int,
                   perPage: Int) -> Single<Projects> {
@@ -83,6 +103,10 @@ class HarvestApiImplementation: HarvestApi {
 
     }
 
+    func task(byId id: Int) -> Single<TaskDetail> {
+        return authorized { self.request(.get, Urls.task(byId: id), headers: $0) }
+    }
+
     func startTimer(withData data: StartTimerData) -> Single<StartTimerData> {
         return authorized { self.postJson(.post, Urls.timeEntries, data: data, headers: $0) }
     }
@@ -97,11 +121,15 @@ class HarvestApiImplementation: HarvestApi {
                 guard let session = session else {
                     throw NetworkError.sessionNotExists
                 }
-                return [
-                    "Authorization": "Bearer \(session.personalToken)",
-                    "Harvest-Account-Id": "\(session.accountId)"
-                ]
+                return self.authHeaders(forSession: session)
             }
+    }
+
+    private func authHeaders(forSession session: HarvestApiSession) -> [String: String]{
+        return [
+            "Authorization": "Bearer \(session.personalToken)",
+            "Harvest-Account-Id": "\(session.accountId)"
+        ]
     }
 
     private func request<T: Decodable>(

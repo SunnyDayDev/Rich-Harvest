@@ -16,6 +16,39 @@ class HarvestRepositoryMappers {
 
         class ToPlain {
 
+            var clients: (ClientsDto) -> ClientsPlain {
+
+                let linksMapper = self.links
+                let clientMapper = self.clientDetail
+
+                return { dto in
+                    ClientsPlain(
+                        clients: dto.clients.map(clientMapper),
+                        perPage: dto.perPage,
+                        totalPages: dto.totalPages,
+                        totalEntries: dto.totalEntries,
+                        nextPage: dto.nextPage,
+                        previousPage: dto.previousPage,
+                        page: dto.page,
+                        links: linksMapper(dto.links)
+                    )
+                }
+            }
+
+            var clientDetail: (ClientDetailDto) -> ClientDetailPlain {
+                return  { dto in
+                    ClientDetailPlain(
+                        id: dto.id,
+                        name: dto.name,
+                        isActive: dto.isActive,
+                        address: dto.address,
+                        createdAt: dto.createdAt,
+                        updatedAt: dto.updatedAt,
+                        currency: dto.currency
+                    )
+                }
+            }
+
             var projects: (ProjectsDto) -> ProjectsPlain {
 
                 let linksMapper = self.links
@@ -145,6 +178,21 @@ class HarvestRepositoryMappers {
                     TaskPlain(
                         id: dto.id,
                         name: dto.name
+                    )
+                }
+            }
+
+            var taskDetail: (TaskDetailDto) -> TaskDetailPlain {
+                return { dto in
+                    TaskDetailPlain(
+                        id: dto.id,
+                        name: dto.name,
+                        billableByDefault: dto.billableByDefault,
+                        defaultHourlyRate: dto.defaultHourlyRate,
+                        isDefault: dto.isDefault,
+                        isActive: dto.isActive,
+                        createdAt: dto.createdAt,
+                        updatedAt: dto.updatedAt
                     )
                 }
             }

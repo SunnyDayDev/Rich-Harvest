@@ -5,6 +5,73 @@
 import Foundation
 import RichHarvest_Core_Core
 
+public struct Clients: Codable {
+
+    public let clients: [ClientDetail]
+    public let perPage: Int
+    public let totalPages: Int
+    public let totalEntries: Int
+    public let nextPage: Int?
+    public let previousPage: Int?
+    public let page: Int
+    public let links: Links
+
+    enum CodingKeys: String, CodingKey {
+        case clients = "clients"
+        case perPage = "per_page"
+        case totalPages = "total_pages"
+        case totalEntries = "total_entries"
+        case nextPage = "next_page"
+        case previousPage = "previous_page"
+        case page = "page"
+        case links = "links"
+    }
+
+    public init(clients: [ClientDetail], perPage: Int, totalPages: Int, totalEntries: Int, nextPage: Int?, previousPage: Int?, page: Int, links: Links) {
+        self.clients = clients
+        self.perPage = perPage
+        self.totalPages = totalPages
+        self.totalEntries = totalEntries
+        self.nextPage = nextPage
+        self.previousPage = previousPage
+        self.page = page
+        self.links = links
+    }
+
+}
+
+public struct ClientDetail: Codable {
+
+    public let id: Int
+    public let name: String
+    public let isActive: Bool
+    public let address: String?
+    public let createdAt: Date
+    public let updatedAt: Date
+    public let currency: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+        case isActive = "is_active"
+        case address = "address"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case currency = "currency"
+    }
+
+    public init(id: Int, name: String, isActive: Bool, address: String?, createdAt: Date, updatedAt: Date, currency: String) {
+        self.id = id
+        self.name = name
+        self.isActive = isActive
+        self.address = address
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.currency = currency
+    }
+
+}
+
 public struct Projects: Codable {
 
     public let projects: [ProjectDetail]
@@ -188,7 +255,7 @@ public struct TaskAssignment: Codable {
     public let isActive: Bool
     public let createdAt: HarvestApiDate
     public let updatedAt: HarvestApiDate
-    public let hourlyRate: Int
+    public let hourlyRate: Double
     public let budget: Double?
     public let project: Project
     public let task: Task
@@ -205,7 +272,7 @@ public struct TaskAssignment: Codable {
         case task = "task"
     }
 
-    public init(id: Int, billable: Bool, isActive: Bool, createdAt: Date, updatedAt: Date, hourlyRate: Int, budget: Double?, project: Project, task: Task) {
+    public init(id: Int, billable: Bool, isActive: Bool, createdAt: Date, updatedAt: Date, hourlyRate: Double, budget: Double?, project: Project, task: Task) {
         self.id = id
         self.billable = billable
         self.isActive = isActive
@@ -250,6 +317,41 @@ public struct Task: Codable {
         self.id = id
         self.name = name
     }
+}
+
+public struct TaskDetail: Codable {
+
+    public let id: Int
+    public let name: String
+    public let billableByDefault: Bool
+    public let defaultHourlyRate: Double?
+    public let isDefault: Bool
+    public let isActive: Bool
+    public let createdAt: Date
+    public let updatedAt: Date
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+        case billableByDefault = "billable_by_default"
+        case defaultHourlyRate = "default_hourly_rate"
+        case isDefault = "is_default"
+        case isActive = "is_active"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+
+    public init(id: Int, name: String, billableByDefault: Bool, defaultHourlyRate: Double?, isDefault: Bool, isActive: Bool, createdAt: Date, updatedAt: Date) {
+        self.id = id
+        self.name = name
+        self.billableByDefault = billableByDefault
+        self.defaultHourlyRate = defaultHourlyRate
+        self.isDefault = isDefault
+        self.isActive = isActive
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
+
 }
 
 public struct Client: Codable {
