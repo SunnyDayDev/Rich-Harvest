@@ -29,10 +29,10 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = #'UIKit', 'MapKit'
 
-  s.dependency 'RxSwift', '5.0.0'
-  s.dependency 'RxCocoa', '5.0.0'
+  s.dependency 'RxSwift', '5.0.1'
+  s.dependency 'RxCocoa', '5.0.1'
 
-  s.dependency 'SwiftyBeaver', '1.8.2'
+  s.dependency 'SwiftyBeaver', '1.8.3'
   s.dependency 'Swinject', '2.7.1'
 
 end

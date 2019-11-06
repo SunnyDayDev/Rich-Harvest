@@ -34,6 +34,6 @@ Pod::Spec.new do |s|
   s.dependency 'RichHarvest.Domain.Networking.Api'
 
   s.dependency 'Alamofire', '4.8.0'
-  s.dependency 'RxAlamofire', '5.0.0'
+  s.dependency 'RxAlamofire', '5.1.0'
 
 end
