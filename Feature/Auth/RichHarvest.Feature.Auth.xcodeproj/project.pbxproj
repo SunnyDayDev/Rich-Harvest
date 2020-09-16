@@ -11,7 +11,7 @@
 		68B697642977F223B8A874F7 /* AuthFeatureAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthFeatureAssembly.swift; sourceTree = "<group>"; };
 		68B69AB97656A3B9CEDB4B00 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		68B69CC1200634998B0C7C07 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
-		A3760CF121A03C90002084D4 /* RichHarvest.Feature.Auth.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Feature.Auth.podspec; sourceTree = "<group>"; };
+		A3760CF121A03C90002084D4 /* RichHarvest.Feature.Auth.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Feature.Auth.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -63,6 +63,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 68B696A2DE849D6A36EF3730;

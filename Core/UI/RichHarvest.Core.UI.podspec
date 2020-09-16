@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.source           = { :path => '../' }
 
-  s.osx.deployment_target = '10.14'
+  s.osx.deployment_target = '10.15'
 
   s.source_files = 'Sources/Classes/**/*'
 

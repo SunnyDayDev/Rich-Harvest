@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.source           = { :path => '../' }
 
-  s.osx.deployment_target = '10.14'
+  s.osx.deployment_target = '10.15'
 
   s.source_files = 'Sources/Classes/**/*'
 
@@ -29,10 +29,10 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = #'UIKit', 'MapKit'
 
-  s.dependency 'RxSwift', '5.0.1'
-  s.dependency 'RxCocoa', '5.0.1'
+  s.dependency 'RxSwift', '5.1.1'
+  s.dependency 'RxCocoa', '5.1.1'
 
-  s.dependency 'SwiftyBeaver', '1.8.3'
+  s.dependency 'SwiftyBeaver', '1.9.1'
   s.dependency 'Swinject', '2.7.1'
 
 end

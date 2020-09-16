@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		A38E858E21AD2EA000DABE3A /* RulesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RulesRepository.swift"; sourceTree = "<group>"; };
-		A38E858F21AD2EA000DABE3A /* RulesRepositoryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RulesRepositoryModels.swift"; sourceTree = "<group>"; };
-		A38E859021AD2EA000DABE3A /* RichHarvest.Domain.Rules.Api.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RichHarvest.Domain.Rules.Api.podspec"; sourceTree = "<group>"; };
+		A38E858E21AD2EA000DABE3A /* RulesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesRepository.swift; sourceTree = "<group>"; };
+		A38E858F21AD2EA000DABE3A /* RulesRepositoryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesRepositoryModels.swift; sourceTree = "<group>"; };
+		A38E859021AD2EA000DABE3A /* RichHarvest.Domain.Rules.Api.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Domain.Rules.Api.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -51,6 +51,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 68B696A2DE849D6A36EF3730;

@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.source           = { :path => '../' }
 
-  s.osx.deployment_target = '10.14'
+  s.osx.deployment_target = '10.15'
 
   s.source_files = 'Sources/Classes/**/*'
 
@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'RichHarvest.Domain.Networking.Api'
 
-  s.dependency 'Alamofire', '4.8.0'
-  s.dependency 'RxAlamofire', '5.1.0'
+  s.dependency 'Alamofire', '5.2.2'
+  s.dependency 'RxAlamofire', '5.6.1'
 
 end

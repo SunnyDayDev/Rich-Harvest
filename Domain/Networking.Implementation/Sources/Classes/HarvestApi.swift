@@ -45,11 +45,11 @@ class HarvestApiImplementation: HarvestApi {
 
     private let sessionManager: HarvestApiSessionManager
 
-    private let urlSessionManager: SessionManager
+    private let alamofireSession: Session
 
-    init(sessionManager: HarvestApiSessionManager, urlSessionManager: SessionManager) {
+    init(sessionManager: HarvestApiSessionManager, alamofireSession: Session) {
         self.sessionManager = sessionManager
-        self.urlSessionManager = urlSessionManager
+        self.alamofireSession = alamofireSession
     }
 
     func clients(isActive: Bool) -> Single<Clients> {
@@ -149,9 +149,11 @@ class HarvestApiImplementation: HarvestApi {
                 .filter { (_, value) in value != nil }
                 .map { (key, value) in (key: key.rawValue, value: value!) }
                 .associate { $0 }
+            
+            let httpHeaders = HTTPHeaders(headers ?? [:])
 
-            let requestSource = self.urlSessionManager.rx
-                .request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+            let requestSource = self.alamofireSession.rx
+                .request(method, url, parameters: parameters, encoding: encoding, headers: httpHeaders)
 
             return self.request(from: requestSource, logRequestData: logRequestData,  function: function, line: line)
                 .parse(T.self)
@@ -185,7 +187,7 @@ class HarvestApiImplementation: HarvestApi {
             request.httpBody = try JSONEncoder.harvestJSONEncoder.encode(data)
             request.allHTTPHeaderFields = (headers ?? [:]) + [ "Content-Type": "application/json" ]
 
-            let requestSource = self.urlSessionManager.rx.request(urlRequest: request)
+            let requestSource = self.alamofireSession.rx.request(urlRequest: request)
 
             return self.request(from: requestSource, logRequestData: logRequestData,  function: function, line: line)
                 .parse(T.self)

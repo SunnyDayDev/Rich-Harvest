@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.source           = { :path => '../' }
 
-  s.osx.deployment_target = '10.14'
+  s.osx.deployment_target = '10.15'
 
   s.source_files = 'Sources/Classes/**/*'
 
@@ -33,8 +33,8 @@ Pod::Spec.new do |s|
 
   # s.dependency 'RealmSwift', '3.12.0'
 
-  s.dependency 'FirebaseCore', '6.3.3'
-  s.dependency 'FirebaseDatabase', '6.1.2'
+  s.dependency 'FirebaseCore', '6.10.2'
+  s.dependency 'FirebaseDatabase', '6.6.0'
 
   s.dependency 'RichHarvest.Core.Core'
   s.dependency 'RichHarvest.Domain.Rules.Api'

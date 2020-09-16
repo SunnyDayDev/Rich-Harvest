@@ -18,21 +18,19 @@ public class NetworkingDomainAssembly: Assembly {
         container.register(HarvestApiSessionManager.self) { _ in HarvestApiSessionManagerImplementation() }
             .inObjectScope(.container)
 
-        container.register(SessionManager.self) { _ in
-
+        container.register(Session.self) { _ in
             let configuration = URLSessionConfiguration.default
             configuration.urlCache = nil
-            configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+            configuration.headers = .default
             configuration.httpShouldSetCookies = false
 
-            return SessionManager(configuration: configuration)
-
+            return Session(configuration: configuration)
         }
 
         container.register(HarvestApi.self) { (r: Resolver) in
             HarvestApiImplementation(
                 sessionManager: r.resolve(HarvestApiSessionManager.self)!,
-                urlSessionManager: r.resolve(SessionManager.self)!
+                alamofireSession: r.resolve(Session.self)!
             )
         }
 

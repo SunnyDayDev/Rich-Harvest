@@ -11,7 +11,7 @@
 		68B693962E758DE8592F1356 /* Timer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
 		68B693C5FA7670F933F76062 /* TimerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		68B69DF633F42B7873BDB4BD /* TimerFeatureAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerFeatureAssembly.swift; sourceTree = "<group>"; };
-		A3760CF121A03C90002084D4 /* RichHarvest.Feature.Timer.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Feature.Timer.podspec; sourceTree = "<group>"; };
+		A3760CF121A03C90002084D4 /* RichHarvest.Feature.Timer.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RichHarvest.Feature.Timer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -63,6 +63,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 68B696A2DE849D6A36EF3730;
